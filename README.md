@@ -1,2 +1,6 @@
-# aw1516
-Web Applications Course 2015/2016, Faculdade de Ciências da Universidade de Lisboa, Portugal
+# Web Applications 2015/2016
+### Departamento de Informática, Faculdade de Ciências da Universidade de Lisboa, Portugal
+### Tiago Guerreiro e Francisco Couto
+
+
+
