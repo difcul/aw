@@ -5,8 +5,8 @@ Francisco Couto e Tiago Guerreiro
 
 ## Table of Contents
 
-1. Working Environment
-2. Using Third-Party Web Services and Web Scraping
+1. Using Third-Party Web Services
+2. Web Scraping
 3. Building a Web Service
 4. Building a Dynamic Web Application
 5. RDF and Linked Data
