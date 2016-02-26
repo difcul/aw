@@ -90,3 +90,40 @@ To create and edit the PHP files, you should use a text editor (e.g., Emacs, Sub
 ## Basic PHP concepts
 
 ### Dealing with input data
+
+PHP can receive data through [POST and GET](https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol). As an example, create a file _get.php_ with the following:
+
+```
+<?php
+echo 'Hello '.htmlspecialchars($_GET['name']).'!';
+?>
+```
+
+Now, by opening the URL _http://appserver.di.fc.ul.pt/~awXXX/get.php?name=FCUL_ you will see _FCUL_, given as an argument, in the resulting page. 
+
+You can also create the file form.html with the following HTML code to create a form:
+
+```
+<html>
+    <form action='action.php' method='post'>
+        <p> Your name: <input type='text' name='name' /> </p>
+        <p> Your age: <input type='text' name='age' /> </p>
+        <p><input type='submit' /> </p>
+    </form>
+</html>
+```
+
+Also create the file _action.php_ that will receive the results of the form through the following code:
+
+```
+<html>
+Hi <?php echo htmlspecialchars($_POST['name']); ?>.
+You are <?php echo (int)($_POST['age']); ?> years old.
+</html>
+```
+
+Submit the form at _http://appserver.di.fc.ul.pt/~awXXX/form.html_ and check the results.
+
+## MySQL and onwards
+
+For those that are finished with the tutorial, go to http://webpages.fc.ul.pt/~fjcouto/files/manual_php_mysql_java_oracle_201112.pdf and follow chapters 3 and 4. 
