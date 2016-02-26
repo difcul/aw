@@ -5,8 +5,8 @@ Francisco Couto e Tiago Guerreiro
 
 ## Table of Contents
 
-0. [Intro to Server Web Programming](0_intro_to_server_web_programming.md)
-1. [Using Third-Party Web Services](1_using_web_services.md)
+0. [Intro to Server Web Programming](0_intro_server_web_programming/)
+1. [Using Third-Party Web Services](/1_using_web_services/)
 2. Web Scraping
 3. Building a Web Service
 4. Building a Dynamic Web Application
