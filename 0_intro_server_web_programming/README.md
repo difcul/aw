@@ -67,6 +67,26 @@ echo '<html>Hello World!</html>' > index html
 
 or you can create the file index.html and edit it with your preferred text editor, making sure that the remote directory is updated with the new file.
 
-Now you can open in your browser the link ´´´http://appserver.di.fc.ul.pt/~awXXX/``` and check the result. This is result is static and will not change unless the file _index.html_ in the machine _appserver_ is updated.
+Now you can open in your browser the link ```http://appserver.di.fc.ul.pt/~awXXX/``` and check the result. This is result is static and will not change unless the file _index.html_ in the machine _appserver_ is updated.
 
-To create a dynamic page, you can now create a PHP file inside the directory ```public_html```
+To create a dynamic page, you can now create a PHP file inside the directory ```public_html```. You can perform the following commands:
+
+```
+cd ~
+cd public_html
+echo '<html><?php echo data(DATE_RFC822); ?> </html>' > index.php
+```
+
+By opening the URL ```http://appserver.di.fc.ul.pt/~awXXX/index.php``` you will see that the content is not the content of the file; rather it is the content of the interpretation of that file at the time it was executed, that is, the date the access was made.
+
+To be able to test PHP files more efficiently, you can also execute the _php_ command, through the remote console:
+
+```
+php index.php
+```
+
+To create and edit the PHP files, you should use a text editor (e.g., Emacs, SublimeText , Notepad++, vi, nano,..), and not the _echo_ command, that should be used only to create very short files.
+
+## Basic PHP concepts
+
+### Dealing with input data
