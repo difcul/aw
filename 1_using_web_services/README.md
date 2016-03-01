@@ -148,7 +148,8 @@ As with Flickr, to use the Places API you will have to get an API key. This is d
 
 By inspecting the API documentation in the same website, we can identify how to search Google Places for a search string or a type of place in particular. As an example, to search using just a query string, we could call the following URL:
 
-```https://maps.googleapis.com/maps/api/place/textsearch/xml?query=monuments+in+Portugal&key=YOUR_API_KEY
+```
+https://maps.googleapis.com/maps/api/place/textsearch/xml?query=monuments+in+Portugal&key=YOUR_API_KEY
 ```
 
 The following code prints a list of "monuments in Portugal" as returned by the Google Places API:
