@@ -158,7 +158,7 @@ The following code prints a list of "monuments in Portugal" as returned by the G
 <?php
 # build the API URL to call
 $params = array(
-        'key'=> 'AIzaSyBJu4F8tX7Aur2PetH6xAqLQ_mnka8BV7w',
+        'key'=> 'YOUR_API_KEY',
         'query'=> 'monuments+in+Portugal',
         );
 
