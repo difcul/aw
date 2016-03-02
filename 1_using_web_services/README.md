@@ -46,7 +46,7 @@ The response provided is as follows:
 The response format can be changed by using the _format_ argument, as the following examples shows:
 
 ```
-https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=fd3fabe4e9d94ca725df1de71b8d285b&text=cristiano+ronaldo&format=json
+https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=YOUR_API_KEY&text=cristiano+ronaldo&format=json
 ```
 
 In the response, we receive a set of photos, identified by the photo _id_, and two other numbers, _farm-id_ and _secret_. These numbers enable us to access the image associated with each photo in the set. Flickr stores several versions, different sizes, of each photo, and all of them have a static URL. This URL is composed as follows:
