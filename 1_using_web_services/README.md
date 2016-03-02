@@ -26,7 +26,7 @@ Now let's try to use the API ourselves. A call to a web service is an HTTP reque
 As an example, let's use the Flickr API to search for photos about Cristiano Ronaldo. To do so, we will use the method _flickr.photos.search_, with the search string (_text_) as being "Cristiano Ronaldo". Without forgetting the ```api_key```, always required, we compose the following URL:
 
 ```
-https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=fd3fabe4e9d94ca725df1de71b8d285b&text=cristiano+ronaldo
+https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=YOUR_API_KEY&text=cristiano+ronaldo
 ```
 
 The order of the arguments is not relevant; arguments are separated by _&_; whitespaces are replaced by _+_; _=_ is used to give a value to each argument.
