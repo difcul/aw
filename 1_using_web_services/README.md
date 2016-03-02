@@ -1,5 +1,5 @@
 # Using Third-party Web Services
-Francisco Couto and Tiago Guerreiro
+Tiago Guerreiro and Francisco Couto
 
 SOA (Service Oriented Architecture) is a software achitecture type that models the several system components by the functionalities they implement, as services (Web Services). The implementation of complex applications involves interconnecting several components by calling these services. 
 
