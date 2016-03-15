@@ -7,7 +7,7 @@ Francisco Couto e Tiago Guerreiro
 
 0. [Intro to Server Web Programming](/0_intro_server_web_programming/)
 1. [Using Third-Party Web Services](/1_using_web_services/)
-2. Web Scraping
+2. [Accessing and Extracting data from Webpages] (/2_accessing_pages_and_extracting_data/)
 3. Building a Web Service
 4. Building a Dynamic Web Application
 5. RDF and Linked Data
