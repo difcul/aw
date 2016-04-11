@@ -13,7 +13,7 @@ This tutorial aims to introduce the reader to using an external web service in t
 
 ## Getting an API key
 
-Some APIs require developers to request a key to use the API. Getting an API Key from Flickr is straightforward and can be done at the [https://www.flickr.com/services/apps/create/apply/]("Flickr App Garden"). If you don't have one, you will need to create a Yahoo account. If you didn't create an account before, you will be provided with a temporary Flickr API key in class. However, it should not be used outside of the class; you should create your own at the cost of making too many requests with the provided account and reaching the limit of requests for the _difcul_ account.
+Some APIs require developers to request a key to use the API. Getting an API Key from Flickr is straightforward and can be done at the ["Flickr App Garden"](https://www.flickr.com/services/apps/create/apply/). If you don't have one, you will need to create a Yahoo account. If you didn't create an account before, you will be provided with a temporary Flickr API key in class. However, it should not be used outside of the class; you should create your own at the cost of making too many requests with the provided account and reaching the limit of requests for the _difcul_ account.
 
 ## Looking through the API
 
@@ -21,7 +21,7 @@ The next step in using an API is looking through the [API Documentation](https:/
 
 ## Understanding a service call and response
 
-Now let's try to use the API ourselves. A call to a web service is an HTTP request to that service available in the remove Web server. As such, before doing it programatically, we can test an API by using the web browser to perform the HTTP request. 
+Now let's try to use the API ourselves. A call to a web service is an HTTP request to that service available in the remote Web server. As such, before doing it programatically, we can test an API by using the web browser to perform the HTTP request. 
 
 As an example, let's use the Flickr API to search for photos about Cristiano Ronaldo. To do so, we will use the method _flickr.photos.search_, with the search string (_text_) as being "Cristiano Ronaldo". Without forgetting the ```api_key```, always required, we compose the following URL:
 
