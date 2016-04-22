@@ -279,7 +279,7 @@ SPARQL queries are executed against RDF datasets, consisting of RDF graphs.
 
 ## Performing queries with SPARQL
 
-1. Introducing SELECT, variables and triple patterns:
+### Introducing SELECT, variables and triple patterns:
 
 "In the graph http://dig.csail.mit.edu/2008/webdav/timbl/foaf.rdf, find me all subjects (?person) and objects (?name) linked with the foaf:name predicate. Then return all the values of ?name. In other words, find all names mentioned in Tim Berners-Lee's FOAF file."
 
@@ -296,7 +296,7 @@ In addition, we would have to refer to the data graph used.
 
 SPARQL variables start with a ? and can match any node (resource or literal) in the RDF dataset. Triple patterns are just like triples, except that any of the parts of a triple can be replaced with a variable. The SELECT result clause returns a table of variables and values that satisfy the query. 
 
-2. Selecting all properties:
+### Selecting all properties:
 
 "Give me all properties about Apollo 7"
 ```
@@ -306,7 +306,7 @@ SELECT ?p ?o
 }
 ```
 
-3. Using multiple triple patterns
+### Using multiple triple patterns
 
 "Find me all the people in Tim Berners-Lee's FOAF file that have names and email addresses. Return each person's URI, name, and email address."
 
@@ -320,7 +320,7 @@ WHERE {
 }
 ```
 
-4. Traversing a graph example
+### Traversing a graph example
 
 "Find me the homepage of anyone known by Tim Berners-Lee."
 
@@ -342,7 +342,7 @@ Now that we have understood how it works, let's see some results. To do so, we c
  
 (Examples and descriptions retrieved from [Sparql By Example](http://www.cambridgesemantics.com/semantic-university/sparql-by-example))
    
-### Using DBPedia
+## Using DBPedia
 
 "DBpedia is a crowd-sourced community effort to extract structured information from Wikipedia and make this information available on the Web. DBpedia allows you to ask sophisticated queries against Wikipedia, and to link the different data sets on the Web to Wikipedia data" - Retrieved from DBPedia.org
 
