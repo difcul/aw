@@ -10,8 +10,8 @@ Francisco Couto e Tiago Guerreiro
 2. [Accessing and Extracting data from Webpages] (/2_accessing_pages_and_extracting_data/)
 3. [Building a Web Service](http://phppot.com/php/php-restful-web-service/)
 4. [Building a Dynamic Web Application with AJAX](/4_building_a_dynamic_web_application/)
-5. Semantic queries with Sparql
-6. RDFa: RDF in attributes
+5. [Semantic queries with Sparql](5_using_rdf_and_sparql)
+6. [RDFa: RDF in attributes](https://stuff.coffeecode.net/2014/lld_preconference/rdfa_exercises/)
 8. Information Retrieval (using Apache Lucene)
 9. Information Visualization (using D3.js)
 
