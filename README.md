@@ -12,8 +12,10 @@ Francisco Couto e Tiago Guerreiro
 4. [Building a Dynamic Web Application with AJAX](/4_building_a_dynamic_web_application/)
 5. [Semantic queries with Sparql](5_using_rdf_and_sparql)
 6. [RDFa: RDF in attributes](https://stuff.coffeecode.net/2014/lld_preconference/rdfa_exercises/)
-8. Information Retrieval (using Apache Lucene)
-9. Information Visualization (using D3.js)
+7. Information Visualization
+    * [D3 Tutorial](http://alignedleft.com/tutorials/d3)
+    * [D3 Examples](http://bl.ocks.org/mbostock)
+    * [Vega Lite Tutorial](https://vega.github.io/vega-lite/)
 
 
 
