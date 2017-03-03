@@ -2,9 +2,9 @@
 ## The DI-FCUL Applicational Web Server
 Francisco Couto and Tiago Guerreiro
 
-This tutorial aims to familiarize students with the applicational web server placed at their disposal (_appserver_). Alongside, in this tutorial we will create basic PHP applications that store data into a relational database, using MySQL. At the end, students are expected to be comfortable with a setup that allows them to develop web applications using _appserver_. 
+This tutorial aims to familiarize students with the applicational web server placed at their disposal (_appserver-01_). Alongside, in this tutorial we will create basic PHP applications that store data into a relational database, using MySQL. At the end, students are expected to be comfortable with a setup that allows them to develop web applications using _appserver-01_. 
 
-_Appserver_, available at _appserver.di.fc.ul.pt_, features an Apache Web server and has support for PHP, Java and MySQL. Each group has an account named awXXX where XXX equals the group name (e.g., 001). Passwords and access instructions are provided in the laboratorial class.
+_Appserver_, available at _appserver-01.alunos.di.fc.ul.pt_, features an Apache Web server and has support for PHP, Java and MySQL. Each group has an account named awXXX where XXX equals the group name (e.g., 001). Passwords and access instructions are provided in the laboratorial class.
 
 This tutorial introduces the basic concepts on using PHP and MySQL in a web application  by using examples that, although having been tested with _appserver_, can be easily adapted to other infra-structures with the same technology.
 
@@ -26,10 +26,10 @@ MySQL is a relational database management system that can be used by the PHP fil
 
 To access _appserver_, on Linux or Mac, open a Terminal and input:
 ```
-ssh awXXX@appserver.di.fc.ul.pt
+ssh awXXX@appserver-01.alunos.di.fc.ul.pt
 ```
 
-On Windows, you can use applications like SSH Secure Shell or PuTTY to access the remote machine. 
+On Windows, you can use applications like SSH Secure Shell or PuTTY to access the remote machine. They are installed in the lab.
 
 Upon attempt to connect, the system will ask you for a password (provided to you in class). Upon connection, and once you have your group number, change the password to one all the group members are aware of by using the following command:
 
@@ -42,7 +42,7 @@ Notice that you can only access _appserver_ inside the DI network, so you need t
 These terminals allow you to input commands in the remote machine. To transfer files to and from the remote machine, you can use file transfer specialized applications (on Windows: SSH Secure Shell, FileZilla, WinSCP) or map the remove location and manage it as if it was a local folder. To do so on Linux, in the file manager go to GO-> OPEN LOCATION and input:
 
 ```
-ssh://awXXX@appserver.di.fc.ul.pt/home/awXXX
+ssh://awXXX@appserver-01.alunos.di.fc.ul.pt/home/awXXX
 ```
 
 Upon making the connection, you will be able to navigate and edit your files as you would do with a local folder.
@@ -67,7 +67,7 @@ echo '<html>Hello World!</html>' > index html
 
 or you can create the file index.html and edit it with your preferred text editor, making sure that the remote directory is updated with the new file.
 
-Now you can open in your browser the link ```http://appserver.di.fc.ul.pt/~awXXX/``` and check the result. This is result is static and will not change unless the file _index.html_ in the machine _appserver_ is updated.
+Now you can open in your browser the link ```http://appserver-01.alunos.di.fc.ul.pt/~awXXX/``` and check the result. This is result is static and will not change unless the file _index.html_ in the machine _appserver_ is updated.
 
 To create a dynamic page, you can now create a PHP file inside the directory ```public_html```. You can perform the following commands:
 
@@ -77,13 +77,15 @@ cd public_html
 echo '<html><?php echo data(DATE_RFC822); ?> </html>' > index.php
 ```
 
-By opening the URL ```http://appserver.di.fc.ul.pt/~awXXX/index.php``` you will see that the content is not the content of the file; rather it is the content of the interpretation of that file at the time it was executed, that is, the date the access was made.
-
-To be able to test PHP files more efficiently, you can also execute the _php_ command, through the remote console:
+By opening the URL ```http://appserver-01.alunos.di.fc.ul.pt/~awXXX/index.php``` you will see a blank page. Probably, an error occurred. To be able to test PHP files more efficiently, you can also execute the _php_ command, through the remote console:
 
 ```
 php index.php
 ```
+
+You found the line of the error. The function is called ```date```, not ```data```. Fix it and try it again.
+
+By opening the URL ```http://appserver-01.alunos.di.fc.ul.pt/~awXXX/index.hp``` you will see that the content is not the content of the file; rather it is the content of the interpretation of that file at the time it was executed, that is, the date the access was made.
 
 To create and edit the PHP files, you should use a text editor (e.g., Emacs, SublimeText , Notepad++, vi, nano,..), and not the _echo_ command, that should be used only to create very short files.
 
@@ -99,7 +101,7 @@ echo 'Hello '.htmlspecialchars($_GET['name']).'!';
 ?>
 ```
 
-Now, by opening the URL _http://appserver.di.fc.ul.pt/~awXXX/get.php?name=FCUL_ you will see _FCUL_, given as an argument, in the resulting page. 
+Now, by opening the URL _http://appserver-01.alunos.di.fc.ul.pt/~awXXX/get.php?name=FCUL_ you will see _FCUL_, given as an argument, in the resulting page. 
 
 You can also create the file form.html with the following HTML code to create a form:
 
@@ -122,7 +124,7 @@ You are <?php echo (int)($_POST['age']); ?> years old.
 </html>
 ```
 
-Submit the form at _http://appserver.di.fc.ul.pt/~awXXX/form.html_ and check the results.
+Submit the form at _http://appserver-01.alunos.di.fc.ul.pt/~awXXX/form.html_ and check the results.
 
 ## MySQL and onwards
 
