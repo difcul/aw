@@ -1,4 +1,4 @@
-# Web Applications 2015/2016
+# Web Applications
 Departamento de Informática, Faculdade de Ciências da Universidade de Lisboa, Portugal
 
 Francisco Couto e Tiago Guerreiro
