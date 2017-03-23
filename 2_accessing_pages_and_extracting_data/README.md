@@ -198,7 +198,7 @@ All settings can be set by using the _curl\_setopt()_ method, which takes three 
 $ch = curl_init();
 curl_setopt_array ($ch, array(
     CURLOPT_RETURNTRANSFER => 1,
-    CURLOPT_URL => 'http://www.di.fc.ul.pt/~tjvg/''
+    CURLOPT_URL => 'https://ciencias.ulisboa.pt/''
     ));
 ```
 
