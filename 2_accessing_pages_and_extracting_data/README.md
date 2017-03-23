@@ -212,7 +212,7 @@ $ch = curl_init();
 curl_setopt($ch, CURLOPT_URL,"http://httpbin.org/post");
 curl_setopt($ch, CURLOPT_POST, 3);
 curl_setopt($ch, CURLOPT_POSTFIELDS,
-            "foo='blabla'&bar='boeboe'&description='something'");
+            "foo=blabla&bar=boeboe&description=something");
 
 curl_exec ($ch);
 curl_close ($ch); 
