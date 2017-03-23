@@ -175,7 +175,7 @@ One simple cURL request, a simple GET, can be done as follows:
 
 $ch = curl_init();
 
-curl_setopt ($ch, CURLOPT_URL, "http://www.di.fc.ul.pt/~tjvg/");
+curl_setopt ($ch, CURLOPT_URL, "https://ciencias.ulisboa.pt/");
 curl_setopt ($ch, CURLOPT_HEADER, 0);
 
 curl_exec ($ch);
@@ -195,24 +195,24 @@ The above code initializes a cURL resource (_curl\_init_) and then assigns some 
 All settings can be set by using the _curl\_setopt()_ method, which takes three parameters: the cURL resource, the setting and the value. It is possible to set multiple settings at once by using _curl\_setopt\_array_:
 
 ```
-$curl = curl_init();
-curl_setopt_array ($curl, array(
+$ch = curl_init();
+curl_setopt_array ($ch, array(
     CURLOPT_RETURNTRANSFER => 1,
     CURLOPT_URL => 'http://www.di.fc.ul.pt/~tjvg/''
     ));
 ```
 
-Performing a POST request to a webpage, for example to automatically fill-up a form can be done:
+Performing a POST request to a webpage (https://httpbin.org/), for example to automatically fill-up a form can be done:
 
 ```
 <?php
 
 $ch = curl_init();
 
-curl_setopt($ch, CURLOPT_URL,"http://www.notARealSite.com");
+curl_setopt($ch, CURLOPT_URL,"http://httpbin.org/forms/post");
 curl_setopt($ch, CURLOPT_POST, 3);
 curl_setopt($ch, CURLOPT_POSTFIELDS,
-            "postvar1=value1&postvar2=value2&postvar3=value3");
+            "foo='blabla'&bar='boeboe'&description='something'");
 
 curl_exec ($ch);
 curl_close ($ch); 
