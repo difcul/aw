@@ -209,7 +209,7 @@ Performing a POST request to a webpage (https://httpbin.org/), for example to au
 
 $ch = curl_init();
 
-curl_setopt($ch, CURLOPT_URL,"http://httpbin.org/forms/post");
+curl_setopt($ch, CURLOPT_URL,"http://httpbin.org/post");
 curl_setopt($ch, CURLOPT_POST, 3);
 curl_setopt($ch, CURLOPT_POSTFIELDS,
             "foo='blabla'&bar='boeboe'&description='something'");
