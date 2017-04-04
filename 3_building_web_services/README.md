@@ -1,4 +1,6 @@
 # Building a RESTful Web Service
+Tiago Guerreiro and Francisco Couto
+(tutorial adapted from http://phppot.com/php/php-restful-web-service/)
 
 In this tutorial, we will learn how to build web services that follow the RESTful principles. In such services, URIS are used to access the resources, either they are data or functions. Examples of RESTful URIs are:
 
