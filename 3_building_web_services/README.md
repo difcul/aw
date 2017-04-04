@@ -22,7 +22,7 @@ http://appserver-01.alunos.di.fc.ul.pt/~aw000/teste/mobile/list/1/    => gets a 
 
 In the _teste_ folder create and edit the _.htaccess_ file. We will now map the requested URL to a PHP file where we can parse and follow up with the request:
 
-* .htaccess *
+**.htaccess**
 ```
 # Turn rewrite engine on
 Options +FollowSymlinks
@@ -45,7 +45,7 @@ If you try the URLs now, you will get an error as the file you are redirecting t
 
 Let's create the file RestController.php that will unpack and dispatch the requests internally. In the folder _.htaccess_, we are forwarding all the requests to the file _RestController.php_ with a key named "view" to identify the request. Let's identify the request and dispatch the request to methods that will handle it:
 
-** RestController.php **
+**RestController.php**
 ```
 <?php
 require_once("MobileRestHandler.php");
@@ -82,7 +82,7 @@ switch($view){
 
 Let's start by building a base class that can be used in all RESTful service handlers. It has two methods: one that is used to construct the response, and a second one that is built to hold the different HTTP status code and its messages.
 
-** SimpleRest.php **
+**SimpleRest.php**
 ```
 <?php 
 /*
@@ -154,7 +154,7 @@ Now let's build a handler that extends SimpleRest. The first addition relates to
 
 Analyze and create the following file:
 
-** MobileRestHandler.php **
+**MobileRestHandler.php**
 ```
 <?php
 require_once("SimpleRest.php");
@@ -247,7 +247,7 @@ class MobileRestHandler extends SimpleRest {
 
 You should notice that there is still a file missing. That is your domain class: "Mobile.php". Here would be where you would access your data, be it a variable, a file, or a SQL database. Let's use a simple variable-based example:
 
-** Mobile.php ** 
+**Mobile.php** 
 ```<?php
 /* 
 A domain Class to demonstrate RESTful web services
