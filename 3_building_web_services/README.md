@@ -22,7 +22,7 @@ http://appserver-01.alunos.di.fc.ul.pt/~aw000/teste/mobile/list/1/    => gets a 
 
 In the _teste_ folder create and edit the _.htaccess_ file. We will now map the requested URL to a PHP file where we can parse and follow up with the request:
 
-** .htaccess **
+* .htaccess *
 ```
 # Turn rewrite engine on
 Options +FollowSymlinks
