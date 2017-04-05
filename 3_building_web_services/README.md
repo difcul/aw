@@ -5,9 +5,11 @@ Tiago Guerreiro and Francisco Couto
 In this tutorial, we will learn how to build web services that follow the RESTful principles. In such services, URIS are used to access the resources, either they are data or functions. Examples of RESTful URIs are:
 
 ```
-http://appserver-01.alunos.di.fc.ul.pt/~aw000/teste/mobile/list/
-http://appserver-01.alunos.di.fc.ul.pt/~aw000/teste/mobile/list/1/
+http://appserver-01.alunos.di.fc.ul.pt/~aw030/teste/mobile/list/
+http://appserver-01.alunos.di.fc.ul.pt/~aw030/teste/mobile/list/1/
 ```
+
+**IMPORTANT: replace aw030 by your group number**
 
 In these examples, a simple, self-explainable URI is available to be used and is later internally translated to a request to a real file, function, with its also translated arguments. In this tutorial, we will learn how to do that without the need for any framework (although they can be used to make the development more agile, particularly in bigger projects).
 
@@ -18,8 +20,8 @@ Create a new folder for your test project called "teste" in your appserver-01 ac
 The first step we will take is enabling our list of neat URIs. To do that, we will resort to the webserver rewrite capabilities. Let's consider we want to have the two aformentioned URIs:
 
 ```
-http://appserver-01.alunos.di.fc.ul.pt/~aw000/teste/mobile/list/     => gets the list of all mobile devices 
-http://appserver-01.alunos.di.fc.ul.pt/~aw000/teste/mobile/list/1/    => gets a particular mobile given its ID
+http://appserver-01.alunos.di.fc.ul.pt/~aw030/teste/mobile/list/     => gets the list of all mobile devices 
+http://appserver-01.alunos.di.fc.ul.pt/~aw030/teste/mobile/list/1/    => gets a particular mobile given its ID
 ```
 
 In the _teste_ folder create and edit the _.htaccess_ file. We will now map the requested URL to a PHP file where we can parse and follow up with the request:
@@ -31,15 +33,11 @@ Options +FollowSymlinks
 RewriteEngine on
 
 # map neat URL to internal URL
-RewriteRule ^mobile/list/$   RestController.php?view=all [nc,qsa]
-RewriteRule ^mobile/list/([0-9]+)/$   RestController.php?view=single&id=$1 [nc,qsa]
+RewriteRule ^mobile/list/$   http://appserver-01.alunos.di.fc.ul.pt/~aw030/teste/RestController.php?view=all [nc,qsa]
+RewriteRule ^mobile/list/([0-9]+)/$   http://appserver-01.alunos.di.fc.ul.pt/~aw030/teste/RestController.php?view=single&id=$1 [nc,qsa]
 ```
 
-This will work in your localhost configurations but will not work with appserver due to server configurations. To fix it change the RewriteRule to rewrite to the full URL. Ex: 
-
-```
-RewriteRule ^mobile/list/$   http://appserver-01.alunos.di.fc.ul.pt/~aw000/teste/RestController.php?view=all [nc,qsa])
-```
+This will work in appserver, in a localhost configuration remove or change the prefix of each url. 
 
 If you try the URLs now, you will get an error as the file you are redirecting to does not exist.
 
@@ -250,7 +248,8 @@ class MobileRestHandler extends SimpleRest {
 You should notice that there is still a file missing. That is your domain class: "Mobile.php". Here would be where you would access your data, be it a variable, a file, or a SQL database. Let's use a simple variable-based example:
 
 **Mobile.php** 
-```<?php
+```
+<?php
 /* 
 A domain Class to demonstrate RESTful web services
 */
@@ -285,11 +284,23 @@ Class Mobile {
 You can now use the browser to access your URIs and check the results:
 
 ```
-http://appserver-01.alunos.di.fc.ul.pt/~aw000/teste/mobile/list/
-http://appserver-01.alunos.di.fc.ul.pt/~aw000/teste/mobile/list/1/
+http://appserver-01.alunos.di.fc.ul.pt/~aw030/teste/mobile/list/
+http://appserver-01.alunos.di.fc.ul.pt/~aw030/teste/mobile/list/1/
 ```
 
-You can see that, given that we did not set an alternative response format, it is provided in HTML. To test the web service more extensively you can either build a client programatically and consume the service, or use a standalone general-purpose REST client. There are several examples available, one is the Google Chrome extension "Advanced REST client". Install it and test your requests and Accept headers.
+You can see that, given that we did not set an alternative response format, it is provided in HTML. 
+To test the web service more extensively you can either build a client programatically and consume the service, or use a standalone general-purpose REST client. For example, you can use curl from the shell of appserver:
+
+```
+[aw030@appserver-01 ~]$  curl -X GET -H "Content-type: application/json" -H "Accept: application/json" -L "http://appserver-01.alunos.di.fc.ul.pt/~aw030/teste/mobile/list/1/"
+{"1":"Apple iPhone 6S"}
+
+[aw030@appserver-01 ~]$ curl -X GET -H "Content-type: application/json" -H "Accept: application/xml" -L "http://appserver-01.alunos.di.fc.ul.pt/~aw030/teste/mobile/list/1/"
+<?xml version="1.0"?>
+<mobile><1>Apple iPhone 6S</1></mobile>
+```
+
+To test the web service more extensively you can either build a client programatically and consume the service, or use a standalone general-purpose REST client. There are several examples available, one is the Google Chrome extension "Advanced REST client" (https://advancedrestclient.com/). Install it and test your requests and Accept headers.
 
 
 
