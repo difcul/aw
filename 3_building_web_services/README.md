@@ -5,8 +5,8 @@ Tiago Guerreiro and Francisco Couto
 In this tutorial, we will learn how to build web services that follow the RESTful principles. In such services, URIS are used to access the resources, either they are data or functions. Examples of RESTful URIs are:
 
 ```
-http://appserver-01.alunos.di.fc.ul.pt/~aw030/teste/mobile/list/
-http://appserver-01.alunos.di.fc.ul.pt/~aw030/teste/mobile/list/1/
+http://appserver-01.alunos.di.fc.ul.pt/~aw030/rest/mobile/list/
+http://appserver-01.alunos.di.fc.ul.pt/~aw030/rest/mobile/list/1/
 ```
 
 **IMPORTANT: replace aw030 by your group number**
@@ -20,8 +20,8 @@ Create a new folder for your test project called "teste" in your appserver-01 ac
 The first step we will take is enabling our list of neat URIs. To do that, we will resort to the webserver rewrite capabilities. Let's consider we want to have the two aformentioned URIs:
 
 ```
-http://appserver-01.alunos.di.fc.ul.pt/~aw030/teste/mobile/list/     => gets the list of all mobile devices 
-http://appserver-01.alunos.di.fc.ul.pt/~aw030/teste/mobile/list/1/    => gets a particular mobile given its ID
+http://appserver-01.alunos.di.fc.ul.pt/~aw030/rest/mobile/list/     => gets the list of all mobile devices 
+http://appserver-01.alunos.di.fc.ul.pt/~aw030/rest/mobile/list/1/    => gets a particular mobile given its ID
 ```
 
 In the _teste_ folder create and edit the _.htaccess_ file. We will now map the requested URL to a PHP file where we can parse and follow up with the request:
@@ -33,8 +33,8 @@ Options +FollowSymlinks
 RewriteEngine on
 
 # map neat URL to internal URL
-RewriteRule ^mobile/list/$   http://appserver-01.alunos.di.fc.ul.pt/~aw030/teste/RestController.php?view=all [nc,qsa]
-RewriteRule ^mobile/list/([0-9]+)/$   http://appserver-01.alunos.di.fc.ul.pt/~aw030/teste/RestController.php?view=single&id=$1 [nc,qsa]
+RewriteRule ^mobile/list/$   http://appserver-01.alunos.di.fc.ul.pt/~aw030/rest/RestController.php?view=all [nc,qsa]
+RewriteRule ^mobile/list/([0-9]+)/$   http://appserver-01.alunos.di.fc.ul.pt/~aw030/rest/RestController.php?view=single&id=$1 [nc,qsa]
 ```
 
 This will work in appserver, in a localhost configuration remove or change the prefix of each url. 
@@ -284,18 +284,18 @@ Class Mobile {
 You can now use the browser to access your URIs and check the results:
 
 ```
-http://appserver-01.alunos.di.fc.ul.pt/~aw030/teste/mobile/list/
-http://appserver-01.alunos.di.fc.ul.pt/~aw030/teste/mobile/list/1/
+http://appserver-01.alunos.di.fc.ul.pt/~aw030/rest/mobile/list/
+http://appserver-01.alunos.di.fc.ul.pt/~aw030/rest/mobile/list/1/
 ```
 
 You can see that, given that we did not set an alternative response format, it is provided in HTML. 
 To test the web service more extensively you can either build a client programatically and consume the service, or use a standalone general-purpose REST client. For example, you can use curl from the shell of appserver:
 
 ```
-[aw030@appserver-01 ~]$  curl -X GET -H "Content-type: application/json" -H "Accept: application/json" -L "http://appserver-01.alunos.di.fc.ul.pt/~aw030/teste/mobile/list/1/"
+[aw030@appserver-01 ~]$  curl -X GET -H "Content-type: application/json" -H "Accept: application/json" -L "http://appserver-01.alunos.di.fc.ul.pt/~aw030/rest/mobile/list/1/"
 {"1":"Apple iPhone 6S"}
 
-[aw030@appserver-01 ~]$ curl -X GET -H "Content-type: application/json" -H "Accept: application/xml" -L "http://appserver-01.alunos.di.fc.ul.pt/~aw030/teste/mobile/list/1/"
+[aw030@appserver-01 ~]$ curl -X GET -H "Content-type: application/json" -H "Accept: application/xml" -L "http://appserver-01.alunos.di.fc.ul.pt/~aw030/rest/mobile/list/1/"
 <?xml version="1.0"?>
 <mobile><1>Apple iPhone 6S</1></mobile>
 ```
