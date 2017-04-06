@@ -171,12 +171,13 @@ http://appserver-01.alunos.di.fc.ul.pt/~aw030/ajax/flickr.php
 ```
 
 Now copy the html file with the code of previous AJAX example, and perform the following modifications:
-    1.      add the _onload='showHint()'_ in the tag body (http://www.w3schools.com/jsref/event_onload.asp)
-    2.      remove the form 
-    3.      remove the str parameter of function showHint
-    4.      remove the code for _str.length == 0_
-    5.      add a settimeout of 3 seconds when a new response arrives (http://www.w3schools.com/jsref/met_win_settimeout.asp)
-    6.      change _"gethint.php?q="+str_ to the name of your Flickr php file
+
+1. add the _onload='showHint()'_ in the tag body (http://www.w3schools.com/jsref/event_onload.asp)
+2. remove the form 
+3. remove the str parameter of function showHint
+4. remove the code for _str.length == 0_
+5. add a settimeout of 3 seconds when a new response arrives (http://www.w3schools.com/jsref/met_win_settimeout.asp)
+6. change _"gethint.php?q="+str_ to the name of your Flickr php file
 
 **lastestphotos.html**
 ```
