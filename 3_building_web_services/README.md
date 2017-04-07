@@ -13,7 +13,7 @@ http://appserver-01.alunos.di.fc.ul.pt/~aw030/rest/mobile/list/1/
 
 In these examples, a simple, self-explainable URI is available to be used and is later internally translated to a request to a real file, function, with its also translated arguments. In this tutorial, we will learn how to do that without the need for any framework (although they can be used to make the development more agile, particularly in bigger projects).
 
-Create a new folder for your test project called "teste" in your appserver-01 account (inside the _public_html_ folder).
+Create a new folder for your test project called "rest" in your appserver-01 account (inside the _public_html_ folder).
 
 ## URI Mapping
 
