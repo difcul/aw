@@ -292,10 +292,10 @@ You can see that, given that we did not set an alternative response format, it i
 To test the web service more extensively you can either build a client programatically and consume the service, or use a standalone general-purpose REST client. For example, you can use curl from the shell of appserver:
 
 ```
-[aw030@appserver-01 ~]$  curl -X GET -H "Content-type: application/json" -H "Accept: application/json" -L "http://appserver-01.alunos.di.fc.ul.pt/~aw030/rest/mobile/list/1/"
+[aw030@appserver-01 ~]$  curl -X GET -H "Accept: application/json" -L "http://appserver-01.alunos.di.fc.ul.pt/~aw030/rest/mobile/list/1/"
 {"1":"Apple iPhone 6S"}
 
-[aw030@appserver-01 ~]$ curl -X GET -H "Content-type: application/json" -H "Accept: application/xml" -L "http://appserver-01.alunos.di.fc.ul.pt/~aw030/rest/mobile/list/1/"
+[aw030@appserver-01 ~]$ curl -X GET -H "Accept: application/xml" -L "http://appserver-01.alunos.di.fc.ul.pt/~aw030/rest/mobile/list/1/"
 <?xml version="1.0"?>
 <mobile><1>Apple iPhone 6S</1></mobile>
 ```
