@@ -207,7 +207,7 @@ Now try for different diseases, but do not forget to run the shell scripts befor
 
 ## Additional References
 
-- http://webpages.fc.ul.pt/~fjcouto/files/manual_php_mysql_java_oracle_201112.pdf (chapters 3 and 4) 
+- http://webpages.fc.ul.pt/~fjcouto/files/manual_php_mysql_java_oracle_201112.pdf 
 
 - https://www.w3schools.com/html/
 
