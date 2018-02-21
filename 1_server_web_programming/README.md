@@ -164,7 +164,7 @@ PHP can receive data through [POST and GET](https://en.wikipedia.org/wiki/Hypert
 
 ```
 <?php
-echo 'Disease: '.htmlspecialchars($_GET['disease']).'!';
+echo 'Disease: '.htmlspecialchars($_GET['disease']);
 ?>
 ```
 
@@ -200,7 +200,7 @@ fclose($handle);
 </html>
 ```
 
-Open the URL _http://appserver.alunos.di.fc.ul.pt/~awXXX/form.html_ (hit refresh) and check the results.
+Open the URL _http://appserver.alunos.di.fc.ul.pt/~awXXX/mywebapp.php_ (hit refresh) and check the results.
 
 Now try for different diseases.
 
