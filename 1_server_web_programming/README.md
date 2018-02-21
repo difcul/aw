@@ -2,7 +2,7 @@
 Francisco Couto and Tiago Guerreiro
 
 ## Goal
-This tutorial aims to help you create a simple web application composed of 3 modules:
+This tutorial aims to help you create a simple web application composed of 3 steps:
 - Data Collection
 - Data Annotation
 - Data Access
@@ -18,7 +18,7 @@ PHP is a programming language that is specially targeted at web application deve
 
 To make PHP files available you will have to resort to a Web server that supports PHP, meaning that all files with extension _.php_ will be executed by the PHP interpreter. A Web server is an application that is able to accept HTTP requests and return a response, normally an HTML file or other objects like images, PDFs, etc. One of the most popular Web servers that support PHP is Apache, that can be installed on several operating systems. 
 
-The first step to write and deploy a web application is to identify where these files need to be stored so they can be executed by the Web server every time an HTTP request is received. In the case of _appserver_, and most Apache Web servers, the web root for each user is the **public_html** folder (or /var/www/html/ in local machines). 
+The first step to write and deploy a web application is to identify where these files need to be stored so they can be executed by the Web server every time an HTTP request is received. In the case of _appserver_, and most Apache Web servers, the web root for each user is the **public_html** folder (or _/var/www/html/_ in local machines). 
 
 To access _appserver_, on Linux or Mac, open a Terminal and input:
 ```
@@ -61,7 +61,7 @@ After creating the directory, you can then create the HTML file and place it int
 
 ``` 
 cd public_html
-echo '<html>Hello World!</html>' > index html
+echo '<html>Hello World!</html>' > index.html
 ```
 
 or you can create the file index.html and edit it with your preferred text editor, making sure that the remote directory is updated with the new file.
@@ -90,14 +90,14 @@ You found the line of the error. The function is called ```date```, not ```data`
 echo '<html><?php echo date(DATE_RFC822); ?> </html>' > index.php
 ```
 
-By opening the URL ```http://appserver.alunos.di.fc.ul.pt/~awXXX/index.hp``` you will see that the content is not the content of the file; rather it is the content of the interpretation of that file at the time it was executed, that is, the date the access was made.
+By opening the URL ```http://appserver.alunos.di.fc.ul.pt/~awXXX/index.php``` you will see that the content is not the content of the file; rather it is the content of the interpretation of that file at the time it was executed, that is, the date the access was made.
 
 To create and edit the PHP files, you should use a text editor (e.g., Emacs, SublimeText , Notepad++, vi, nano,..), and not the _echo_ command, that should be used only to create very short files.
 
 
 ## Data Collection
 
-First test the tool _curl_ to open the URL that provides you 10 PubMed identifiers about Asthma (type ```man curl``` to know more about curl). 
+Use the tool _curl_ to open an URL that provides you with 10 PubMed identifiers about Asthma (type ```man curl``` to know more about ```curl```). 
 
 ```
 curl "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=Asthma&retmax=10&retmode=xml"
@@ -105,15 +105,15 @@ curl "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=
 
 You should get 10 PubMed identifiers on your screen embbed in a xml file.
 
-Now let's parse the results using the _grep_ and _sed_ to keep only the Id numbers: 
+Now parse the results using the tools _grep_ and _sed_ to keep only the Id numbers (again type ```man``` and the name of tool to know more about it) : 
 
 ```
 curl "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=Asthma&retmax=10&retmode=xml" | grep "<Id>" | sed -e "s/<Id>//" -e "s/<\/Id>//" 
 ```
 
-You should get the 10 PubMed identifiers on your screen withou xml tags.
+Now you should get the 10 PubMed identifiers on your screen without xml tags.
 
-Create a file named _getPubMedIds.sh_ with the previous command, but replace Asthma by $1 so we can ask for different diseases, i.e :
+Create a file named _getPubMedIds.sh_ with the previous command, but replace Asthma by _$1_ so we can use the name of disease as input, i.e :
 
 ```
 curl "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=$1&retmax=10&retmode=xml" | grep "<Id>" | sed -e "s/<Id>//" -e "s/<\/Id>//" 
@@ -125,6 +125,7 @@ Now add permissions to execute the script, and execute it saving the result to a
 chmod 755 ./getPubMedIds.sh
 ./getPubMedIds.sh Asthma > Asthma.txt
 ```
+
 Check the contents of file _Asthma.txt_, for example by using the _cat_ tool:
 
 ```
@@ -133,13 +134,13 @@ cat Asthma.txt
 
 ## Data Annotation
 
-To convert the Ids to links try the sed tool:
+To convert the Ids to links try the _sed_ tool:
 
 ```
 sed "s/^/https:\/\/www.ncbi.nlm.nih.gov\/pubmed\//" < Asthma.txt
 ```
 
-Create a file named _convertPubMedIds.sh_ with the previous command, but replace Asthma by $1 so we can ask for different diseases, i.e :
+Create a file named _convertPubMedIds.sh_ with the previous command, but replace Asthma by _$1_ so we can use the name of disease as input, i.e :
 
 ```
 sed "s/^/https:\/\/www.ncbi.nlm.nih.gov\/pubmed\//" < $1.txt
@@ -170,7 +171,7 @@ echo 'Disease: '.htmlspecialchars($_GET['disease']);
 
 Now, by opening the URL _http://appserver.alunos.di.fc.ul.pt/~awXXX/mywebapp.php?disease=Asthma_ you will see _Asthma_, given as an argument, in the resulting page. 
 
-Now add to the previous file the following HTML code to create a form:
+Now clear the previous file, and add the following HTML code to create a form:
 
 ```
 <html>
@@ -178,13 +179,13 @@ Now add to the previous file the following HTML code to create a form:
         <p> Disease: <input type='text' name='disease' /> </p>
         <p><input type='submit' /> </p>
     </form>
+```
 
+and the following PHP code to produce the links according to the input:
+
+```
 <p>Abstracts about the disease <?php echo htmlspecialchars($_GET['disease']); ?>:</p>
-```
 
-and the following PHP code to produce the links:
-
-```
 <?php
 $filename = $_GET['disease']."Links.txt";
 $handle = fopen($filename, "r");
@@ -202,8 +203,12 @@ fclose($handle);
 
 Open the URL _http://appserver.alunos.di.fc.ul.pt/~awXXX/mywebapp.php_ (hit refresh) and check the results.
 
-Now try for different diseases.
+Now try for different diseases, but do not forget to run the shell scripts before.
 
 ## Additional References
 
 - http://webpages.fc.ul.pt/~fjcouto/files/manual_php_mysql_java_oracle_201112.pdf (chapters 3 and 4) 
+
+- https://www.w3schools.com/html/
+
+- https://www.w3schools.com/php/
