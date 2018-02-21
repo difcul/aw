@@ -103,14 +103,31 @@ You should get 10 PubMed identifiers on your screen embbed in a xml file.
 
 Now let's parse the results using the _grep_ and _sed_ to keep only the Id numbers: 
 
+```
 curl 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=Asthma&retmax=10&retmode=xml' | grep "<Id>" | sed -e 's/<Id>//' -e 's/<\/Id>//' 
+```
 
 You should get the 10 PubMed identifiers on your screen withou xml tags.
 
-Create a file named _getPubMedIds.sh_ 
-
+Create a file named _getPubMedIds.sh_ with the previous command, but replace Asthma by $1 so we can ask for different diseases:
 
 ```
+curl "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=$1&retmax=10&retmode=xml" | grep "<Id>" | sed -e "s/<Id>//" -e "s/<\/Id>//" 
+```
+
+Now add permissions to execute the script, and execute it saving the result to a file:
+
+```
+chmod 755 ./getPubMedIds.sh
+./getPubMedIds.sh Asthma > Asthma.txt
+```
+Check the contents of file Asthma.txt, for example by using the _cat_ tool:
+
+```
+cat Asthma.txt  
+```
+
+## Data Collection
 
 
 
