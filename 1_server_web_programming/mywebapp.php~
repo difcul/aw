@@ -3,7 +3,8 @@
         <p> Disease: <input type='text' name='disease' /> </p>
         <p><input type='submit' /> </p>
     </form>
-
+</html>
+<html>
 <p>Abstracts about the disease <?php echo htmlspecialchars($_GET['disease']); ?>:</p>
 
 <?php
