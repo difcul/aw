@@ -14,6 +14,10 @@ You can develop the application using:
 
 ## Testing PHP 
 
+PHP is a programming language that is specially targeted at web application development. PHP code can be directly integrated with HTML code. As one can create an HTML file and make it available online, by using a web server, one can also do that with a PHP file. The main difference is that the information available in the HTML is static while the PHP file will provide dynamic information. That is, the resulting content of accessing an HTML page is always the same, unless the HTML file is edited. Conversely, the resulting content of accessing a PHP file through the Web is the HTML **produced** by executing the PHP commands in that file. This result can vary depending on the input data, data available in the database, time of access, ...As a simple example, the file can include a command that changes the background color of the webpage depending on the time of the day that the file is accessed.
+
+To make PHP files available you will have to resort to a Web server that supports PHP, meaning that all files with extension _.php_ will be executed by the PHP interpreter. A Web server is an application that is able to accept HTTP requests and return a response, normally an HTML file or other objects like images, PDFs, etc. One of the most popular Web servers that support PHP is Apache, that can be installed on several operating systems. 
+
 The first step to write and deploy a web application is to identify where these files need to be stored so they can be executed by the Web server every time an HTTP request is received. In the case of _appserver_, and most Apache Web servers, the web root for each user is the **public_html** folder (or /var/www/html/ in local machines). 
 
 To access _appserver_, on Linux or Mac, open a Terminal and input:
@@ -96,7 +100,7 @@ To create and edit the PHP files, you should use a text editor (e.g., Emacs, Sub
 First test the tool _curl_ to open the URL that provides you 10 PubMed identifiers about Asthma (type ```man curl``` to know more about curl). 
 
 ```
-curl 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=Asthma&retmax=10&retmode=xml'
+curl "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=Asthma&retmax=10&retmode=xml"
 ```
 
 You should get 10 PubMed identifiers on your screen embbed in a xml file.
@@ -104,12 +108,12 @@ You should get 10 PubMed identifiers on your screen embbed in a xml file.
 Now let's parse the results using the _grep_ and _sed_ to keep only the Id numbers: 
 
 ```
-curl 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=Asthma&retmax=10&retmode=xml' | grep "<Id>" | sed -e 's/<Id>//' -e 's/<\/Id>//' 
+curl "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=Asthma&retmax=10&retmode=xml" | grep "<Id>" | sed -e "s/<Id>//" -e "s/<\/Id>//" 
 ```
 
 You should get the 10 PubMed identifiers on your screen withou xml tags.
 
-Create a file named _getPubMedIds.sh_ with the previous command, but replace Asthma by $1 so we can ask for different diseases:
+Create a file named _getPubMedIds.sh_ with the previous command, but replace Asthma by $1 so we can ask for different diseases, i.e :
 
 ```
 curl "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=$1&retmax=10&retmode=xml" | grep "<Id>" | sed -e "s/<Id>//" -e "s/<\/Id>//" 
@@ -121,51 +125,57 @@ Now add permissions to execute the script, and execute it saving the result to a
 chmod 755 ./getPubMedIds.sh
 ./getPubMedIds.sh Asthma > Asthma.txt
 ```
-Check the contents of file Asthma.txt, for example by using the _cat_ tool:
+Check the contents of file _Asthma.txt_, for example by using the _cat_ tool:
 
 ```
 cat Asthma.txt  
 ```
 
-## Data Collection
+## Data Annotation
 
+To convert the Ids to links try the sed tool:
 
+```
+sed "s/^/https:\/\/www.ncbi.nlm.nih.gov\/pubmed\//" < Asthma.txt
+```
 
-### PHP
+Create a file named _convertPubMedIds.sh_ with the previous command, but replace Asthma by $1 so we can ask for different diseases, i.e :
 
-PHP is a programming language that is specially targeted at web application development. PHP code can be directly integrated with HTML code. As one can create an HTML file and make it available online, by using a web server, one can also do that with a PHP file. The main difference is that the information available in the HTML is static while the PHP file will provide dynamic information. That is, the resulting content of accessing an HTML page is always the same, unless the HTML file is edited. Conversely, the resulting content of accessing a PHP file through the Web is the HTML **produced** by executing the PHP commands in that file. This result can vary depending on the input data, data available in the database, time of access, ...As a simple example, the file can include a command that changes the background color of the webpage depending on the time of the day that the file is accessed.
+```
+sed "s/^/https:\/\/www.ncbi.nlm.nih.gov\/pubmed\//" < $1.txt
+```
 
-#### Web Server
+Now add permissions to execute the script, and execute it saving the result to a file:
 
-To make PHP files available you will have to resort to a Web server that supports PHP, meaning that all files with extension _.php_ will be executed by the PHP interpreter. A Web server is an application that is able to accept HTTP requests and return a response, normally an HTML file or other objects like images, PDFs, etc. One of the most popular Web servers that support PHP is Apache, that can be installed on several operating systems. 
+```
+chmod 755 ./convertPubMedIds.sh
+./convertPubMedIds.sh Asthma > AsthmaLinks.txt
+```
 
-### MySQL
+Check the contents of file _AsthmaLinks.txt_:
 
-MySQL is a relational database management system that can be used by the PHP files to store, manage, update and collect data. The communication between PHP and MySQL is done through SQL commands that allow to create, delete, and manage data structures as well inserting, updating and deleting data.
+```
+cat Asthma.txt  
+```
 
-
-
-## Basic PHP concepts
-
-### Dealing with input data
+## Data Access
 
 PHP can receive data through [POST and GET](https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol). As an example, create a file _get.php_ with the following:
 
 ```
 <?php
-echo 'Hello '.htmlspecialchars($_GET['name']).'!';
+echo 'Disease: '.htmlspecialchars($_GET['disease']).'!';
 ?>
 ```
 
-Now, by opening the URL _http://appserver-01.alunos.di.fc.ul.pt/~awXXX/get.php?name=FCUL_ you will see _FCUL_, given as an argument, in the resulting page. 
+Now, by opening the URL _http://appserver.alunos.di.fc.ul.pt/~awXXX/get.php?disease=Asthma_ you will see _Asthma_, given as an argument, in the resulting page. 
 
-You can also create the file form.html with the following HTML code to create a form:
+You can also create the file _form.html_ with the following HTML code to create a form:
 
 ```
 <html>
-    <form action='action.php' method='post'>
-        <p> Your name: <input type='text' name='name' /> </p>
-        <p> Your age: <input type='text' name='age' /> </p>
+    <form action='action.php' method='get'>
+        <p> Disease: <input type='text' name='disease' /> </p>
         <p><input type='submit' /> </p>
     </form>
 </html>
@@ -174,13 +184,26 @@ You can also create the file form.html with the following HTML code to create a 
 Also create the file _action.php_ that will receive the results of the form through the following code:
 
 ```
+File Edit Options Buffers Tools HTML SGML Help                                                                                                                                                                     
 <html>
-Hi <?php echo htmlspecialchars($_POST['name']); ?>.
-You are <?php echo (int)($_POST['age']); ?> years old.
+<p>Abstracts about the disease <?php echo htmlspecialchars($_GET['disease']); ?>:</p>
+
+<?php
+$filename = $_GET['disease']."Links.txt";
+$handle = fopen($filename, "r");
+$contents = fread($handle, filesize($filename));
+$links = explode("\n",$contents);
+
+foreach($links as $v) {
+  echo '<a href="//' . $v . '">' . $v . '</a></br>';
+}
+
+fclose($handle);
+?>
 </html>
 ```
 
-Submit the form at _http://appserver-01.alunos.di.fc.ul.pt/~awXXX/form.html_ and check the results.
+Submit the form at _http://appserver.alunos.di.fc.ul.pt/~awXXX/form.html_ and check the results.
 
 ## MySQL and onwards
 
