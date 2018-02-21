@@ -160,7 +160,7 @@ cat Asthma.txt
 
 ## Data Access
 
-PHP can receive data through [POST and GET](https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol). As an example, create a file _mywebapp.php_ with the following code:
+PHP can receive data through [POST and GET](https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol). As an example, create a file _get.php_ with the following:
 
 ```
 <?php
@@ -168,23 +168,26 @@ echo 'Disease: '.htmlspecialchars($_GET['disease']).'!';
 ?>
 ```
 
-Now, by opening the URL _http://appserver.alunos.di.fc.ul.pt/~awXXX/mywebapp.php?disease=Asthma_ you will see _Asthma_, given as an argument, in the resulting page. 
+Now, by opening the URL _http://appserver.alunos.di.fc.ul.pt/~awXXX/get.php?disease=Asthma_ you will see _Asthma_, given as an argument, in the resulting page. 
 
-Now add to the previous file the following HTML code to create a form:
+You can also create the file _form.html_ with the following HTML code to create a form:
 
 ```
 <html>
-    <form action='mywebapp.php' method='get'>
+    <form action='action.php' method='get'>
         <p> Disease: <input type='text' name='disease' /> </p>
         <p><input type='submit' /> </p>
     </form>
+</html>
+```
 
+Also create the file _action.php_ that will receive the results of the form through the following code:
+
+```
+File Edit Options Buffers Tools HTML SGML Help                                                                                                                                                                     
+<html>
 <p>Abstracts about the disease <?php echo htmlspecialchars($_GET['disease']); ?>:</p>
-```
 
-and the following PHP code to produce the links:
-
-```
 <?php
 $filename = $_GET['disease']."Links.txt";
 $handle = fopen($filename, "r");
@@ -192,7 +195,7 @@ $contents = fread($handle, filesize($filename));
 $links = explode("\n",$contents);
 
 foreach($links as $v) {
-  echo '<a href="' . $v . '">' . $v . '</a></br>'; 
+  echo '<a href="//' . $v . '">' . $v . '</a></br>';
 }
 
 fclose($handle);
@@ -200,10 +203,8 @@ fclose($handle);
 </html>
 ```
 
-Open the URL _http://appserver.alunos.di.fc.ul.pt/~awXXX/form.html_ (hit refresh) and check the results.
+Submit the form at _http://appserver.alunos.di.fc.ul.pt/~awXXX/form.html_ and check the results.
 
-Now try for different diseases.
+## MySQL and onwards
 
-## Additional References
-
-- http://webpages.fc.ul.pt/~fjcouto/files/manual_php_mysql_java_oracle_201112.pdf (chapters 3 and 4) 
+For those that are finished with the tutorial, go to http://webpages.fc.ul.pt/~fjcouto/files/manual_php_mysql_java_oracle_201112.pdf and follow chapters 3 and 4. 
