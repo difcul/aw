@@ -1,27 +1,118 @@
-# Intro to Server Web-Programming 
-## The DI-FCUL Applicational Web Server
+# Server Web Programming 
 Francisco Couto and Tiago Guerreiro
 
-This tutorial aims to help students create a simple web application composed of 3 modules:
+## Goal
+This tutorial aims to help you create a simple web application composed of 3 modules:
 - Data Collection
 - Data Annotation
 - Data Access
 
+You can develop the application using:
+- applicational web server (_appserver_), available at _appserver.alunos.di.fc.ul.pt_, features an Apache Web server and has support for PHP. 
+- any linux machine with PHP (for example: http://howtoubuntu.org/how-to-install-lamp-on-ubuntu)
 
 
+## Testing PHP 
 
-the applicational web server 
+The first step to write and deploy a web application is to identify where these files need to be stored so they can be executed by the Web server every time an HTTP request is received. In the case of _appserver_, and most Apache Web servers, the web root for each user is the **public_html** folder (or /var/www/html/ in local machines). 
+
+To access _appserver_, on Linux or Mac, open a Terminal and input:
+```
+ssh awXXX@appserver.alunos.di.fc.ul.pt
+```
+
+On Windows, you can use applications like SSH Secure Shell or PuTTY to access the remote machine. They are installed in the lab. 
+List of clients: https://en.wikipedia.org/wiki/Comparison_of_SSH_clients.
+
+Upon attempt to connect, the system will ask you for a password (provided to you in class). Upon connection, and once you have your group number, change the password to one all the group members are aware of by using the following command:
+
+```
+passwd
+```
+
+Notice that you can only access _appserver_ inside FCUL network, so you need to be using one of the faculty labs or connected through the VPN. 
+
+These terminals allow you to input commands in the remote machine. To transfer files to and from the remote machine, you can use file transfer specialized applications 
+(on Windows: SSH Secure Shell, FileZilla, WinSCP) or map the remove location and manage it as if it was a local folder. 
+To do so on Linux, in the file manager go to GO-> OPEN LOCATION and input:
+
+```
+ssh://awXXX@appserver.alunos.di.fc.ul.pt/home/awXXX
+```
+
+Upon making the connection, you will be able to navigate and edit your files as you would do with a local folder.
 
 
-(_appserver-01_). 
+Therefore, the first step to create a webpage in the remote machine, is to create and allow access (change access restrictions) to this folder. In the terminal, in the root directory of your account:
 
-Alongside, in this tutorial we will create basic PHP applications that store data into a relational database, using MySQL. At the end, students are expected to be comfortable with a setup that allows them to develop web applications using _appserver-01_. 
+```
+mkdir public_html
+chmod -R 755 public_html
+```
 
-_Appserver_, available at _appserver-01.alunos.di.fc.ul.pt_, features an Apache Web server and has support for PHP, Java and MySQL. Each group has an account named awXXX where XXX equals the group name (e.g., 001). Passwords and access instructions are provided in the laboratorial class.
+The first command creates the directory in the user root directory. The second command sets the access permission rights to reading, writing and executing the files by different types of users.
+Thsi is important to let the web server access your files. 
 
-This tutorial introduces the basic concepts on using PHP and MySQL in a web application  by using examples that, although having been tested with _appserver_, can be easily adapted to other infra-structures with the same technology.
+After creating the directory, you can then create the HTML file and place it into the directory **public_html**. To do so:
 
-## Introduction
+``` 
+cd public_html
+echo '<html>Hello World!</html>' > index html
+```
+
+or you can create the file index.html and edit it with your preferred text editor, making sure that the remote directory is updated with the new file.
+
+Now you can open in your browser the link ```http://appserver.alunos.di.fc.ul.pt/~awXXX/``` and check the result. 
+If using a local machine the link should start with localhost ```http://localhost/...```
+This is result is static and will not change unless the file _index.html_ in the machine _appserver_ is updated.
+
+To create a dynamic page, you can now create a PHP file inside the directory ```public_html```. You can perform the following commands:
+
+```
+cd ~
+cd public_html
+echo '<html><?php echo data(DATE_RFC822); ?> </html>' > index.php
+```
+
+By opening the URL ```http://appserver.alunos.di.fc.ul.pt/~awXXX/index.php``` you will see a blank page. Probably, an error occurred. To be able to test PHP files more efficiently, you can also execute the _php_ command, through the remote console:
+
+```
+php index.php
+```
+
+You found the line of the error. The function is called ```date```, not ```data```. Fix it and open the url again:
+
+```
+echo '<html><?php echo date(DATE_RFC822); ?> </html>' > index.php
+```
+
+By opening the URL ```http://appserver.alunos.di.fc.ul.pt/~awXXX/index.hp``` you will see that the content is not the content of the file; rather it is the content of the interpretation of that file at the time it was executed, that is, the date the access was made.
+
+To create and edit the PHP files, you should use a text editor (e.g., Emacs, SublimeText , Notepad++, vi, nano,..), and not the _echo_ command, that should be used only to create very short files.
+
+
+## Data Collection
+
+First test the tool _curl_ to open the URL that provides you 10 PubMed identifiers about Asthma (type ```man curl``` to know more about curl). 
+
+```
+curl 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=Asthma&retmax=10&retmode=xml'
+```
+
+You should get 10 PubMed identifiers on your screen embbed in a xml file.
+
+Now let's parse the results using the _grep_ and _sed_ to keep only the Id numbers: 
+
+curl 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=Asthma&retmax=10&retmode=xml' | grep "<Id>" | sed -e 's/<Id>//' -e 's/<\/Id>//' 
+
+You should get the 10 PubMed identifiers on your screen withou xml tags.
+
+Create a file named _getPubMedIds.sh_ 
+
+
+```
+
+
 
 ### PHP
 
@@ -35,72 +126,7 @@ To make PHP files available you will have to resort to a Web server that support
 
 MySQL is a relational database management system that can be used by the PHP files to store, manage, update and collect data. The communication between PHP and MySQL is done through SQL commands that allow to create, delete, and manage data structures as well inserting, updating and deleting data.
 
-## Accessing the remote machine with the Web server
 
-To access _appserver_, on Linux or Mac, open a Terminal and input:
-```
-ssh awXXX@appserver-01.alunos.di.fc.ul.pt
-```
-
-On Windows, you can use applications like SSH Secure Shell or PuTTY to access the remote machine. They are installed in the lab.
-
-Upon attempt to connect, the system will ask you for a password (provided to you in class). Upon connection, and once you have your group number, change the password to one all the group members are aware of by using the following command:
-
-```
-passwd
-```
-
-Notice that you can only access _appserver_ inside the DI network, so you need to be using the department's labs or connected through the VPN. 
-
-These terminals allow you to input commands in the remote machine. To transfer files to and from the remote machine, you can use file transfer specialized applications (on Windows: SSH Secure Shell, FileZilla, WinSCP) or map the remove location and manage it as if it was a local folder. To do so on Linux, in the file manager go to GO-> OPEN LOCATION and input:
-
-```
-ssh://awXXX@appserver-01.alunos.di.fc.ul.pt/home/awXXX
-```
-
-Upon making the connection, you will be able to navigate and edit your files as you would do with a local folder.
-
-## Accessing the Web server
-
-The first step to write and deploy a web application is to identify where these files need to be stored so they can be executed by the Web server every time an HTTP request is received. In the case of _appserver_, and most Apache Web servers, the web root for each user is the **public_html** folder. Therefore, the first step to create a webpage in the remote machine, is to create and allow access (change access restrictions) to this folder. In the terminal, in the root directory of your account:
-
-```
-mkdir public_html
-chmod -R 755 public_html
-```
-
-The first command creates the directory in the user root directory. The second command sets the access permission rights to reading, writing and executing the files by different types of users. 
-
-After creating the directory, you can then create the HTML file and place it into the directory **public_html**. To do so:
-
-``` 
-cd public_html
-echo '<html>Hello World!</html>' > index html
-```
-
-or you can create the file index.html and edit it with your preferred text editor, making sure that the remote directory is updated with the new file.
-
-Now you can open in your browser the link ```http://appserver-01.alunos.di.fc.ul.pt/~awXXX/``` and check the result. This is result is static and will not change unless the file _index.html_ in the machine _appserver_ is updated.
-
-To create a dynamic page, you can now create a PHP file inside the directory ```public_html```. You can perform the following commands:
-
-```
-cd ~
-cd public_html
-echo '<html><?php echo data(DATE_RFC822); ?> </html>' > index.php
-```
-
-By opening the URL ```http://appserver-01.alunos.di.fc.ul.pt/~awXXX/index.php``` you will see a blank page. Probably, an error occurred. To be able to test PHP files more efficiently, you can also execute the _php_ command, through the remote console:
-
-```
-php index.php
-```
-
-You found the line of the error. The function is called ```date```, not ```data```. Fix it and try it again.
-
-By opening the URL ```http://appserver-01.alunos.di.fc.ul.pt/~awXXX/index.hp``` you will see that the content is not the content of the file; rather it is the content of the interpretation of that file at the time it was executed, that is, the date the access was made.
-
-To create and edit the PHP files, you should use a text editor (e.g., Emacs, SublimeText , Notepad++, vi, nano,..), and not the _echo_ command, that should be used only to create very short files.
 
 ## Basic PHP concepts
 
