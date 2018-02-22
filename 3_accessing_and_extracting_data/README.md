@@ -70,4 +70,5 @@ You can now replace the _sed_ and _grep_ commands of previous modules by using X
 
 - https://www.w3schools.com/xml/xpath_intro.asp
 
+- https://www.w3schools.com/xml/xquery_intro.asp
 
