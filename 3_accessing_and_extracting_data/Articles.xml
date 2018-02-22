@@ -1,0 +1,256 @@
+<?xml version="1.0" ?>
+<!DOCTYPE PubmedArticleSet PUBLIC "-//NLM//DTD PubMedArticle, 1st January 2018//EN" "https://dtd.nlm.nih.gov/ncbi/pubmed/out/pubmed_180101.dtd">
+<PubmedArticleSet>
+<PubmedArticle>
+    <MedlineCitation Status="Publisher" Owner="NLM">
+        <PMID Version="1">29462659</PMID>
+        <DateRevised>
+            <Year>2018</Year>
+            <Month>02</Month>
+            <Day>20</Day>
+        </DateRevised>
+        <Article PubModel="Print-Electronic">
+            <Journal>
+                <ISSN IssnType="Electronic">1879-016X</ISSN>
+                <JournalIssue CitedMedium="Internet">
+                    <PubDate>
+                        <Year>2018</Year>
+                        <Month>Feb</Month>
+                        <Day>17</Day>
+                    </PubDate>
+                </JournalIssue>
+                <Title>Pharmacology &amp; therapeutics</Title>
+                <ISOAbbreviation>Pharmacol. Ther.</ISOAbbreviation>
+            </Journal>
+            <ArticleTitle>Safer approaches to therapeutic modulation of TGF-β signaling for respiratory disease.</ArticleTitle>
+            <ELocationID EIdType="pii" ValidYN="Y">S0163-7258(18)30035-4</ELocationID>
+            <ELocationID EIdType="doi" ValidYN="Y">10.1016/j.pharmthera.2018.02.010</ELocationID>
+            <Abstract>
+                <AbstractText>The transforming growth factor (TGF)-β cytokines play a central role in development and progression of chronic respiratory diseases. TGF-β overexpression in chronic inflammation, remodeling, fibrotic process and susceptibility to viral infection is established in the most prevalent chronic respiratory diseases including asthma, COPD, lung cancer and idiopathic pulmonary fibrosis. Despite the overwhelming burden of respiratory diseases in the world, new pharmacological therapies have been limited in impact. Although TGF-β inhibition as a therapeutic strategy carries great expectations, the constraints in avoiding compromising the beneficial pleiotropic effects of TGF-β, including the anti-proliferative and immune suppressive effects, have limited the development of effective pharmacological modulators. In this review, we focus on the pathways subserving deleterious and beneficial TGF-β to identify strategies for selective modulation of more distal signaling pathways that may result in agents with improved safety/efficacy profiles. Adverse effects of TGF-β inhibitors in respiratory clinical trials are comprehensively reviewed, including those of the marketed TGF-β modulators, pirfenidone and nintedanib. Precise modulation of TGF-β signaling may result in new safer therapies for chronic respiratory diseases.</AbstractText>
+                <CopyrightInformation>Copyright © 2018. Published by Elsevier Inc.</CopyrightInformation>
+            </Abstract>
+            <AuthorList CompleteYN="Y">
+                <Author ValidYN="Y">
+                    <LastName>Lachapelle</LastName>
+                    <ForeName>Philippe</ForeName>
+                    <Initials>P</Initials>
+                    <AffiliationInfo>
+                        <Affiliation>Department of Allergy and Immunology, The Royal Melbourne Hospital, 300 Grattan St, Parkville, Victoria 3050; Department of Pharmacology and Therapeutics, The University of Melbourne, Parkville, Victoria 3010; Department of Respiratory Medicine &amp; Sleep Disorders, The Royal Melbourne Hospital, 300 Grattan St, Parkville, Victoria 3050; Lung Health Research Centre, The University of Melbourne, Parkville, Victoria 3010, Australia.</Affiliation>
+                    </AffiliationInfo>
+                </Author>
+                <Author ValidYN="Y">
+                    <LastName>Li</LastName>
+                    <ForeName>Meina</ForeName>
+                    <Initials>M</Initials>
+                    <AffiliationInfo>
+                        <Affiliation>Department of Pharmacology and Therapeutics, The University of Melbourne, Parkville, Victoria 3010; Lung Health Research Centre, The University of Melbourne, Parkville, Victoria 3010, Australia.</Affiliation>
+                    </AffiliationInfo>
+                </Author>
+                <Author ValidYN="Y">
+                    <LastName>Douglass</LastName>
+                    <ForeName>Jo</ForeName>
+                    <Initials>J</Initials>
+                    <AffiliationInfo>
+                        <Affiliation>Department of Allergy and Immunology, The Royal Melbourne Hospital, 300 Grattan St, Parkville, Victoria 3050; Lung Health Research Centre, The University of Melbourne, Parkville, Victoria 3010, Australia.</Affiliation>
+                    </AffiliationInfo>
+                </Author>
+                <Author ValidYN="Y">
+                    <LastName>Stewart</LastName>
+                    <ForeName>Alastair</ForeName>
+                    <Initials>A</Initials>
+                    <AffiliationInfo>
+                        <Affiliation>Department of Pharmacology and Therapeutics, The University of Melbourne, Parkville, Victoria 3010; Lung Health Research Centre, The University of Melbourne, Parkville, Victoria 3010, Australia. Electronic address: astew@unimelb.edu.au.</Affiliation>
+                    </AffiliationInfo>
+                </Author>
+            </AuthorList>
+            <Language>eng</Language>
+            <PublicationTypeList>
+                <PublicationType UI="D016428">Journal Article</PublicationType>
+                <PublicationType UI="D016454">Review</PublicationType>
+            </PublicationTypeList>
+            <ArticleDate DateType="Electronic">
+                <Year>2018</Year>
+                <Month>02</Month>
+                <Day>17</Day>
+            </ArticleDate>
+        </Article>
+        <MedlineJournalInfo>
+            <Country>England</Country>
+            <MedlineTA>Pharmacol Ther</MedlineTA>
+            <NlmUniqueID>7905840</NlmUniqueID>
+            <ISSNLinking>0163-7258</ISSNLinking>
+        </MedlineJournalInfo>
+        <KeywordList Owner="NOTNLM">
+            <Keyword MajorTopicYN="N">Asthma</Keyword>
+            <Keyword MajorTopicYN="N">COPD</Keyword>
+            <Keyword MajorTopicYN="N">Fibrosis</Keyword>
+            <Keyword MajorTopicYN="N">Immunosuppression</Keyword>
+            <Keyword MajorTopicYN="N">Respiratory diseases</Keyword>
+            <Keyword MajorTopicYN="N">TGF-β inhibitors</Keyword>
+        </KeywordList>
+    </MedlineCitation>
+    <PubmedData>
+        <History>
+            <PubMedPubDate PubStatus="entrez">
+                <Year>2018</Year>
+                <Month>2</Month>
+                <Day>21</Day>
+                <Hour>6</Hour>
+                <Minute>0</Minute>
+            </PubMedPubDate>
+            <PubMedPubDate PubStatus="pubmed">
+                <Year>2018</Year>
+                <Month>2</Month>
+                <Day>21</Day>
+                <Hour>6</Hour>
+                <Minute>0</Minute>
+            </PubMedPubDate>
+            <PubMedPubDate PubStatus="medline">
+                <Year>2018</Year>
+                <Month>2</Month>
+                <Day>21</Day>
+                <Hour>6</Hour>
+                <Minute>0</Minute>
+            </PubMedPubDate>
+        </History>
+        <PublicationStatus>aheadofprint</PublicationStatus>
+        <ArticleIdList>
+            <ArticleId IdType="pubmed">29462659</ArticleId>
+            <ArticleId IdType="pii">S0163-7258(18)30035-4</ArticleId>
+            <ArticleId IdType="doi">10.1016/j.pharmthera.2018.02.010</ArticleId>
+        </ArticleIdList>
+    </PubmedData>
+</PubmedArticle>
+
+
+<PubmedArticle>
+    <MedlineCitation Status="In-Data-Review" Owner="NLM">
+        <PMID Version="1">29461895</PMID>
+        <DateRevised>
+            <Year>2018</Year>
+            <Month>02</Month>
+            <Day>20</Day>
+        </DateRevised>
+        <Article PubModel="Print">
+            <Journal>
+                <ISSN IssnType="Electronic">2325-6621</ISSN>
+                <JournalIssue CitedMedium="Internet">
+                    <Volume>15</Volume>
+                    <Issue>Supplement_1</Issue>
+                    <PubDate>
+                        <Year>2018</Year>
+                        <Month>Feb</Month>
+                    </PubDate>
+                </JournalIssue>
+                <Title>Annals of the American Thoracic Society</Title>
+                <ISOAbbreviation>Ann Am Thorac Soc</ISOAbbreviation>
+            </Journal>
+            <ArticleTitle>Scaling Physiologic Function from Cell to Tissue in Asthma, Cancer, and Development.</ArticleTitle>
+            <Pagination>
+                <MedlinePgn>S35-S37</MedlinePgn>
+            </Pagination>
+            <ELocationID EIdType="doi" ValidYN="Y">10.1513/AnnalsATS.201710-790KV</ELocationID>
+            <Abstract>
+                <AbstractText>The formation of an integrated tissue from individual cells depends on the properties of the individual cells as well as the interaction of many cells acting as a collective. Three fundamental physiological processes govern the collective scaling from the individual cell to a working tissue: cell sorting, tissue assembly, and collective cellular migration. Mechanistically, cell sorting is governed by differential adhesion, whereas tissue assembly is controlled by the epithelial-to-mesenchymal transition and its inverse, the mesenchymal-to-epithelial transition. The mechanism driving collective cellular migration, however, is not clear. To fill that gap, here we consider cell jamming and unjamming, and their role in collective cellular migration.</AbstractText>
+            </Abstract>
+            <AuthorList CompleteYN="Y">
+                <Author ValidYN="Y">
+                    <LastName>Sharma</LastName>
+                    <ForeName>Yasha</ForeName>
+                    <Initials>Y</Initials>
+                    <AffiliationInfo>
+                        <Affiliation>Department of Environmental Health, Harvard T.H. Chan School of Public Health, Boston, Massachusetts.</Affiliation>
+                    </AffiliationInfo>
+                </Author>
+                <Author ValidYN="Y">
+                    <LastName>Atia</LastName>
+                    <ForeName>Lior</ForeName>
+                    <Initials>L</Initials>
+                    <AffiliationInfo>
+                        <Affiliation>Department of Environmental Health, Harvard T.H. Chan School of Public Health, Boston, Massachusetts.</Affiliation>
+                    </AffiliationInfo>
+                </Author>
+                <Author ValidYN="Y">
+                    <LastName>Rhodes</LastName>
+                    <ForeName>Christalyn Sims</ForeName>
+                    <Initials>CS</Initials>
+                    <AffiliationInfo>
+                        <Affiliation>Department of Environmental Health, Harvard T.H. Chan School of Public Health, Boston, Massachusetts.</Affiliation>
+                    </AffiliationInfo>
+                </Author>
+                <Author ValidYN="Y">
+                    <LastName>DeCamp</LastName>
+                    <ForeName>Stephen J</ForeName>
+                    <Initials>SJ</Initials>
+                    <AffiliationInfo>
+                        <Affiliation>Department of Environmental Health, Harvard T.H. Chan School of Public Health, Boston, Massachusetts.</Affiliation>
+                    </AffiliationInfo>
+                </Author>
+                <Author ValidYN="Y">
+                    <LastName>Mitchel</LastName>
+                    <ForeName>Jennifer</ForeName>
+                    <Initials>J</Initials>
+                    <AffiliationInfo>
+                        <Affiliation>Department of Environmental Health, Harvard T.H. Chan School of Public Health, Boston, Massachusetts.</Affiliation>
+                    </AffiliationInfo>
+                </Author>
+                <Author ValidYN="Y">
+                    <LastName>Fredberg</LastName>
+                    <ForeName>Jeffrey J</ForeName>
+                    <Initials>JJ</Initials>
+                    <AffiliationInfo>
+                        <Affiliation>Department of Environmental Health, Harvard T.H. Chan School of Public Health, Boston, Massachusetts.</Affiliation>
+                    </AffiliationInfo>
+                </Author>
+            </AuthorList>
+            <Language>eng</Language>
+            <PublicationTypeList>
+                <PublicationType UI="D016428">Journal Article</PublicationType>
+            </PublicationTypeList>
+        </Article>
+        <MedlineJournalInfo>
+            <Country>United States</Country>
+            <MedlineTA>Ann Am Thorac Soc</MedlineTA>
+            <NlmUniqueID>101600811</NlmUniqueID>
+            <ISSNLinking>2325-6621</ISSNLinking>
+        </MedlineJournalInfo>
+        <KeywordList Owner="NOTNLM">
+            <Keyword MajorTopicYN="N">collective</Keyword>
+            <Keyword MajorTopicYN="N">epithelium</Keyword>
+            <Keyword MajorTopicYN="N">jamming</Keyword>
+            <Keyword MajorTopicYN="N">migration</Keyword>
+        </KeywordList>
+    </MedlineCitation>
+    <PubmedData>
+        <History>
+            <PubMedPubDate PubStatus="entrez">
+                <Year>2018</Year>
+                <Month>2</Month>
+                <Day>21</Day>
+                <Hour>6</Hour>
+                <Minute>0</Minute>
+            </PubMedPubDate>
+            <PubMedPubDate PubStatus="pubmed">
+                <Year>2018</Year>
+                <Month>2</Month>
+                <Day>21</Day>
+                <Hour>6</Hour>
+                <Minute>0</Minute>
+            </PubMedPubDate>
+            <PubMedPubDate PubStatus="medline">
+                <Year>2018</Year>
+                <Month>2</Month>
+                <Day>21</Day>
+                <Hour>6</Hour>
+                <Minute>0</Minute>
+            </PubMedPubDate>
+        </History>
+        <PublicationStatus>ppublish</PublicationStatus>
+        <ArticleIdList>
+            <ArticleId IdType="pubmed">29461895</ArticleId>
+            <ArticleId IdType="doi">10.1513/AnnalsATS.201710-790KV</ArticleId>
+        </ArticleIdList>
+    </PubmedData>
+</PubmedArticle>
+
+</PubmedArticleSet>
