@@ -118,6 +118,8 @@ For example, you should be able to identify that the country-name is USA (https:
 
 ### Adding structured data 
 
+Now you will add structured data to your web application using the ScholarlyArticle vocabulary (http://schema.org/ScholarlyArticle)
+
 Get the file _mywebapp.php_ created in a previous module and replace the PHP code :
 
 ```
@@ -139,6 +141,8 @@ echo '</div>';
 Note that visually nothing changed when opening the URL: _http://appserver.alunos.di.fc.ul.pt/~awXXX/mywebapp.php_
 
 Now check using the Google structured data testing tool what kind of data you get from  _http://appserver.alunos.di.fc.ul.pt/~awXXX/mywebapp.php_.
+
+You can now add other structured date, such as the _datePublished_
 
 This means that now other applications understand the semantics of the data your web application is providing.
 
