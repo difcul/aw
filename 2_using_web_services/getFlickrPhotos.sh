@@ -1,0 +1,1 @@
+curl "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=$1&text=$2&per_page=10&privacy_filter=1" | grep "photo id" | sed 's/^.*id="\([^"]*\).*secret="\([^"]*\).*server="\([^"]*\).*farm="\([^"]*\).*$/https:\/\/farm\4.staticflickr.com\/\3\/\1_\2.jpg/'

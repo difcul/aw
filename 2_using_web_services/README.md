@@ -1,37 +1,110 @@
 # Using Third-party Web Services
 Tiago Guerreiro and Francisco Couto
 
-SOA (Service Oriented Architecture) is a software achitecture type that models the several system components by the functionalities they implement, as services (Web Services). The implementation of complex applications involves interconnecting several components by calling these services. 
 
 Web Services can be seen as APIs that allow for this interconnection between heterogeneous software applications in the web by using the HTTP protocol.
 
-In this tutorial, we show examples of using the Flickr API to search for photos, and Twitter to search for posts. 
+In this tutorial, we show examples of using the PubMed API and Flickr API.
 
-## The Flickr Example 
+## PubMed API
 
-This tutorial aims to introduce the reader to using an external web service in this case to access Flickr accounts and data therein. It  uses the [Flickr API](http://www.flickr.com/services/api/) which is a powerful way to interact with Flickr accounts. With the API, you can read almost all the data associated with pictures and sets. You can also upload pictures through the API and change/add picture information.
+In the previous module you downloaded the list of PubMed Ids for given disease by using the URL https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=Asthma&retmax=10&retmode=xml
+that invokes a NCBI's  web service (https://www.ncbi.nlm.nih.gov/home/develop/api/), more specifically the _Searching a Database_ method.
+By looking at its documentation (https://www.ncbi.nlm.nih.gov/books/NBK25499/#chapter4.ESearch) you can better understand which methods and parameters are available. 
+
+Note that the order of the parameters in the URL is not relevant; arguments are separated by _&_; whitespaces are replaced by _+_; _=_ is used to give a value to each argument.
+
+A call to a web service is an HTTP request to that service available in the remote Web server. As such, we can test an API by using the web browser to perform the HTTP request,
+the _curl_ tool, or any other programming language that lets you open URLs. 
+
+### EFetch
+
+We will use now the EFetch method (https://www.ncbi.nlm.nih.gov/books/NBK25499/#chapter4.EFetch) to get the titles of the titles. 
+
+For example, check the XML output of the following call to get the data about the PubMed Id 29462659:
+
+```
+curl "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=29462659&retmode=text&rettype=xml" 
+```
+
+To get only the title and use the _grep_ tool, and _sed_ to remove the XML tags and trim the whitespaces:
+
+```
+curl "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=29462659&retmode=text&rettype=xml" | egrep "<ArticleTitle>" | sed -e "s/<[^>]*>//g" -e "s/^ *//" -e "s/ *$//'"
+```
+
+Create a file named _getPubMedTitles.sh_ with the previous command, but replace 29462659 by _$1_ so we can use any PubMed Id as input, i.e :
+```
+curl "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=$1&retmode=text&rettype=xml" | egrep "<ArticleTitle>" | sed -e "s/<[^>]*>//g" -e "s/^ *//" -e "s/ *$//"
+```
+
+Now add permissions to execute the script, and execute it:
+
+```
+chmod 755 ./getPubMedTitles.sh
+./getPubMedTitles.sh 29462659
+```
+
+The EFetch method allows to get data from multiple Ids by separating them by a comma, for example try:
+
+```
+./getPubMedTitles.sh "29462659,29461895" 
+```
+
+Create this input list by applying the _tr_ tool the PubMed Ids used in_Asthma.txt_ file created in a previous module (type ```man tr``` to know more about _tr_):  
+```
+tr '\n' ',' < Asthma.txt
+```
+
+Now execute the script using this list as input and saving the result to a file:
+```
+./getPubMedTitles.sh $(tr '\n' ',' < Asthma.txt)  > AsthmaTitles.txt
+```
+
+### Web Application with titles
+
+Get the file _mywebapp.php_ created in a previous module and add the following PHP code:
+```
+$filename = $_GET['disease']."Titles.txt";
+$handle = fopen($filename, "r");
+$contents = fread($handle, filesize($filename));
+$titles = explode("\n",$contents);
+fclose($handle);
+
+$c=array_combine($links,$titles);
+
+foreach ($c as $key => $value) {
+  echo '<a href="' . $key . '">' . $value . '</a></br>'; 
+}
+```
+
+Open the URL _http://appserver.alunos.di.fc.ul.pt/~awXXX/mywebapp.php_ (hit refresh) and check the results.
+
+Now try for different diseases, but do not forget to run the shell scripts before.
+
+
+## Flickr API
+
+The [Flickr API](http://www.flickr.com/services/api/) is a powerful way to interact with Flickr accounts. 
+With the API, you can read almost all the data associated with pictures and sets. You can also upload pictures through the API and change/add picture information.
 
 ### Getting an API key
 
 Some APIs require developers to request a key to use the API. Getting an API Key from Flickr is straightforward and can be done at the ["Flickr App Garden"](https://www.flickr.com/services/apps/create/apply/). If you don't have one, you will need to create a Yahoo account. If you didn't create an account before, you will be provided with a temporary Flickr API key in class. However, it should not be used outside of the class; you should create your own at the cost of making too many requests with the provided account and reaching the limit of requests for the _difcul_ account.
 
-### Looking through the API
+### Photos Search
 
-The next step in using an API is looking through the [API Documentation](https://www.flickr.com/services/api/) to understand which methods and parameters are available. By looking at the [Flickr API Documentation](https://www.flickr.com/services/api/), we can already understand how powerful it is and the variety of possibilities available. Click the method _flickr.photos.search_ and inspect the number of parameters available to customize a call to this method. Also, look at a possible response, in XML. 
+Check the method _flickr.photos.search_ (https://www.flickr.com/services/api/flickr.photos.search.html) and inspect the number of parameters available to customize a call to this method. 
+Also, look at a possible response, in XML. 
 
-### Understanding a service call and response
-
-Now let's try to use the API ourselves. A call to a web service is an HTTP request to that service available in the remote Web server. As such, before doing it programatically, we can test an API by using the web browser to perform the HTTP request. 
-
-As an example, let's use the Flickr API to search for photos about Cristiano Ronaldo. To do so, we will use the method _flickr.photos.search_, with the search string (_text_) as being "Cristiano Ronaldo". Without forgetting the ```api_key```, always required, we compose the following URL:
+To search for 10 public photos about Asthma test the following call using the search string (_text_) as being "Asthma". 
+Do not forget to replace the ```api_key```, always required.
 
 ```
-https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=YOUR_API_KEY&text=Asthma
+curl https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=YOUR_API_KEY&text=Asthma&per_page=10&privacy_filter=1
 ```
 
-The order of the arguments is not relevant; arguments are separated by _&_; whitespaces are replaced by _+_; _=_ is used to give a value to each argument.
-
-The response provided is as follows:
+The response provided should similar to:
 ```
 <rsp stat="ok">
 <photos page="1" pages="217" perpage="100" total="21634">
@@ -41,18 +114,6 @@ The response provided is as follows:
 <photo id="25505143007" owner="156074345@N03" secret="1d4c5b7122" server="4713" farm="5" title="The Impact of a Certified Air Cleaner on the Indoor Air Quality" ispublic="1" isfriend="0" isfamily="0"/>
 <photo id="39664891004" owner="155471696@N03" secret="6d62b9521c" server="4603" farm="5" title="BreatheEZi_Asthma-attack" ispublic="1" isfriend="0" isfamily="0"/>
 ....
-```
-
-curl "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=fd3fabe4e9d94ca725df1de71b8d285b&text=Asthma&per_page=10&privacy_filter=1" | grep "photo id" | sed 's/^.*id="\([^"]*\).*secret="\([^"]*\).*server="\([^"]*\).*farm="\([^"]*\).*$/https:\/\/farm\4.staticflickr.com\/\3\/\1_\2.jpg/'
-
-** add the link 
-https://www.flickr.com/services/api/flickr.photos.search.html
-
-
-The response format can be changed by using the _format_ argument, as the following examples shows:
-
-```
-https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=YOUR_API_KEY&text=cristiano+ronaldo&format=json
 ```
 
 In the response, we receive a set of photos, identified by the photo _id_, and two other numbers, _farm-id_ and _secret_. These numbers enable us to access the image associated with each photo in the set. Flickr stores several versions, different sizes, of each photo, and all of them have a static URL. This URL is composed as follows:
@@ -73,126 +134,57 @@ https://farm2.staticflickr.com/1474/25529403237_81693a20ef_m.jpg
 
 For more information about image URLs, please refer to https://www.flickr.com/services/api/misc.urls.html.
 
-## Using the Flickr API programatically
 
-Now that we already understand how to perform a call to a method in the API and the response, let's do the same programatically. The first step is to build the URL to call:
+
+### Get the Photos
+
+To get only the links to the photos use the _grep_ tool, and _sed_ to extract the values:
 
 ```
-<?php
-# build the API URL to call
-$params = array(
-        'api_key'=> 'YOUR_API_KEY',
-        'method'=> 'flickr.photos.search',
-        'text'=> 'Cristiano+Ronaldo',
-        'format'=> 'php_serial',
-        );
+curl "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=YOUR_API_KEY&text=Asthma&per_page=10&privacy_filter=1" | grep "photo id" | sed 's/^.*id="\([^"]*\).*secret="\([^"]*\).*server="\([^"]*\).*farm="\([^"]*\).*$/https:\/\/farm\4.staticflickr.com\/\3\/\1_\2.jpg/'
+```
 
-$encoded_params = array();
-foreach ($params as $k => $v){
-  $encoded_params[] = urlencode($k).'='.urlencode($v);
+
+Create a file named _getFlickrPhotos.sh_ with the previous command, but replace the api key by _$1_ and Asthma by _$2_ so you can use any key and disease as input, i.e :
+```
+curl "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=$1&text=$2&per_page=10&privacy_filter=1" | grep "photo id" | sed 's/^.*id="\([^"]*\).*secret="\([^"]*\).*server="\([^"]*\).*farm="\([^"]*\).*$/https:\/\/farm\4.staticflickr.com\/\3\/\1_\2.jpg/'
+```
+Now add permissions to execute the script, and execute it and saving the result to a file:
+
+```
+chmod 755 ./getFlickrPhotos.sh
+./getFlickrPhotos.sh YOUR_API_KEY Asthma > AsthmaPhotos.txt
+```
+
+Type ```cat AsthmaPhotos.txt``` to check the links stored.
+
+
+### Web Application with photos
+
+Add the following PHP code to the file _mywebapp.php_ : 
+
+```
+$filename = $_GET['disease']."Photos.txt";
+$handle = fopen($filename, "r");
+$contents = fread($handle, filesize($filename));
+$photos = explode("\n",$contents);
+fclose($handle);
+
+foreach ($photos as $p) {
+  echo '<a href="'. $p .'"><img src="'. $p .'" /></a></br>';
 }
-$url = "https://api.flickr.com/services/rest/?".implode('&', $encoded_params);
 ```
 
-The variable ```$url``` is now ready to be called. If you want to verify the contents of your variable you can use ```echo $url;``` or ```print_r($url);```.
+Open the URL _http://appserver.alunos.di.fc.ul.pt/~awXXX/mywebapp.php_ (hit refresh) and check the results.
 
-To call the API, we will use the method ```file_get_contents``` which reads the content of a file into a string. In this case, it will _read_ the contents of the URL into a response string. This response is formatted according to the request, in this case ```php_serial```, which means that the response comes serialized. If, for example, the response was requested in _json_, we could use the function ```json_decode``` to decode the response to a PHP array. The following code calls the API and decodes the serialized response into a response array:
+Now try for different diseases, but do not forget to run the shell scripts before.
 
-```
-# call the API and decode the response
-$rsp = file_get_contents($url);
-$rsp_obj = unserialize($rsp);
-```
+## Additional References
 
-The response, in XML, would be something similar to:
+- http://webpages.fc.ul.pt/~fjcouto/files/manual_soa_ajax_20120221.pdf 
 
-```
-<rsp stat="ok">
-    <photos page="1" pages="255" perpage="100" total="25442">
-        <photo id="24744703083" owner="131210812@N08" secret="fc8a0bb173" server="1474" farm="2" title="colorful CR7😍😍😍 #cr7 #cristiano #ronaldo #realmadrid #Portugal #instapic #instagood" ispublic="1" isfriend="0" isfamily="0"/>
-        <photo id="25072741560" owner="134461758@N07" secret="8399731ca5" server="1689" farm="2" title="Ritual-ritual Unik CR7 Sebelum Bertanding" ispublic="1" isfriend="0" isfamily="0"/>
-        <photo id="25364658605" owner="131210812@N08" secret="1908120432" server="1630" farm="2" title="Throwback to when I met Cristiano Ronaldo at Bernabeu Stadium." ispublic="1" isfriend="0" isfamily="0"/>
-        ...
-    </photos>
-</rsp>
-```
+- https://www.w3schools.com/xml/xml_services.asp
 
-Given that the response was unserialized, in this case from ```php_serial``` to an array, we can now test our response and navigate through the response hierarchy. In the following example, we process each photo and echo a thumbnail and link to the full image to the client:
+- https://developers.google.com/custom-search/json-api/v1/using_rest
 
-```
-# display the photo thumbnails with links to the images
-if ($rsp_obj['stat'] == 'ok'){
-    $photos = $rsp_obj["photos"]["photo"];
-
-    foreach($photos as $photo) {
-
-        $farm              = $photo['farm'];
-        $server            = $photo['server'];
-        $photo_id          = $photo['id'];
-        $secret            = $photo['secret'];
-        $photo_title       = $photo['title'];
-
-        $partial_img_name = 'http://farm'.$photo['farm'].'.static.flickr.com/'.$photo['server'].'/'.$photo['id'].'_'.$photo['secret'];
-
-        echo '<a href="'.$partial_img_name.'_b.jpg"><img src="'.$partial_img_name.'_t.jpg" alt="'.$photo['title'].'" /></a>
-        ';
-     }
-
-} else {
-        echo "Error getting photos";
-   }
-?>
-```
-
-Check the result and try different arguments and response formats. Try to use the method _flickr.photos.getRecent_. With this example and the API documentation you are now able to easily use the Flickr services. 
-
-## The Google Places Example
-
-Among several other services, Google makes available the Places API which enables us to get information, and also photos, about places near a location or related to a certain search string. 
-
-As with Flickr, to use the Places API you will have to get an API key. This is done in the [Google Places API webpage](https://developers.google.com/places/web-service/get-api-key).
-
-By inspecting the API documentation in the same website, we can identify how to search Google Places for a search string or a type of place in particular. As an example, to search using just a query string, we could call the following URL:
-
-```
-https://maps.googleapis.com/maps/api/place/textsearch/xml?query=monuments+in+Portugal&key=YOUR_API_KEY
-```
-
-The following code prints a list of "monuments in Portugal" as returned by the Google Places API:
-
-```
-<?php
-# build the API URL to call
-$params = array(
-        'key'=> 'YOUR_API_KEY',
-        'query'=> 'monuments+in+Portugal',
-        );
-
-$encoded_params = array();
-foreach ($params as $k => $v){
-  $encoded_params[] = urlencode($k).'='.urlencode($v);
-}
-
-$url = "https://maps.googleapis.com/maps/api/place/textsearch/json?".implode('&', $encoded_params);
-
-# call the API and decode the response
-$rsp = file_get_contents($url);
-$rsp_obj = json_decode($rsp, true);
-$results = $rsp_obj["results"];
-
-echo '<ul>
-';
-
-foreach($results as $result) {
-    echo '<li>'.$result['name'].'</li>';
- }
-echo '</ul>
-'
-?>
-```
-
-## Challenge
-
-Now that you are able to search for places and to retrieve photos from those places, develop a PHP script that is able to query Google Places about "Gardens" in Lisbon and present pictures about those Gardens, as retrieved from Flickr.
-
-
+- https://developer.twitter.com/en/docs
