@@ -103,7 +103,8 @@ Use the tool _curl_ to open an URL that provides you with 10 PubMed identifiers 
 curl "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=Asthma&retmax=10&retmode=xml"
 ```
 
-You should get 10 PubMed identifiers on your screen embbed in a xml file.
+
+You should get 10 PubMed identifiers on your screen embbed in a xml file. This URL corresponds to a web service that we will explore further in the following modules.
 
 Now parse the results using the tools _grep_ and _sed_ to keep only the Id numbers (again type ```man``` and the name of tool to know more about it) : 
 

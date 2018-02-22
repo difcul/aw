@@ -5,28 +5,28 @@ SOA (Service Oriented Architecture) is a software achitecture type that models t
 
 Web Services can be seen as APIs that allow for this interconnection between heterogeneous software applications in the web by using the HTTP protocol.
 
-In this tutorial, we show examples of using the Flickr API to search for photos, and Google Places to search for nearby points of interest. A brief challenge, that composes both APIS, is presented in the end. 
+In this tutorial, we show examples of using the Flickr API to search for photos, and Twitter to search for posts. 
 
-# The Flickr Example 
+## The Flickr Example 
 
 This tutorial aims to introduce the reader to using an external web service in this case to access Flickr accounts and data therein. It  uses the [Flickr API](http://www.flickr.com/services/api/) which is a powerful way to interact with Flickr accounts. With the API, you can read almost all the data associated with pictures and sets. You can also upload pictures through the API and change/add picture information.
 
-## Getting an API key
+### Getting an API key
 
 Some APIs require developers to request a key to use the API. Getting an API Key from Flickr is straightforward and can be done at the ["Flickr App Garden"](https://www.flickr.com/services/apps/create/apply/). If you don't have one, you will need to create a Yahoo account. If you didn't create an account before, you will be provided with a temporary Flickr API key in class. However, it should not be used outside of the class; you should create your own at the cost of making too many requests with the provided account and reaching the limit of requests for the _difcul_ account.
 
-## Looking through the API
+### Looking through the API
 
 The next step in using an API is looking through the [API Documentation](https://www.flickr.com/services/api/) to understand which methods and parameters are available. By looking at the [Flickr API Documentation](https://www.flickr.com/services/api/), we can already understand how powerful it is and the variety of possibilities available. Click the method _flickr.photos.search_ and inspect the number of parameters available to customize a call to this method. Also, look at a possible response, in XML. 
 
-## Understanding a service call and response
+### Understanding a service call and response
 
 Now let's try to use the API ourselves. A call to a web service is an HTTP request to that service available in the remote Web server. As such, before doing it programatically, we can test an API by using the web browser to perform the HTTP request. 
 
 As an example, let's use the Flickr API to search for photos about Cristiano Ronaldo. To do so, we will use the method _flickr.photos.search_, with the search string (_text_) as being "Cristiano Ronaldo". Without forgetting the ```api_key```, always required, we compose the following URL:
 
 ```
-https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=YOUR_API_KEY&text=cristiano+ronaldo
+https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=YOUR_API_KEY&text=Asthma
 ```
 
 The order of the arguments is not relevant; arguments are separated by _&_; whitespaces are replaced by _+_; _=_ is used to give a value to each argument.
@@ -34,14 +34,20 @@ The order of the arguments is not relevant; arguments are separated by _&_; whit
 The response provided is as follows:
 ```
 <rsp stat="ok">
-    <photos page="1" pages="255" perpage="100" total="25442">
-        <photo id="24744703083" owner="131210812@N08" secret="fc8a0bb173" server="1474" farm="2" title="colorful CR7😍😍😍 #cr7 #cristiano #ronaldo #realmadrid #Portugal #instapic #instagood" ispublic="1" isfriend="0" isfamily="0"/>
-        <photo id="25072741560" owner="134461758@N07" secret="8399731ca5" server="1689" farm="2" title="Ritual-ritual Unik CR7 Sebelum Bertanding" ispublic="1" isfriend="0" isfamily="0"/>
-        <photo id="25364658605" owner="131210812@N08" secret="1908120432" server="1630" farm="2" title="Throwback to when I met Cristiano Ronaldo at Bernabeu Stadium." ispublic="1" isfriend="0" isfamily="0"/>
-        <photo id="24731677023" owner="131210812@N08" secret="22e58796e2" server="1682" farm="2" title="Remembering that one time I got to go to a Real Madrid game and see Cristiano Ronaldo! #spain #madrid #realmadrid #cristianoronaldo #ronaldo #solucky #blessed #hestiny #bestseatsinthehouse #bale" ispublic="1" isfriend="0" isfamily="0"/>
-        <photo id="25237351112" owner="136415076@N05" secret="f42906bb42" server="1475" farm="2" title="Cristiano Ronaldo Akui Barca Lebih Baik Di Musim Ini Dari Pada Real Madrid" ispublic="1" isfriend="0" isfamily="0"/>
+<photos page="1" pages="217" perpage="100" total="21634">
+<photo id="25529403237" owner="156441279@N02" secret="81693a20ef" server="4665" farm="5" title="Pediatric Allergy, Asthma and Immunology by Arnaldo Cantani" ispublic="1" isfriend="0" isfamily="0"/>
+<photo id="26527339958" owner="14924442@N04" secret="a596f1d20b" server="4610" farm="5" title="Halo" ispublic="1" isfriend="0" isfamily="0"/>
+<photo id="39488217555" owner="35486550@N00" secret="f806f5bfb6" server="4673" farm="5" title=""Allergies, Asthma & Urticaria" - Hosted by 'Hibiscus Health Caribbean Inc.'" ispublic="1" isfriend="0" isfamily="0"/>
+<photo id="25505143007" owner="156074345@N03" secret="1d4c5b7122" server="4713" farm="5" title="The Impact of a Certified Air Cleaner on the Indoor Air Quality" ispublic="1" isfriend="0" isfamily="0"/>
+<photo id="39664891004" owner="155471696@N03" secret="6d62b9521c" server="4603" farm="5" title="BreatheEZi_Asthma-attack" ispublic="1" isfriend="0" isfamily="0"/>
 ....
 ```
+
+curl "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=fd3fabe4e9d94ca725df1de71b8d285b&text=Asthma&per_page=10&privacy_filter=1" | grep "photo id" | sed 's/^.*id="\([^"]*\).*secret="\([^"]*\).*server="\([^"]*\).*farm="\([^"]*\).*$/https:\/\/farm\4.staticflickr.com\/\3\/\1_\2.jpg/'
+
+** add the link 
+https://www.flickr.com/services/api/flickr.photos.search.html
+
 
 The response format can be changed by using the _format_ argument, as the following examples shows:
 
@@ -59,10 +65,10 @@ https://farm{farm-id}.staticflickr.com/{server-id}/{id}_{secret}_[mstzb].jpg
 https://farm{farm-id}.staticflickr.com/{server-id}/{id}_{o-secret}_o.(jpg|gif|png)
 ```
 
-The values displayed inside brackets are available from the photo search response above. _mstzb_ are the options relative to the size of the desired photo. For example, for a medium sized photo, one would use the letter _m_. As an example, looking at the example response above, for the "Cristiano Ronaldo" query, if we want to access the first image, we would use the URL:
+The values displayed inside brackets are available from the photo search response above. _mstzb_ are the options relative to the size of the desired photo. For example, for a medium sized photo, one would use the letter _m_. As an example, looking at the example response above, if we want to access the first image, we would use the URL:
 
 ```
-https://farm2.staticflickr.com/1474/24744703083_fc8a0bb173_m.jpg
+https://farm2.staticflickr.com/1474/25529403237_81693a20ef_m.jpg
 ```
 
 For more information about image URLs, please refer to https://www.flickr.com/services/api/misc.urls.html.
