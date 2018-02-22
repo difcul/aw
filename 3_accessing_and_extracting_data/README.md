@@ -28,6 +28,8 @@ You can execute the query using the _xmllint_ tool (type ```man xmllint``` to kn
 xmllint --xpath '/PubmedArticleSet/PubmedArticle/PubmedData/ArticleIdList' Articles.xml
 ```
 
+Note you can use PHP (or other programming language) to execute XPath queries: https://www.w3schools.com/php/func_simplexml_xpath.asp
+
 The XPath syntax enables more complex queries, try these ones:
 
 - ```/PubmedArticleSet/PubmedArticle/PubmedData/ArticleIdList/ArticleId[1]``` - first element of type _ArticleId_, that is a child of _ArticleIdList_.
@@ -66,9 +68,9 @@ You can now replace the _sed_ and _grep_ commands of previous modules by using X
 
 ## Additional References
 
-- http://webpages.fc.ul.pt/~fjcouto/files/manual_soa_ajax_20120221.pdf 
+- http://webdam.inria.fr/Jorge/files/wdm-xpath.pdf
 
 - https://www.w3schools.com/xml/xpath_intro.asp
 
-- https://www.w3schools.com/xml/xquery_intro.asp
+
 
