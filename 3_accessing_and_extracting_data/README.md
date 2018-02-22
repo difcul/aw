@@ -28,7 +28,7 @@ You can execute the query using the _xmllint_ tool (type ```man xmllint``` to kn
 xmllint --xpath '/PubmedArticleSet/PubmedArticle/PubmedData/ArticleIdList' Articles.xml
 ```
 
-The XPath syntax enables more complex queries:
+The XPath syntax enables more complex queries, try these ones:
 
 - ```/PubmedArticleSet/PubmedArticle/PubmedData/ArticleIdList/ArticleId[1]``` - first element of type _ArticleId_, that is a child of _ArticleIdList_.
 - ```PubmedArticleSet``` - root elements of type _PubmedArticleSet_;
