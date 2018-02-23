@@ -26,7 +26,7 @@ curl "http://dbpedia.org/sparql?default-graph-uri=http%3A%2F%2Fdbpedia.org&query
 xmllint --xpath '//a/@href' Diseases.xml 
 ```
 
-EasyRdf (http://www.easyrdf.org/) is PHP library for RDF developers, 
+_EasyRdf_ (http://www.easyrdf.org/) is PHP library for RDF developers, 
 which you can use to execute SPARQL queries,
 for example: https://github.com/njh/easyrdf/blob/0.9.0/examples/basic_sparql.php
 
@@ -104,6 +104,7 @@ SELECT ?diseasename ?personname ?deathdate ?occupationname where {
            ?occupation rdfs:label ?occupationname FILTER (lang(?occupationname) = "en").}
 }
 ```
+You can now try the same queries using _curl_ and _xmllint_, or _EasyRdf_.
 
 ## RFDa
 
