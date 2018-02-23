@@ -59,10 +59,10 @@ Now try to get all links using the following XPath:
 xmllint --xpath '//a/@href' Asthma.html 
 ```
 
-And get only the links to images and save it to a file: 
+And get only the links to images: 
 
 ```
-xmllint --xpath '//a[@class="image"]/@href' Asthma.html > AsthmaImages.txt
+xmllint --xpath '//a[@class="image"]/@href' Asthma.html 
 ```
 
 You can now replace the _sed_ and _grep_ commands of previous modules by using XPath queries.
