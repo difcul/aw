@@ -1,10 +1,7 @@
 # Building a RESTful Web Service
 Tiago Guerreiro and Francisco Couto
 
-## REST Web Services
-
-This module aims to help you to build web services that follow the RESTful principles. 
-In such services, URIs are used to access the resources, and the HTTP request method is used to define the action on that resource.
+In RESTful Web Services URIs are used to access the resources, and the HTTP request method is used to define the action on those resources.
 Examples:HTTP request
 - Google Drive: https://developers.google.com/drive/v2/reference/
 - Google Calendar: https://developers.google.com/google-apps/calendar/v3/reference/
@@ -255,7 +252,7 @@ class ArticleRestHandler extends SimpleRest {
 You should notice that there is still a file missing. 
 That is your domain class: _Article.php_. 
 Here would be where you would access your data, be it a variable, a file, or a SQL database. 
-Start with simple read file example:
+Copy the Asthma.txt and AsthmaTitles.txt from previous modules and create the class with a simple read file:
 
 ***Article.php*** 
 ```
