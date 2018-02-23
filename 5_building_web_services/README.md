@@ -206,7 +206,7 @@ class ArticleRestHandler extends SimpleRest {
 			}
 		}
 		$htmlResponse .= "</table>";
-		return $htmlResponse;		
+		return "<html>".$htmlResponse."<html>";		
 	}
 	
 	public function encodeJson($responseData) {
