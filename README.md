@@ -18,7 +18,7 @@ http://appserver.alunos.di.fc.ul.pt/~aw000/aw/1_server_web_programming/mywebapp.
 
 http://appserver.alunos.di.fc.ul.pt/~aw000/aw/2_using_web_services/mywebapp.php
 
-http://appserver.alunos.di.fc.ul.pt/~aw000/aw/3_accessing_and_extracting_data/Asthma.html
+http://appserver.alunos.di.fc.ul.pt/~aw000/aw/3_accessing_and_extracting_data/AsthmaImages.txt
 
 http://appserver.alunos.di.fc.ul.pt/~aw000/aw/4_using_rdf_and_sparql/mywebapp.php
 
