@@ -40,7 +40,7 @@ class ArticleRestHandler extends SimpleRest {
 			}
 		}
 		$htmlResponse .= "</table>";
-		return "<html>".$htmlResponse."<html>";		
+		return "<html>".$htmlResponse."</html>";		
 	}
 	
 	public function encodeJson($responseData) {
