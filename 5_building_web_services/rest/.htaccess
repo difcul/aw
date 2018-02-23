@@ -1,0 +1,7 @@
+# Turn rewrite engine on
+Options +FollowSymlinks
+RewriteEngine on
+
+# map neat URL to internal URL
+RewriteRule ^article/$   RestController.php?view=all [nc,qsa]
+RewriteRule ^article/([0-9]+)/$  RestController.php?view=single&id=$1 [nc,qsa]

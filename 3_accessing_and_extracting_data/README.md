@@ -28,7 +28,8 @@ You can execute the query using the _xmllint_ tool (type ```man xmllint``` to kn
 xmllint --xpath '/PubmedArticleSet/PubmedArticle/PubmedData/ArticleIdList' Articles.xml
 ```
 
-Note you can use PHP (or other programming language) to execute XPath queries: https://www.w3schools.com/php/func_simplexml_xpath.asp
+Note you can use PHP (or other programming language) to execute XPath queries (https://www.w3schools.com/php/func_simplexml_xpath.asp),
+and also execute cURL (http://php.net/manual/en/book.curl.php)
 
 The XPath syntax enables more complex queries, try these ones:
 
@@ -65,6 +66,8 @@ xmllint --xpath '//a[@class="image"]/@href' Asthma.html
 ```
 
 You can now replace the _sed_ and _grep_ commands of previous modules by using XPath queries.
+
+
 
 ## Additional References
 

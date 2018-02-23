@@ -1,54 +1,54 @@
 # Building a RESTful Web Service
 Tiago Guerreiro and Francisco Couto
-(tutorial adapted from http://phppot.com/php/php-restful-web-service/)
 
-In this tutorial, we will learn how to build web services that follow the RESTful principles. In such services, URIS are used to access the resources, either they are data or functions. Examples of RESTful URIs are:
+# REST Web Service
 
-```
-http://appserver-01.alunos.di.fc.ul.pt/~aw030/rest/mobile/list/
-http://appserver-01.alunos.di.fc.ul.pt/~aw030/rest/mobile/list/1/
-```
-
-**IMPORTANT: replace aw030 by your group number**
-
-In these examples, a simple, self-explainable URI is available to be used and is later internally translated to a request to a real file, function, with its also translated arguments. In this tutorial, we will learn how to do that without the need for any framework (although they can be used to make the development more agile, particularly in bigger projects).
-
-Create a new folder for your test project called "rest" in your appserver-01 account (inside the _public_html_ folder).
+This module aims to help you to build web services that follow the RESTful principles. 
+In such services, URIs are used to access the resources, and the HTTP request method is used to define the action on that resource.
+Examples:HTTP request
+- Google Drive: https://developers.google.com/drive/v2/reference/
+- Google Calendar: https://developers.google.com/google-apps/calendar/v3/reference/
 
 ## URI Mapping
 
-The first step we will take is enabling our list of neat URIs. To do that, we will resort to the webserver rewrite capabilities. Let's consider we want to have the two aformentioned URIs:
+The first step we will take is enabling our list of neat URIs. To do that, we will resort to the webserver rewrite capabilities,
+to make available the following URLs:
 
 ```
-http://appserver-01.alunos.di.fc.ul.pt/~aw030/rest/mobile/list/     => gets the list of all mobile devices 
-http://appserver-01.alunos.di.fc.ul.pt/~aw030/rest/mobile/list/1/    => gets a particular mobile given its ID
+http://appserver.alunos.di.fc.ul.pt/awXXX/rest/article/     => gets the list of all articles 
+http://appserver.alunos.di.fc.ul.pt/awXXX/rest/article/29461607/    => gets data about a particular article given its Id
 ```
 
-In the _teste_ folder create and edit the _.htaccess_ file. We will now map the requested URL to a PHP file where we can parse and follow up with the request:
+We will now map the requested URL to a PHP file where we can parse and follow up with the request.
 
-**.htaccess**
+Create a _rest_ folder (inside _public_html_), and create and edit the _.htaccess_ file (https://httpd.apache.org/docs/2.4/howto/htaccess.html):
+
+***.htaccess***
 ```
 # Turn rewrite engine on
 Options +FollowSymlinks
 RewriteEngine on
 
 # map neat URL to internal URL
-RewriteRule ^mobile/list/$   http://appserver-01.alunos.di.fc.ul.pt/~aw030/rest/RestController.php?view=all [nc,qsa]
-RewriteRule ^mobile/list/([0-9]+)/$   http://appserver-01.alunos.di.fc.ul.pt/~aw030/rest/RestController.php?view=single&id=$1 [nc,qsa]
+RewriteRule ^article/$   RestController.php?view=all [nc,qsa]
+RewriteRule ^article/([0-9]+)/$  RestController.php?view=single&id=$1 [nc,qsa]
 ```
 
-This will work in appserver, in a localhost configuration remove or change the prefix of each url. 
+In a localhost configuration ensure that you have the option ```AllowOverride All``` in the _httpd.conf_ file.
 
 If you try the URLs now, you will get an error as the file you are redirecting to does not exist.
 
 ## Controller
 
-Let's create the file RestController.php that will unpack and dispatch the requests internally. In the folder _.htaccess_, we are forwarding all the requests to the file _RestController.php_ with a key named "view" to identify the request. Let's identify the request and dispatch the request to methods that will handle it:
+Let's create the file RestController.php that will unpack and dispatch the requests internally. 
+In the folder _.htaccess_, we are forwarding all the requests to the file _RestController.php_ with a key named "view" 
+to identify the request. 
+Create the file _RestController.php_ to identify the request and dispatch the request to methods that will handle it:
 
-**RestController.php**
+***RestController.php***
 ```
 <?php
-require_once("MobileRestHandler.php");
+require_once("ArticleRestHandler.php");
 		
 $view = "";
 if(isset($_GET["view"]))
@@ -60,15 +60,15 @@ URL mapping
 switch($view){
 
 	case "all":
-		// to handle REST Url /mobile/list/
-		$mobileRestHandler = new MobileRestHandler();
-		$mobileRestHandler->getAllMobiles();
+		// to handle REST Url /article/list/
+		$articleRestHandler = new ArticleRestHandler();
+		$articleRestHandler->getAllArticles();
 		break;
 		
 	case "single":
-		// to handle REST Url /mobile/show/<id>/
-		$mobileRestHandler = new MobileRestHandler();
-		$mobileRestHandler->getMobile($_GET["id"]);
+		// to handle REST Url /article/show/<id>/
+		$articleRestHandler = new ArticleRestHandler();
+		$articleRestHandler->getArticle($_GET["id"]);
 		break;
 
 	case "" :
@@ -80,7 +80,8 @@ switch($view){
 
 ## RESTful Web Service Handler
 
-Let's start by building a base class that can be used in all RESTful service handlers. It has two methods: one that is used to construct the response, and a second one that is built to hold the different HTTP status code and its messages.
+Create the file _SimpleRest.php_  with a base class that can be used in all RESTful service handlers. 
+It has two methods: one that is used to construct the response, and a second one that is built to hold the different HTTP status code and its messages.
 
 **SimpleRest.php**
 ```
@@ -150,26 +151,30 @@ class SimpleRest {
 ?>
 ```
 
-Now let's build a handler that extends SimpleRest. The first addition relates to how it handles the response format. This is decided based on the Request Header parameter "Accept". The values that can be used in the request are like "application/json" or "application/xml" or "text/html". The second relevant aspect to consider is the usage of status codes. For success, status code 200 should be set in response and sent. Similarly, other status codes can and should be used according to the situation (ex: resource not available).
+Now you need to create a handler that extends SimpleRest in a file ArticleRestHandler.php_.
+The first addition relates to how it handles the response format. 
+This is decided based on the Request Header parameter "Accept". 
+The values that can be used in the request are like "application/json" or "application/xml" or "text/html". 
+The second relevant aspect to consider is the usage of status codes. 
+For success, status code 200 should be set in response and sent. 
+Similarly, other status codes can and should be used according to the situation (ex: resource not available).
 
-Analyze and create the following file:
-
-**MobileRestHandler.php**
+**ArticleRestHandler.php**
 ```
 <?php
 require_once("SimpleRest.php");
-require_once("Mobile.php");
+require_once("Article.php");
 		
-class MobileRestHandler extends SimpleRest {
+class ArticleRestHandler extends SimpleRest {
 
-	function getAllMobiles() {	
+	function getAllArticles() {	
 
-		$mobile = new Mobile();
-		$rawData = $mobile->getAllMobile();
+		$article = new Article();
+		$rawData = $article->getAllArticle();
 
 		if(empty($rawData)) {
 			$statusCode = 404;
-			$rawData = array('error' => 'No mobiles found!');		
+			$rawData = array('error' => 'No articles found!');		
 		} else {
 			$statusCode = 200;
 		}
@@ -193,7 +198,9 @@ class MobileRestHandler extends SimpleRest {
 	
 		$htmlResponse = "<table border='1'>";
 		foreach($responseData as $key=>$value) {
-    			$htmlResponse .= "<tr><td>". $key. "</td><td>". $value. "</td></tr>";
+		        if (!empty($value)) {
+    			   $htmlResponse .= "<tr><td>". $key. "</td><td>". $value. "</td></tr>";
+			}
 		}
 		$htmlResponse .= "</table>";
 		return $htmlResponse;		
@@ -206,21 +213,21 @@ class MobileRestHandler extends SimpleRest {
 	
 	public function encodeXml($responseData) {
 		// creating object of SimpleXMLElement
-		$xml = new SimpleXMLElement('<?xml version="1.0"?><mobile></mobile>');
+		$xml = new SimpleXMLElement('<?xml version="1.0"?><article></article>');
 		foreach($responseData as $key=>$value) {
 			$xml->addChild($key, $value);
 		}
 		return $xml->asXML();
 	}
 	
-	public function getMobile($id) {
+	public function getArticle($id) {
 
-		$mobile = new Mobile();
-		$rawData = $mobile->getMobile($id);
+		$article = new Article();
+		$rawData = $article->getArticle($id);
 
 		if(empty($rawData)) {
 			$statusCode = 404;
-			$rawData = array('error' => 'No mobiles found!');		
+			$rawData = array('error' => 'No articles found!');		
 		} else {
 			$statusCode = 200;
 		}
@@ -245,35 +252,50 @@ class MobileRestHandler extends SimpleRest {
 
 ## Domain: where the data is
 
-You should notice that there is still a file missing. That is your domain class: "Mobile.php". Here would be where you would access your data, be it a variable, a file, or a SQL database. Let's use a simple variable-based example:
+You should notice that there is still a file missing. 
+That is your domain class: _Article.php_. 
+Here would be where you would access your data, be it a variable, a file, or a SQL database. 
+Start with simple read file example:
 
-**Mobile.php** 
+**Article.php** 
 ```
 <?php
 /* 
 A domain Class to demonstrate RESTful web services
 */
-Class Mobile {
+Class Article {
+
+      	private $ids;
+	private $titles;
+
+	private $disease="Asthma";
 	
-	private $mobiles = array(
-		1 => 'Apple iPhone 6S',  
-		2 => 'Samsung Galaxy S6',  
-		3 => 'Apple iPhone 6S Plus',  			
-		4 => 'LG G4',  			
-		5 => 'Samsung Galaxy S6 edge',  
-		6 => 'OnePlus 2');
+      	private function readFiles(){
+
+	        $filename = $this->disease.".txt";
+      		$handle = fopen($filename, "r");
+      		$contents = fread($handle, filesize($filename));
+      		$this->ids = explode("\n",$contents);
+      		fclose($handle);
+
+		$filename = $this->disease."Titles.txt";
+      		$handle = fopen($filename, "r");
+      		$contents = fread($handle, filesize($filename));
+      		$t = explode("\n",$contents);
+      		fclose($handle);
+	
+		$this->titles=array_combine($this->ids,$t);
+	}
+      
 		
-	/*
-		you should hookup the DAO here
-	*/
-	public function getAllMobile(){
-		return $this->mobiles;
+	public function getAllArticle(){
+		$this->readFiles();
+		return $this->ids;
 	}
 	
-	public function getMobile($id){
-		
-		$mobile = array($id => ($this->mobiles[$id]) ? $this->mobiles[$id] : $this->mobiles[1]);
-		return $mobile;
+	public function getArticle($id){
+		$this->readFiles();
+		return array($id => $this->titles[$id]);
 	}	
 }
 ?>
@@ -282,25 +304,28 @@ Class Mobile {
 ## Testing the services
 
 You can now use the browser to access your URIs and check the results:
-
-```
-http://appserver-01.alunos.di.fc.ul.pt/~aw030/rest/mobile/list/
-http://appserver-01.alunos.di.fc.ul.pt/~aw030/rest/mobile/list/1/
-```
+- http://appserver.alunos.di.fc.ul.pt/~awXXX/rest/article/
+- http://appserver.alunos.di.fc.ul.pt/~awXXX/rest/article/29461607/
 
 You can see that, given that we did not set an alternative response format, it is provided in HTML. 
-To test the web service more extensively you can either build a client programatically and consume the service, or use a standalone general-purpose REST client. For example, you can use curl from the shell of appserver:
+To test the web service more extensively you can either build a client programatically and consume the service, or use a standalone general-purpose REST client. 
+
+For example, you can use _curl_:
 
 ```
-[aw030@appserver-01 ~]$  curl -X GET -H "Accept: application/json" -L "http://appserver-01.alunos.di.fc.ul.pt/~aw030/rest/mobile/list/1/"
-{"1":"Apple iPhone 6S"}
-
-[aw030@appserver-01 ~]$ curl -X GET -H "Accept: application/xml" -L "http://appserver-01.alunos.di.fc.ul.pt/~aw030/rest/mobile/list/1/"
-<?xml version="1.0"?>
-<mobile><1>Apple iPhone 6S</1></mobile>
+curl -X GET -H "Accept: application/json" -L "http://appserver-01.alunos.di.fc.ul.pt/~awXXX/rest/article/"
+curl -X GET -H "Accept: application/json" -L "http://appserver-01.alunos.di.fc.ul.pt/~awXXX/rest/article/29461607/"
 ```
 
-To test the web service more extensively you can either build a client programatically and consume the service, or use a standalone general-purpose REST client. There are several examples available, one is the Google Chrome extension "Advanced REST client" (https://advancedrestclient.com/). Install it and test your requests and Accept headers.
+You can also use the Google Chrome extension "Advanced REST client" (https://advancedrestclient.com/) to test your requests and Accept headers.
+
+## Additional References
+
+- http://phppot.com/php/php-restful-web-service/
+
+- https://spring.io/guides/gs/rest-service/
+
+
 
 
 
