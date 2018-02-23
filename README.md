@@ -12,7 +12,15 @@ Francisco Couto e Tiago Guerreiro
 5. [Building a Web Services](5_building_web_services)
 6. [Dynamic Web Application](6_dynamic_web_applications)
 
+You can check some final results here:
 
+http://appserver.alunos.di.fc.ul.pt/~aw000/aw/1_server_web_programming/mywebapp.php
+
+http://appserver.alunos.di.fc.ul.pt/~aw000/aw/2_using_web_services/mywebapp.php
+
+http://appserver.alunos.di.fc.ul.pt/~aw000/aw/4_using_rdf_and_sparql/mywebapp.php
+
+http://appserver.alunos.di.fc.ul.pt/~aw000/aw/6_dynamic_web_applications/mywebapp.php
 
 
 
