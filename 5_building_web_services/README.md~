@@ -27,17 +27,11 @@ Options +FollowSymlinks
 RewriteEngine on
 
 # map neat URL to internal URL
-RewriteRule ^article/$   http://appserver.alunos.di.fc.ul.pt/~awXXX/RestController.php?view=all [nc,qsa,p]
-RewriteRule ^article/([0-9]+)/$  http://appserver.alunos.di.fc.ul.pt/~awXXX/RestController.php?view=single&id=$1 [nc,qsa,p]
+RewriteRule ^article/$   RestController.php?view=all [nc,qsa]
+RewriteRule ^article/([0-9]+)/$  RestController.php?view=single&id=$1 [nc,qsa]
 ```
 
-Do not forget to replace the XXX, or change the URL to the correct one.  
 In a localhost configuration ensure that you have the option ```AllowOverride All``` in the _httpd.conf_ file.
-
-About the RewriteRule Flags used (https://httpd.apache.org/docs/trunk/rewrite/flags.html):
-- nc: case-insensitive
-- qsa: combines query strings
-- p: handled via a proxy request (the URL does not change in the browser)
 
 If you try the URLs now, you will get an error as the file you are redirecting to does not exist.
 
