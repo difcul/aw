@@ -8,7 +8,7 @@ DBPedia stores Wikipedia data as a dataset using the RDF model, and it can be ac
 
 DBPedia has a SPARQL endpoint (http://dbpedia.org/sparql) where you can execute queries.
 
-Using the browser try the following query to get all names of diseases:
+Open the URL http://dbpedia.org/sparql on your browser and try the following query to get all diseases:
 
 ```
 PREFIX dbo: <http://dbpedia.org/ontology/>
@@ -25,6 +25,12 @@ curl "http://dbpedia.org/sparql?default-graph-uri=http%3A%2F%2Fdbpedia.org&query
 
 xmllint --xpath '//a/@href' Diseases.xml 
 ```
+
+EasyRdf (http://www.easyrdf.org/) is PHP library for RDF developers, 
+which you can use to execute SPARQL queries,
+for example: https://github.com/njh/easyrdf/blob/0.9.0/examples/basic_sparql.php
+
+## Complex queries
 
 Back to the browser try the following query to get for each disease people that died from it:
 
@@ -106,7 +112,7 @@ RDFa (Resource Description Framework in attributes) enables us to embed descript
 
 ### Extract Data 
  
-Some RDFa parsers available: 
+Some RDFa parsers that are available: 
 - Google structured data testing tool: http://www.google.com/webmasters/tools/richsnippets
 - Yandex Structured Data validator: http://webmaster.yandex.com/microtest.xml
 - RDFa Play: http://rdfa.info/play
