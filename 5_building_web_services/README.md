@@ -1,4 +1,4 @@
-# Building a RESTful Web Service
+# Building Web Services
 Tiago Guerreiro and Francisco Couto
 
 In RESTful Web Services URIs are used to access the resources, and the HTTP request method is used to define the action on those resources.

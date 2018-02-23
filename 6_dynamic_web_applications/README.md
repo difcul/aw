@@ -1,22 +1,19 @@
-# Building a Dynamic Web Application with AJAX
+# Dynamic Web Applications
 Tiago Guerreiro and Francisco Couto
 
-In this tutorial, we focus our attention on the basic concepts of programming asynchronous web applications using AJAX. AJAX stands for Asynchronous Javascript and XML and, paraphrasing dfrom w3schools "is a developers dream, because you can:
+AJAX stands for Asynchronous Javascript and XML and, paraphrasing from w3schools "is a developers" dream, because you can:
 
 * Update a web page without reloading the page
 * Request data from a server - after the page has loaded 
 * Receive data from a server - after the page has loaded
 * Send data to a server - in the background"
 
-In this tutorial, we show examples on how to use the Flickr API examples on the [Using Third-party Web Services](https://github.com/difcul/aw1516/tree/master/1_using_web_services#the-flickr-example) tutorial to build a dynamic web page.
+## Suggestions
 
-## AJAX Tutorial
+Start by copying the _txt_ files and the _mywebapp.php_ from a previous module.
 
-Make your first AJAX web page by implementing in <your server> the following example: (https://www.w3schools.com/php/php_ajax_php.asp)
+Replace the beginning of the _mywebapp.php_ to add the following _javascript_ code:
 
-In appserver create a directory named ajax and create the following files:
-
-**index.html**
 ```
 <html>
 <head>
@@ -40,49 +37,24 @@ function showHint(str) {
 </head>
 <body>
 
-<p><b>Start typing a name in the input field below:</b></p>
-<form> 
-First name: <input type="text" onkeyup="showHint(this.value)">
-</form>
-<p>Suggestions: <span id="txtHint"></span></p>
-</body>
+    <form action='mywebapp.php' method='get'>
+        <p>Disease: <input type='text' id="searchDisease" name='disease' onkeyup="showHint(this.value)"/> </p>
+	<p>Suggestions: <span id="txtHint"></span></p>
+        <p><input type='submit' /> </p>
+    </form>
+
+
+
 </html>
+...
 ```
 
-**gethint.php**
+Now create a file _gethint.php_ that generates possible suggestions of diseases matching a given prefix:
+
 ```
 <?php
 // Array with names
-$a[] = "Anna";
-$a[] = "Brittany";
-$a[] = "Cinderella";
-$a[] = "Diana";
-$a[] = "Eva";
-$a[] = "Fiona";
-$a[] = "Gunda";
-$a[] = "Hege";
-$a[] = "Inga";
-$a[] = "Johanna";
-$a[] = "Kitty";
-$a[] = "Linda";
-$a[] = "Nina";
-$a[] = "Ophelia";
-$a[] = "Petunia";
-$a[] = "Amanda";
-$a[] = "Raquel";
-$a[] = "Cindy";
-$a[] = "Doris";
-$a[] = "Eve";
-$a[] = "Evita";
-$a[] = "Sunniva";
-$a[] = "Tove";
-$a[] = "Unni";
-$a[] = "Violet";
-$a[] = "Liza";
-$a[] = "Elizabeth";
-$a[] = "Ellen";
-$a[] = "Wenche";
-$a[] = "Vicky";
+$a = array("Asthma", "Anemia", "Angioma", "Arthritis");
 
 // get the q parameter from URL
 $q = $_REQUEST["q"];
@@ -109,102 +81,80 @@ echo $hint === "" ? "no suggestion" : $hint;
 ?>
 ```
 
-An test your first ajax web page:
+Now test your web application in the browser by typing in the form and checking the suggestions.
+
+## Dynamic photos 
+
+
+Now update your web application so it gets the photos about the disease in a dynamic way.
+ 
+Add to the _mywebapp.php_ with the following javascript function, that calls itself every 3 seconds (https://www.w3schools.com/jsref/met_win_settimeout.asp).
 ```
-http://appserver-01.alunos.di.fc.ul.pt/~aw030/ajax/
-```
-**IMPORTANT: replace aw030 by your group number**
-
-## Use Flickr getRecent method
-
-Now create a html file that shows every 3 seconds the most recent photos submitted to flickr
-
-Use the same Flickr php code from the previous tutorial (https://github.com/difcul/aw1516/tree/master/1_using_web_services#the-flickr-example), just change the params. 
-
-**flickr.php**
-```
-<?php
-# build the API URL to call
-$params = array(
-        'api_key'=> 'YOUR_API_KEY',
-        'method'=> 'flickr.photos.getRecent',
-        'per_page'=> '5',
-        'format'=> 'php_serial',
-        );
-
-$encoded_params = array();
-foreach ($params as $k => $v){
-  $encoded_params[] = urlencode($k).'='.urlencode($v);
-}
-$url = "https://api.flickr.com/services/rest/?".implode('&', $encoded_params);
-
-# call the API and decode the response
-$rsp = file_get_contents($url);
-$rsp_obj = unserialize($rsp);
-# display the photo thumbnails with links to the images
-if ($rsp_obj['stat'] == 'ok'){
-    $photos = $rsp_obj["photos"]["photo"];
-
-    foreach($photos as $photo) {
-
-        $farm              = $photo['farm'];
-        $server            = $photo['server'];
-        $photo_id          = $photo['id'];
-        $secret            = $photo['secret'];
-        $photo_title       = $photo['title'];
-
-        $partial_img_name = 'http://farm'.$photo['farm'].'.static.flickr.com/'.$photo['server'].'/'.$photo['id'].'_'.$photo['secret'];
-
-        echo '<a href="'.$partial_img_name.'_b.jpg"><img src="'.$partial_img_name.'_t.jpg" alt="'.$photo['title'].'" /></a>
-        ';
-     }
-
-} else {
-        echo "Error getting photos";
-   }
-?>
-```
-
-Test the php file to check if it retrieves the most five recent photos
-```
-http://appserver-01.alunos.di.fc.ul.pt/~aw030/ajax/flickr.php
-```
-
-Now copy the html file with the code of previous AJAX example, and perform the following modifications:
-
-1. add the _onload='showHint()'_ in the tag body (http://www.w3schools.com/jsref/event_onload.asp)
-2. remove the form 
-3. remove the str parameter of function showHint
-4. remove the code for _str.length == 0_
-5. add a settimeout of 3 seconds when a new response arrives (http://www.w3schools.com/jsref/met_win_settimeout.asp)
-6. change _"gethint.php?q="+str_ to the name of your Flickr php file
-
-**lastestphotos.html**
-```
-<html>
-<head>
-<script>
-function showHint() {
+...
+function updatePhotos() {
+    str = document.getElementById("searchDisease").value;
+    if (str.length == 0) { 
+        document.getElementById("latestPhotos").innerHTML = "";
+    } else {
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
-                document.getElementById("txtHint").innerHTML = this.responseText;
-                setTimeout(showHint,3000);
+                document.getElementById("latestPhotos").innerHTML = this.responseText;
             }
         };
-        xmlhttp.open("GET", "flickr.php", true);
+        xmlhttp.open("GET", "getphotos.php?disease=" + str, true);
         xmlhttp.send();
+    }
+    setTimeout(updatePhotos,3000);
 }
 </script>
-</head>
-<body onload="showHint()">
-<p>Latest photos:</p>
-<p><span id="txtHint"></span></p>
-</body>
-</html>
-```
-Finally, test the file:
-```
-http://appserver-01.alunos.di.fc.ul.pt/~aw030/ajax/lastestphotos.html
+...
 ```
 
+Add the _onload='showHint()'_ in the tag body to call the function for the first time (http://www.w3schools.com/jsref/event_onload.asp)
+
+```
+<body onload='updatePhotos()'>
+```
+
+Replace the PHP code to show the photos by defining the place where the photos will be shown:
+
+```
+echo "<p><span id="latestPhotos"></span></p>"
+```
+
+Create the _getphotos.php_ file with the PHP code removed in the previous step:
+
+```
+<?php
+$filename = $_GET['disease']."Photos.txt";
+$handle = fopen($filename, "r");
+$contents = fread($handle, filesize($filename));
+$photos = explode("\n",$contents);
+fclose($handle);
+
+foreach ($photos as $p) {
+  echo '<a href="'. $p .'"><img src="'. $p .'" /></a></br>';
+}
+?>
+```
+
+Now test your web application in the browser and check that the images are shown and removed dynamically, without the need to click the submit button. 
+
+Now try to change the photos _txt_ file, for example using the _tac_ tool (type ```man tac``` to know more about _tac_):
+```
+cp AsthmaPhotos.txt AsthmaPhotosOriginal.txt 
+tac AsthmaPhotosOriginal.txt  > AsthmaPhotos.txt 
+```
+
+Check now in the browser the order of the photos, and return to their original order:
+
+```
+cat AsthmaPhotosOriginal.txt  > AsthmaPhotos.txt
+```
+
+## Additional references
+
+- https://www.w3schools.com/xml/ajax_intro.asp
+
+- https://www.tutorialspoint.com/ajax/index.htm

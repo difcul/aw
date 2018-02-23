@@ -1,6 +1,5 @@
-# Using Third-party Web Services
+# Using Web Services
 Tiago Guerreiro and Francisco Couto
-
 
 Web Services can be seen as APIs that allow for this interconnection between heterogeneous software applications in the web by using the HTTP protocol.
 

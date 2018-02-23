@@ -1,4 +1,4 @@
-# Accessing webpages and extracting contents
+# Accessing and extracting data
 Tiago Guerreiro and Francisco Couto
 
 XPath (XML Path Language) is as an efficient tool to get information from XML and HTML documents, 
