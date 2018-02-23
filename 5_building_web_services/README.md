@@ -1,7 +1,7 @@
 # Building a RESTful Web Service
 Tiago Guerreiro and Francisco Couto
 
-# REST Web Service
+## REST Web Services
 
 This module aims to help you to build web services that follow the RESTful principles. 
 In such services, URIs are used to access the resources, and the HTTP request method is used to define the action on that resource.
@@ -83,7 +83,7 @@ switch($view){
 Create the file _SimpleRest.php_  with a base class that can be used in all RESTful service handlers. 
 It has two methods: one that is used to construct the response, and a second one that is built to hold the different HTTP status code and its messages.
 
-**SimpleRest.php**
+***SimpleRest.php***
 ```
 <?php 
 /*
@@ -159,7 +159,7 @@ The second relevant aspect to consider is the usage of status codes.
 For success, status code 200 should be set in response and sent. 
 Similarly, other status codes can and should be used according to the situation (ex: resource not available).
 
-**ArticleRestHandler.php**
+***ArticleRestHandler.php***
 ```
 <?php
 require_once("SimpleRest.php");
@@ -257,7 +257,7 @@ That is your domain class: _Article.php_.
 Here would be where you would access your data, be it a variable, a file, or a SQL database. 
 Start with simple read file example:
 
-**Article.php** 
+***Article.php*** 
 ```
 <?php
 /* 
