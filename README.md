@@ -12,7 +12,7 @@ Francisco Couto e Tiago Guerreiro
 5. [Building a Web Services](5_building_web_services)
 6. [Dynamic Web Application](6_dynamic_web_applications)
 
-You can check some final results here:
+You can check some final results for _Asthma_ here:
 
 http://appserver.alunos.di.fc.ul.pt/~aw000/aw/1_server_web_programming/mywebapp.php
 
