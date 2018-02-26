@@ -104,8 +104,10 @@ Considering that Asthma is on what the user is interested in, you can measure th
 You will see that cancer and viral infection have low similarity, so less relevant than all the others. 
 
 To perform these last steps programmatically you should download the Disease Ontology:
+
 - https://github.com/DiseaseOntology/HumanDiseaseOntology/blob/master/src/ontology/
 - SQLite: http://labs.rd.ciencias.ulisboa.pt/dishin/hdo.db
+
 and install MER (https://github.com/lasigeBioTM/MER) and DiShIn (https://github.com/lasigeBioTM/DiShIn) locally. 
 MER is available in _appserver_ at /opt/MER-0.1/.
 
