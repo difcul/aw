@@ -22,14 +22,11 @@ Type ```cat Articles.xml``` to check the output, and try to figure out what the 
 /PubmedArticle/PubmedData/ArticleIdList/ArticleId 
 ```
 
-You can execute the query using the _xmllint_ tool (type ```man xmllint``` to know more about _xmllint_):
+You can execute the query using the _xmllint_ tool (type ```man xmllint``` to know more about _xmllint_) to get their Ids:
 
 ```
 xmllint --xpath '/PubmedArticleSet/PubmedArticle/PubmedData/ArticleIdList' Articles.xml
 ```
-
-Note you can use PHP (or other programming language) to execute XPath queries (https://www.w3schools.com/php/func_simplexml_xpath.asp),
-and also execute cURL (http://php.net/manual/en/book.curl.php)
 
 The XPath syntax enables more complex queries, try these ones:
 
@@ -42,6 +39,9 @@ The XPath syntax enables more complex queries, try these ones:
 - ```//ArticleId[@IdType="doi"]'``` - element of type _ArticleId_, that has an attribute _IdType_ with the value 'doi';
 
 Check W3C for more about XPath syntax https://www.w3schools.com/xml/xpath_syntax.asp
+
+Note you can use PHP (or other programming language) to execute XPath queries (https://www.w3schools.com/php/func_simplexml_xpath.asp),
+and also execute cURL (http://php.net/manual/en/book.curl.php)
 
 
 ## HTML documents 
@@ -67,6 +67,47 @@ xmllint --xpath '//a[@class="image"]/@href' Asthma.html > AsthmaImages.txt
 
 You can now replace the _sed_ and _grep_ commands of previous modules by using XPath queries.
 
+## Abstracts and Annotation
+
+To get the abstracts of the articles you can use the following query and save it to a file:
+```
+xmllint --xpath 'string(//Abstract)' Articles.xml > Abstracts.txt
+```
+
+To find more diseases in the abstracts you can use the MER API (http://labs.fc.ul.pt/mer/):
+```
+curl --data-urlencode "text=$(cat ArticlesAbstracts.xml)" 'http://labs.rd.ciencias.ulisboa.pt/mer/api.php?lexicon=disease'
+```
+
+and you should get the following output with the diseases found and where they were found: 
+```
+337	343	asthma
+345	349	COPD
+356	362	cancer
+245	260	viral infection
+351	362	lung cancer
+378	396	pulmonary fibrosis
+367	396	idiopathic pulmonary fibrosis
+```
+
+Search these terms in the Disease Ontology portal (http://disease-ontology.org/), and you will get the the following identifiers: 
+
+- asthma: DOID:2841
+- COPD: DOID:3083
+- cancer: DOID:162
+- viral infection: DOID:934
+- lung cancer: DOID:2841
+- pulmonary fibrosis: DOID:3770
+- idiopathic pulmonary fibrosis: DOID:0050156 
+
+Considering that Asthma is what the user is interested, you can measure the similarity (relevance) of between DOID:2841 and the other terms using teh tool DiShIn (http://labs.fc.ul.pt/dishin/).
+You will see that cancer and viral infection have low similarity, so less relevant than all the others. 
+
+To perform these last steps programmatically you should download the Disease Ontology:
+- https://github.com/DiseaseOntology/HumanDiseaseOntology/blob/master/src/ontology/
+- SQLite: http://labs.rd.ciencias.ulisboa.pt/dishin/hdo.db
+and install MER (https://github.com/lasigeBioTM/MER) and DiShIn (https://github.com/lasigeBioTM/DiShIn) locally. 
+MER is available in _appserver_ at /opt/MER-0.1/.
 
 
 ## Additional References
