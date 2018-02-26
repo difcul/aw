@@ -92,7 +92,7 @@ and you should get the following output with the diseases found and where they w
 
 Search these terms in the Disease Ontology portal (http://disease-ontology.org/), and you will get the the following identifiers: 
 
-- asthma: DOID:2841
+** asthma: DOID:2841
 - COPD: DOID:3083
 - cancer: DOID:162
 - viral infection: DOID:934
@@ -100,7 +100,7 @@ Search these terms in the Disease Ontology portal (http://disease-ontology.org/)
 - pulmonary fibrosis: DOID:3770
 - idiopathic pulmonary fibrosis: DOID:0050156 
 
-Considering that Asthma is what the user is interested, you can measure the similarity (relevance) of between DOID:2841 and the other terms using teh tool DiShIn (http://labs.fc.ul.pt/dishin/).
+Considering that Asthma is on what the user is interested in, you can measure the similarity (relevance) between Asthma and the other terms using the tool DiShIn (http://labs.fc.ul.pt/dishin/) and their identifiers.
 You will see that cancer and viral infection have low similarity, so less relevant than all the others. 
 
 To perform these last steps programmatically you should download the Disease Ontology:
