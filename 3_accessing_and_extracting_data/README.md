@@ -103,11 +103,7 @@ Search these terms in the Disease Ontology portal (http://disease-ontology.org/)
 Considering that _asthma_ is on what the user is interested in, you can measure the similarity (relevance) between _asthma_ ```DOID:2841``` and the other terms using the tool DiShIn (http://labs.fc.ul.pt/dishin/) and their identifiers.
 You will see that _cancer_ and _viral infection_ have low similarity, so they are less relevant than all the others. 
 
-To perform these last steps programmatically you should download the Disease Ontology:
-
-- https://github.com/DiseaseOntology/HumanDiseaseOntology/blob/master/src/ontology/
-- SQLite: http://labs.rd.ciencias.ulisboa.pt/dishin/hdo.db
-
+To perform these last steps programmatically you should download the Disease Ontology (https://github.com/DiseaseOntology/HumanDiseaseOntology/blob/master/src/ontology/)
 and install MER (https://github.com/lasigeBioTM/MER) and DiShIn (https://github.com/lasigeBioTM/DiShIn) locally. 
 MER is available in _appserver_ at ```/opt/MER-0.1/```
 
