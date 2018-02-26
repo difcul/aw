@@ -92,7 +92,7 @@ and you should get the following output with the diseases found and where they w
 
 Search these terms in the Disease Ontology portal (http://disease-ontology.org/), and you will get the the following identifiers: 
 
-** asthma: DOID:2841
+- asthma: DOID:2841
 - COPD: DOID:3083
 - cancer: DOID:162
 - viral infection: DOID:934
