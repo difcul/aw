@@ -92,13 +92,13 @@ and you should get the following output with the diseases found and where they w
 
 Search these terms in the Disease Ontology portal (http://disease-ontology.org/), and you will get the the following identifiers: 
 
-- asthma: DOID:2841
-- COPD: DOID:3083
-- cancer: DOID:162
-- viral infection: DOID:934
-- lung cancer: DOID:2841
-- pulmonary fibrosis: DOID:3770
-- idiopathic pulmonary fibrosis: DOID:0050156 
+- asthma: ```DOID:2841```
+- COPD: ```DOID:3083```
+- cancer: ```DOID:162```
+- viral infection: ```DOID:934```
+- lung cancer: ```DOID:2841```
+- pulmonary fibrosis: ```DOID:3770```
+- idiopathic pulmonary fibrosis: ```DOID:0050156```
 
 Considering that Asthma is on what the user is interested in, you can measure the similarity (relevance) between Asthma and the other terms using the tool DiShIn (http://labs.fc.ul.pt/dishin/) and their identifiers.
 You will see that cancer and viral infection have low similarity, so less relevant than all the others. 
@@ -109,7 +109,7 @@ To perform these last steps programmatically you should download the Disease Ont
 - SQLite: http://labs.rd.ciencias.ulisboa.pt/dishin/hdo.db
 
 and install MER (https://github.com/lasigeBioTM/MER) and DiShIn (https://github.com/lasigeBioTM/DiShIn) locally. 
-MER is available in _appserver_ at /opt/MER-0.1/.
+MER is available in _appserver_ at ```/opt/MER-0.1/```
 
 
 ## Additional References
