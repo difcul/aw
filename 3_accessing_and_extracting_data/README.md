@@ -100,8 +100,8 @@ Search these terms in the Disease Ontology portal (http://disease-ontology.org/)
 - pulmonary fibrosis: ```DOID:3770```
 - idiopathic pulmonary fibrosis: ```DOID:0050156```
 
-Considering that Asthma is on what the user is interested in, you can measure the similarity (relevance) between Asthma and the other terms using the tool DiShIn (http://labs.fc.ul.pt/dishin/) and their identifiers.
-You will see that cancer and viral infection have low similarity, so less relevant than all the others. 
+Considering that _asthma_ is on what the user is interested in, you can measure the similarity (relevance) between _asthma_ ```DOID:2841``` and the other terms using the tool DiShIn (http://labs.fc.ul.pt/dishin/) and their identifiers.
+You will see that _cancer_ and _viral infection_ have low similarity, so they are less relevant than all the others. 
 
 To perform these last steps programmatically you should download the Disease Ontology:
 
