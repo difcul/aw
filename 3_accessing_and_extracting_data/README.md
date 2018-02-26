@@ -96,7 +96,7 @@ Search these terms in the Disease Ontology portal (http://disease-ontology.org/)
 - COPD: ```DOID:3083```
 - cancer: ```DOID:162```
 - viral infection: ```DOID:934```
-- lung cancer: ```DOID:2841```
+- lung cancer: ```DOID:1324```
 - pulmonary fibrosis: ```DOID:3770```
 - idiopathic pulmonary fibrosis: ```DOID:0050156```
 
