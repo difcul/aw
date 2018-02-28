@@ -26,9 +26,13 @@ curl "http://dbpedia.org/sparql/?query=PREFIX+dbo%3A+%3Chttp%3A%2F%2Fdbpedia.org
 xmllint --xpath '//uri/text()' Diseases.xml
 ```
 
-_EasyRdf_ (http://www.easyrdf.org/) is PHP library for RDF developers, 
-which you can use to execute SPARQL queries,
+Note that we had to remove the xmlns value (namespace) using _sed_, so xmllint could work with local names.
+
+You can also use _EasyRdf_ (http://www.easyrdf.org/), a PHP library for RDF developers
+that helps you execute SPARQL queries,
 for example: https://github.com/njh/easyrdf/blob/0.9.0/examples/basic_sparql.php
+
+For python developers, you can the package RDFLib, for example: https://github.com/RDFLib/sparqlwrapper
 
 ## Complex queries
 
@@ -42,7 +46,6 @@ SELECT ?disease ?person where {
  ?person dbo:deathCause ?disease .
 }
 ```
-
 
 Try the following query to get the English names instead of links:
 ```
@@ -85,7 +88,6 @@ SELECT ?diseasename ?personname ?deathdate where {
  FILTER ((?deathdate > "1800-01-01"^^xsd:date) && (?deathdate < "1900-01-01"^^xsd:date)) . 
 }
 ```
-
 
 Try the following query to also get their occupation if available:
 
