@@ -21,9 +21,9 @@ SELECT ?disease where {
 Now try the URL with xml format suing _curl_ and XPath to get all links:   
 
 ```
-curl "http://dbpedia.org/sparql?default-graph-uri=http%3A%2F%2Fdbpedia.org&query=PREFIX+dbo%3A+<http%3A%2F%2Fdbpedia.org%2Fontology%2F>%0D%0A%0D%0ASELECT+%3Fdire+%7B%0D%0A+%3Fdisease+a+dbo%3ADisease+.%0D%0A%7D&format=text%2Fxml" > Diseases.xml
+curl "http://dbpedia.org/sparql/?query=PREFIX+dbo%3A+%3Chttp%3A%2F%2Fdbpedia.org%2Fontology%2F%3E%0D%0A%0D%0ASELECT+%3Fdisease+where+%7B%0D%0A+%3Fdisease+a+dbo%3ADisease+.%0D%0A%7D&format=application/xml" | sed 's/xmlns="[^"]*"/xmlns=""/' > Diseases.xml
 
-xmllint --xpath '//a/@href' Diseases.xml 
+xmllint --xpath '//uri/text()' Diseases.xml
 ```
 
 _EasyRdf_ (http://www.easyrdf.org/) is PHP library for RDF developers, 

@@ -71,23 +71,23 @@ You can now replace the _sed_ and _grep_ commands of previous modules by using X
 
 To get the abstracts of the articles you can use the following query and save it to a file:
 ```
-xmllint --xpath 'string(//Abstract)' Articles.xml > Abstracts.txt
+xmllint --xpath '//AbstractText/text()' Articles.xml > Abstracts.txt
 ```
 
 To find more diseases in the abstracts you can use the MER API (http://labs.fc.ul.pt/mer/):
 ```
-curl --data-urlencode "text=$(cat ArticlesAbstracts.xml)" 'http://labs.rd.ciencias.ulisboa.pt/mer/api.php?lexicon=disease'
+curl --data-urlencode "text=$(cat Abstracts.txt)" 'httabs.rd.ciencias.ulisboa.pt/mer/api.php?lexicon=disease'
 ```
 
 and you should get the following output with the diseases found and where they were found: 
 ```
-337	343	asthma
-345	349	COPD
-356	362	cancer
-245	260	viral infection
-351	362	lung cancer
-378	396	pulmonary fibrosis
-367	396	idiopathic pulmonary fibrosis
+334     340     asthma
+342     346     COPD
+353     359     cancer
+242     257     viral infection
+348     359     lung cancer
+375     393     pulmonary fibrosis
+364     393     idiopathic pulmonary fibrosis
 ```
 
 Search these terms in the Disease Ontology portal (http://disease-ontology.org/), and you will get the the following identifiers: 

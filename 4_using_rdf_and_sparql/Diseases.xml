@@ -1,10 +1,13 @@
-<sparql xmlns="http://www.w3.org/2005/sparql-results#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/2001/sw/DataAccess/rf1/result2.xsd">
+<sparql xmlns="" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/2001/sw/DataAccess/rf1/result2.xsd">
  <head>
   <variable name="disease"/>
  </head>
  <results distinct="false" ordered="true">
   <result>
    <binding name="disease"><uri>http://dbpedia.org/resource/Meredith_effect</uri></binding>
+  </result>
+  <result>
+   <binding name="disease"><uri>http://dbpedia.org/resource/ALK_large_B-cell_lymphoma</uri></binding>
   </result>
   <result>
    <binding name="disease"><uri>http://dbpedia.org/resource/5-alpha-reductase_deficiency</uri></binding>
@@ -5099,12 +5102,6 @@
   </result>
   <result>
    <binding name="disease"><uri>http://dbpedia.org/resource/Heck–Matsuda_reaction</uri></binding>
-  </result>
-  <result>
-   <binding name="disease"><uri>http://dbpedia.org/resource/4_4_Photocycloaddition</uri></binding>
-  </result>
-  <result>
-   <binding name="disease"><uri>http://dbpedia.org/resource/Secondary_cutaneous_CD30_large-cell_lymphoma</uri></binding>
   </result>
   <result>
    <binding name="disease"><uri>http://dbpedia.org/resource/3-Methylcrotonyl-CoA_carboxylase_deficiency</uri></binding>
@@ -30002,6 +29999,9 @@
   </result>
   <result>
    <binding name="disease"><uri>http://dbpedia.org/resource/Perisylvian_syndrome</uri></binding>
+  </result>
+  <result>
+   <binding name="disease"><uri>http://dbpedia.org/resource/Warfarin_resistance</uri></binding>
   </result>
  </results>
 </sparql>
