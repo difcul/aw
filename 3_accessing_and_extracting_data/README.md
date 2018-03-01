@@ -10,21 +10,21 @@ However, it can be used to query any markup document.
 ## XPath
 
 XPAth enables us to query that document by using the structure of the document.
-For example, to get the XML data for two articles from PubMed and save it to a file:
-
-```
-curl "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=29462659,29461895&retmode=text&rettype=xml" > Articles.xml 
+For example, to get the XML data for two articles from PubMed ([29490421](https://www.ncbi.nlm.nih.gov/pubmed/29490421) and [29490060](https://www.ncbi.nlm.nih.gov/pubmed/29490060)) 
+and save it to a file:
+```shell
+curl "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=29490421,29490060&retmode=text&rettype=xml" > Articles.xml 
 ```
 
 Type ```cat Articles.xml``` to check the output, and try to figure out what the following XPath query will return:
 
-```
+```txt
 /PubmedArticle/PubmedData/ArticleIdList/ArticleId 
 ```
 
 You can execute the query using the _xmllint_ tool (type ```man xmllint``` to know more about _xmllint_) to get their Ids:
 
-```
+```shell
 xmllint --xpath '/PubmedArticleSet/PubmedArticle/PubmedData/ArticleIdList' Articles.xml
 ```
 
@@ -37,6 +37,7 @@ The XPath syntax enables more complex queries, try these ones:
 - ```//ArticleIdList/*``` - any elements that is a child of _ArticleIdList_;
 - ```//ArticleId/@IdType``` - all _IdType_ attributes of tags _ArticleId_;
 - ```//ArticleId[@IdType="doi"]'``` - element of type _ArticleId_, that has an attribute _IdType_ with the value 'doi';
+- ```//AbstractText/text()``` - the text value of elements of type _AbstractText_ 
 
 Check W3C for more about XPath syntax https://www.w3schools.com/xml/xpath_syntax.asp
 
@@ -49,19 +50,19 @@ and also execute cURL (http://php.net/manual/en/book.curl.php)
 You can apply the same concepts to HTML documents rather than XML. 
 For example download the wikipedia page about Asthma:
 
-```
+```shell
 curl https://en.wikipedia.org/wiki/Asthma > Asthma.html
 ```
 
 Now try to get all links using the following XPath:
 
-```
+```shell
 xmllint --xpath '//a/@href' Asthma.html 
 ```
 
 And get only the links to images and save it to a file: 
 
-```
+```shell
 xmllint --xpath '//a[@class="image"]/@href' Asthma.html > AsthmaImages.txt
 ```
 
@@ -70,41 +71,53 @@ You can now replace the _sed_ and _grep_ commands of previous modules by using X
 ## Abstracts and Annotation
 
 To get the abstracts of the articles you can use the following query and save it to a file:
-```
+```shell
 xmllint --xpath '//AbstractText/text()' Articles.xml > Abstracts.txt
 ```
 
 To find more diseases in the abstracts you can use the MER API (http://labs.fc.ul.pt/mer/):
-```
-curl --data-urlencode "text=$(cat Abstracts.txt)" 'httabs.rd.ciencias.ulisboa.pt/mer/api.php?lexicon=disease'
+```shell
+curl --data-urlencode "text=$(cat Abstracts.txt)" 'http://labs.rd.ciencias.ulisboa.pt/mer/api.php?lexicon=disease'
 ```
 
 and you should get the following output with the diseases found and where they were found: 
+```txt
+348	354	asthma
+359	363	COPD
+496	500	COPD
+504	510	asthma
+1066	1076	bronchitis
+1095	1101	asthma
+1135	1142	disease
+1306	1314	impetigo
+1316	1320	acne
+1322	1337	gastroenteritis
+2015	2025	bronchitis
+1173	1185	otitis media
+2156	2168	otitis media
+1105	1142	chronic obstructive pulmonary disease
+1281	1304	urinary tract infection
 ```
-334     340     asthma
-342     346     COPD
-353     359     cancer
-242     257     viral infection
-348     359     lung cancer
-375     393     pulmonary fibrosis
-364     393     idiopathic pulmonary fibrosis
+
+Search some of these terms in the Disease Ontology portal (http://disease-ontology.org/), and you will get the the following identifiers:
+```txt
+http://purl.obolibrary.org/obo/DOID_10754	otitis media
+http://purl.obolibrary.org/obo/DOID_13148	urinary tract infection
+http://purl.obolibrary.org/obo/DOID_2326	gastroenteritis
+http://purl.obolibrary.org/obo/DOID_2841	asthma
+http://purl.obolibrary.org/obo/DOID_3083	chronic obstructive pulmonary disease
+http://purl.obolibrary.org/obo/DOID_3083	COPD
+http://purl.obolibrary.org/obo/DOID_4	disease
+http://purl.obolibrary.org/obo/DOID_6132	bronchitis
+http://purl.obolibrary.org/obo/DOID_6543	acne
+http://purl.obolibrary.org/obo/DOID_8504	impetigo
 ```
+Considering that _asthma_ is on what the user is interested in, you can measure the similarity (relevance) between _disease_ ```DOID:2841``` and 
+the other terms using the tool DiShIn (http://labs.fc.ul.pt/dishin/) and their identifiers. 
+You will see that _disease_ has low similarity, because it is a generic term and then it has low relevance for ranking search results. 
 
-Search these terms in the Disease Ontology portal (http://disease-ontology.org/), and you will get the the following identifiers: 
-
-- asthma: ```DOID:2841```
-- COPD: ```DOID:3083```
-- cancer: ```DOID:162```
-- viral infection: ```DOID:934```
-- lung cancer: ```DOID:1324```
-- pulmonary fibrosis: ```DOID:3770```
-- idiopathic pulmonary fibrosis: ```DOID:0050156```
-
-Considering that _asthma_ is on what the user is interested in, you can measure the similarity (relevance) between _asthma_ ```DOID:2841``` and the other terms using the tool DiShIn (http://labs.fc.ul.pt/dishin/) and their identifiers.
-You will see that _cancer_ and _viral infection_ have low similarity, so they are less relevant than all the others. 
-
-To perform these last steps programmatically you should download the Disease Ontology (https://github.com/DiseaseOntology/HumanDiseaseOntology/blob/master/src/ontology/)
-and install MER (https://github.com/lasigeBioTM/MER) and DiShIn (https://github.com/lasigeBioTM/DiShIn) locally. 
+To perform these last step programmatically you can install MER (https://github.com/lasigeBioTM/MER) and DiShIn (https://github.com/lasigeBioTM/DiShIn) locally, 
+and follow the example https://github.com/lasigeBioTM/MER#ontology-and-pubmed
 MER is available in _appserver_ at ```/opt/MER-0.1/```
 
 

@@ -2,122 +2,117 @@
 <!DOCTYPE PubmedArticleSet PUBLIC "-//NLM//DTD PubMedArticle, 1st January 2018//EN" "https://dtd.nlm.nih.gov/ncbi/pubmed/out/pubmed_180101.dtd">
 <PubmedArticleSet>
 <PubmedArticle>
-    <MedlineCitation Status="Publisher" Owner="NLM">
-        <PMID Version="1">29462659</PMID>
+    <MedlineCitation Status="In-Process" Owner="NLM">
+        <PMID Version="1">29490421</PMID>
         <DateRevised>
             <Year>2018</Year>
             <Month>02</Month>
-            <Day>20</Day>
+            <Day>28</Day>
         </DateRevised>
-        <Article PubModel="Print-Electronic">
+        <Article PubModel="Print">
             <Journal>
-                <ISSN IssnType="Electronic">1879-016X</ISSN>
+                <ISSN IssnType="Print">2451-4934</ISSN>
                 <JournalIssue CitedMedium="Internet">
+                    <Volume>86</Volume>
+                    <Issue>1</Issue>
                     <PubDate>
                         <Year>2018</Year>
-                        <Month>Feb</Month>
-                        <Day>17</Day>
                     </PubDate>
                 </JournalIssue>
-                <Title>Pharmacology &amp; therapeutics</Title>
-                <ISOAbbreviation>Pharmacol. Ther.</ISOAbbreviation>
+                <Title>Advances in respiratory medicine</Title>
+                <ISOAbbreviation>Adv Respir Med</ISOAbbreviation>
             </Journal>
-            <ArticleTitle>Safer approaches to therapeutic modulation of TGF-β signaling for respiratory disease.</ArticleTitle>
-            <ELocationID EIdType="pii" ValidYN="Y">S0163-7258(18)30035-4</ELocationID>
-            <ELocationID EIdType="doi" ValidYN="Y">10.1016/j.pharmthera.2018.02.010</ELocationID>
+            <ArticleTitle>Dry powder inhalers - between the doctor and the patient.</ArticleTitle>
+            <Pagination>
+                <MedlinePgn>44-52</MedlinePgn>
+            </Pagination>
+            <ELocationID EIdType="doi" ValidYN="Y">10.5603/ARM.2017.0061</ELocationID>
             <Abstract>
-                <AbstractText>The transforming growth factor (TGF)-β cytokines play a central role in development and progression of chronic respiratory diseases. TGF-β overexpression in chronic inflammation, remodeling, fibrotic process and susceptibility to viral infection is established in the most prevalent chronic respiratory diseases including asthma, COPD, lung cancer and idiopathic pulmonary fibrosis. Despite the overwhelming burden of respiratory diseases in the world, new pharmacological therapies have been limited in impact. Although TGF-β inhibition as a therapeutic strategy carries great expectations, the constraints in avoiding compromising the beneficial pleiotropic effects of TGF-β, including the anti-proliferative and immune suppressive effects, have limited the development of effective pharmacological modulators. In this review, we focus on the pathways subserving deleterious and beneficial TGF-β to identify strategies for selective modulation of more distal signaling pathways that may result in agents with improved safety/efficacy profiles. Adverse effects of TGF-β inhibitors in respiratory clinical trials are comprehensively reviewed, including those of the marketed TGF-β modulators, pirfenidone and nintedanib. Precise modulation of TGF-β signaling may result in new safer therapies for chronic respiratory diseases.</AbstractText>
-                <CopyrightInformation>Copyright © 2018. Published by Elsevier Inc.</CopyrightInformation>
+                <AbstractText>The article briefly presents currently accessible dry powder inhalers (DPI). Basing on the data from the literature, we discussed the most common mistakes related to the utilisation of DPI as well as their clinical and economic consequences. We also extensively analysed all factors that may influence the efficacy and safety of inhaler therapy of asthma and COPD, mostly with the use of DPI. In addition, we indicated the potential to improve the efficacy of inhaler therapy from the doctor and COPD or asthma patient perspective. We also presented a DPI choice algorithm including the patient's preferences and competences.</AbstractText>
             </Abstract>
             <AuthorList CompleteYN="Y">
                 <Author ValidYN="Y">
-                    <LastName>Lachapelle</LastName>
-                    <ForeName>Philippe</ForeName>
-                    <Initials>P</Initials>
-                    <AffiliationInfo>
-                        <Affiliation>Department of Allergy and Immunology, The Royal Melbourne Hospital, 300 Grattan St, Parkville, Victoria 3050; Department of Pharmacology and Therapeutics, The University of Melbourne, Parkville, Victoria 3010; Department of Respiratory Medicine &amp; Sleep Disorders, The Royal Melbourne Hospital, 300 Grattan St, Parkville, Victoria 3050; Lung Health Research Centre, The University of Melbourne, Parkville, Victoria 3010, Australia.</Affiliation>
-                    </AffiliationInfo>
-                </Author>
-                <Author ValidYN="Y">
-                    <LastName>Li</LastName>
-                    <ForeName>Meina</ForeName>
-                    <Initials>M</Initials>
-                    <AffiliationInfo>
-                        <Affiliation>Department of Pharmacology and Therapeutics, The University of Melbourne, Parkville, Victoria 3010; Lung Health Research Centre, The University of Melbourne, Parkville, Victoria 3010, Australia.</Affiliation>
-                    </AffiliationInfo>
-                </Author>
-                <Author ValidYN="Y">
-                    <LastName>Douglass</LastName>
-                    <ForeName>Jo</ForeName>
-                    <Initials>J</Initials>
-                    <AffiliationInfo>
-                        <Affiliation>Department of Allergy and Immunology, The Royal Melbourne Hospital, 300 Grattan St, Parkville, Victoria 3050; Lung Health Research Centre, The University of Melbourne, Parkville, Victoria 3010, Australia.</Affiliation>
-                    </AffiliationInfo>
-                </Author>
-                <Author ValidYN="Y">
-                    <LastName>Stewart</LastName>
-                    <ForeName>Alastair</ForeName>
+                    <LastName>Emeryk</LastName>
+                    <ForeName>Andrzej</ForeName>
                     <Initials>A</Initials>
                     <AffiliationInfo>
-                        <Affiliation>Department of Pharmacology and Therapeutics, The University of Melbourne, Parkville, Victoria 3010; Lung Health Research Centre, The University of Melbourne, Parkville, Victoria 3010, Australia. Electronic address: astew@unimelb.edu.au.</Affiliation>
+                        <Affiliation>Klinika Chorób Płuc i Reumatologii UM w Dziecięcej Lublinie. andrzejemeryk@plusnet.pl.</Affiliation>
                     </AffiliationInfo>
+                </Author>
+                <Author ValidYN="Y">
+                    <LastName>Pirożyński</LastName>
+                    <ForeName>M</ForeName>
+                    <Initials>M</Initials>
+                </Author>
+                <Author ValidYN="Y">
+                    <LastName>Emeryk-Maksymiuk</LastName>
+                    <ForeName>J</ForeName>
+                    <Initials>J</Initials>
                 </Author>
             </AuthorList>
             <Language>eng</Language>
             <PublicationTypeList>
                 <PublicationType UI="D016428">Journal Article</PublicationType>
-                <PublicationType UI="D016454">Review</PublicationType>
             </PublicationTypeList>
-            <ArticleDate DateType="Electronic">
-                <Year>2018</Year>
-                <Month>02</Month>
-                <Day>17</Day>
-            </ArticleDate>
         </Article>
         <MedlineJournalInfo>
-            <Country>England</Country>
-            <MedlineTA>Pharmacol Ther</MedlineTA>
-            <NlmUniqueID>7905840</NlmUniqueID>
-            <ISSNLinking>0163-7258</ISSNLinking>
+            <Country>Poland</Country>
+            <MedlineTA>Adv Respir Med</MedlineTA>
+            <NlmUniqueID>101697329</NlmUniqueID>
         </MedlineJournalInfo>
         <KeywordList Owner="NOTNLM">
-            <Keyword MajorTopicYN="N">Asthma</Keyword>
             <Keyword MajorTopicYN="N">COPD</Keyword>
-            <Keyword MajorTopicYN="N">Fibrosis</Keyword>
-            <Keyword MajorTopicYN="N">Immunosuppression</Keyword>
-            <Keyword MajorTopicYN="N">Respiratory diseases</Keyword>
-            <Keyword MajorTopicYN="N">TGF-β inhibitors</Keyword>
+            <Keyword MajorTopicYN="N">Ellipta inhaler</Keyword>
+            <Keyword MajorTopicYN="N">asthma</Keyword>
+            <Keyword MajorTopicYN="N">dry powder inhaler</Keyword>
+            <Keyword MajorTopicYN="N">errors in inhalation</Keyword>
+            <Keyword MajorTopicYN="N">patient</Keyword>
         </KeywordList>
     </MedlineCitation>
     <PubmedData>
         <History>
+            <PubMedPubDate PubStatus="received">
+                <Year>2017</Year>
+                <Month>12</Month>
+                <Day>18</Day>
+            </PubMedPubDate>
+            <PubMedPubDate PubStatus="accepted">
+                <Year>2018</Year>
+                <Month>02</Month>
+                <Day>14</Day>
+            </PubMedPubDate>
+            <PubMedPubDate PubStatus="revised">
+                <Year>2018</Year>
+                <Month>01</Month>
+                <Day>29</Day>
+            </PubMedPubDate>
             <PubMedPubDate PubStatus="entrez">
                 <Year>2018</Year>
-                <Month>2</Month>
-                <Day>21</Day>
+                <Month>3</Month>
+                <Day>1</Day>
                 <Hour>6</Hour>
                 <Minute>0</Minute>
             </PubMedPubDate>
             <PubMedPubDate PubStatus="pubmed">
                 <Year>2018</Year>
-                <Month>2</Month>
-                <Day>21</Day>
+                <Month>3</Month>
+                <Day>1</Day>
                 <Hour>6</Hour>
                 <Minute>0</Minute>
             </PubMedPubDate>
             <PubMedPubDate PubStatus="medline">
                 <Year>2018</Year>
-                <Month>2</Month>
-                <Day>21</Day>
+                <Month>3</Month>
+                <Day>1</Day>
                 <Hour>6</Hour>
                 <Minute>0</Minute>
             </PubMedPubDate>
         </History>
-        <PublicationStatus>aheadofprint</PublicationStatus>
+        <PublicationStatus>ppublish</PublicationStatus>
         <ArticleIdList>
-            <ArticleId IdType="pubmed">29462659</ArticleId>
-            <ArticleId IdType="pii">S0163-7258(18)30035-4</ArticleId>
-            <ArticleId IdType="doi">10.1016/j.pharmthera.2018.02.010</ArticleId>
+            <ArticleId IdType="pubmed">29490421</ArticleId>
+            <ArticleId IdType="pii">VM/OJS/J/56546</ArticleId>
+            <ArticleId IdType="doi">10.5603/ARM.2017.0061</ArticleId>
         </ArticleIdList>
     </PubmedData>
 </PubmedArticle>
@@ -125,81 +120,89 @@
 
 <PubmedArticle>
     <MedlineCitation Status="In-Data-Review" Owner="NLM">
-        <PMID Version="1">29461895</PMID>
+        <PMID Version="1">29490060</PMID>
         <DateRevised>
             <Year>2018</Year>
             <Month>02</Month>
-            <Day>20</Day>
+            <Day>28</Day>
         </DateRevised>
         <Article PubModel="Print">
             <Journal>
-                <ISSN IssnType="Electronic">2325-6621</ISSN>
+                <ISSN IssnType="Electronic">1460-2091</ISSN>
                 <JournalIssue CitedMedium="Internet">
-                    <Volume>15</Volume>
-                    <Issue>Supplement_1</Issue>
+                    <Volume>73</Volume>
+                    <Issue>suppl_2</Issue>
                     <PubDate>
                         <Year>2018</Year>
                         <Month>Feb</Month>
+                        <Day>01</Day>
                     </PubDate>
                 </JournalIssue>
-                <Title>Annals of the American Thoracic Society</Title>
-                <ISOAbbreviation>Ann Am Thorac Soc</ISOAbbreviation>
+                <Title>The Journal of antimicrobial chemotherapy</Title>
+                <ISOAbbreviation>J. Antimicrob. Chemother.</ISOAbbreviation>
             </Journal>
-            <ArticleTitle>Scaling Physiologic Function from Cell to Tissue in Asthma, Cancer, and Development.</ArticleTitle>
+            <ArticleTitle>Actual versus 'ideal' antibiotic prescribing for common conditions in English primary care.</ArticleTitle>
             <Pagination>
-                <MedlinePgn>S35-S37</MedlinePgn>
+                <MedlinePgn>19-26</MedlinePgn>
             </Pagination>
-            <ELocationID EIdType="doi" ValidYN="Y">10.1513/AnnalsATS.201710-790KV</ELocationID>
+            <ELocationID EIdType="doi" ValidYN="Y">10.1093/jac/dkx502</ELocationID>
             <Abstract>
-                <AbstractText>The formation of an integrated tissue from individual cells depends on the properties of the individual cells as well as the interaction of many cells acting as a collective. Three fundamental physiological processes govern the collective scaling from the individual cell to a working tissue: cell sorting, tissue assembly, and collective cellular migration. Mechanistically, cell sorting is governed by differential adhesion, whereas tissue assembly is controlled by the epithelial-to-mesenchymal transition and its inverse, the mesenchymal-to-epithelial transition. The mechanism driving collective cellular migration, however, is not clear. To fill that gap, here we consider cell jamming and unjamming, and their role in collective cellular migration.</AbstractText>
+                <AbstractText Label="Objectives" NlmCategory="UNASSIGNED">Previous work based on guidelines and expert opinion identified 'ideal' prescribing proportions-the overall proportion of consultations that should result in an antibiotic prescription-for common infectious conditions. Here, actual condition-specific prescribing proportions in primary care in England were compared with ideal prescribing proportions identified by experts.</AbstractText>
+                <AbstractText Label="Methods" NlmCategory="UNASSIGNED">All recorded consultations for common infectious conditions (cough, bronchitis, exacerbations of asthma or chronic obstructive pulmonary disease, sore throat, rhinosinusitis, otitis media, lower respiratory tract infection, upper respiratory tract infection, influenza-like illness, urinary tract infection, impetigo, acne, gastroenteritis) for 2013-15 were extracted from The Health Improvement Network (THIN) database. The proportions of consultations resulting in an antibiotic prescription were established, concentrating on acute presentations in patients without relevant comorbidities. These actual prescribing proportions were then compared with previously established 'ideal' proportions by condition.</AbstractText>
+                <AbstractText Label="Results" NlmCategory="UNASSIGNED">For most conditions, substantially higher proportions of consultations resulted in an antibiotic prescription than was deemed appropriate according to expert opinion. An antibiotic was prescribed in 41% of all acute cough consultations when experts advocated 10%. For other conditions the proportions were: bronchitis (actual 82% versus ideal 13%); sore throat (actual 59% versus ideal 13%); rhinosinusitis (actual 88% versus ideal 11%); and acute otitis media in 2- to 18-year-olds (actual 92% versus ideal 17%). Substantial variation between practices was found.</AbstractText>
+                <AbstractText Label="Conclusions" NlmCategory="UNASSIGNED">This work has identified substantial overprescribing of antibiotics in English primary care, and highlights conditions where this is most pronounced, particularly in respiratory tract conditions.</AbstractText>
             </Abstract>
             <AuthorList CompleteYN="Y">
                 <Author ValidYN="Y">
-                    <LastName>Sharma</LastName>
-                    <ForeName>Yasha</ForeName>
-                    <Initials>Y</Initials>
+                    <LastName>Pouwels</LastName>
+                    <ForeName>Koen B</ForeName>
+                    <Initials>KB</Initials>
                     <AffiliationInfo>
-                        <Affiliation>Department of Environmental Health, Harvard T.H. Chan School of Public Health, Boston, Massachusetts.</Affiliation>
+                        <Affiliation>Modelling and Economics Unit, National Infection Service, Public Health England, London, UK.</Affiliation>
+                    </AffiliationInfo>
+                    <AffiliationInfo>
+                        <Affiliation>PharmacoTherapy, -Epidemiology &amp; -Economics, Department of Pharmacy, University of Groningen, Groningen, The Netherlands.</Affiliation>
+                    </AffiliationInfo>
+                    <AffiliationInfo>
+                        <Affiliation>MRC Centre for Outbreak Analysis and Modelling, Department of Infectious Disease Epidemiology, Imperial College School of Public Health, London, UK.</Affiliation>
                     </AffiliationInfo>
                 </Author>
                 <Author ValidYN="Y">
-                    <LastName>Atia</LastName>
-                    <ForeName>Lior</ForeName>
-                    <Initials>L</Initials>
+                    <LastName>Dolk</LastName>
+                    <ForeName>F Christiaan K</ForeName>
+                    <Initials>FCK</Initials>
                     <AffiliationInfo>
-                        <Affiliation>Department of Environmental Health, Harvard T.H. Chan School of Public Health, Boston, Massachusetts.</Affiliation>
+                        <Affiliation>Modelling and Economics Unit, National Infection Service, Public Health England, London, UK.</Affiliation>
+                    </AffiliationInfo>
+                    <AffiliationInfo>
+                        <Affiliation>PharmacoTherapy, -Epidemiology &amp; -Economics, Department of Pharmacy, University of Groningen, Groningen, The Netherlands.</Affiliation>
                     </AffiliationInfo>
                 </Author>
                 <Author ValidYN="Y">
-                    <LastName>Rhodes</LastName>
-                    <ForeName>Christalyn Sims</ForeName>
-                    <Initials>CS</Initials>
+                    <LastName>Smith</LastName>
+                    <ForeName>David R M</ForeName>
+                    <Initials>DRM</Initials>
                     <AffiliationInfo>
-                        <Affiliation>Department of Environmental Health, Harvard T.H. Chan School of Public Health, Boston, Massachusetts.</Affiliation>
+                        <Affiliation>Modelling and Economics Unit, National Infection Service, Public Health England, London, UK.</Affiliation>
                     </AffiliationInfo>
                 </Author>
                 <Author ValidYN="Y">
-                    <LastName>DeCamp</LastName>
-                    <ForeName>Stephen J</ForeName>
-                    <Initials>SJ</Initials>
+                    <LastName>Robotham</LastName>
+                    <ForeName>Julie V</ForeName>
+                    <Initials>JV</Initials>
                     <AffiliationInfo>
-                        <Affiliation>Department of Environmental Health, Harvard T.H. Chan School of Public Health, Boston, Massachusetts.</Affiliation>
+                        <Affiliation>Modelling and Economics Unit, National Infection Service, Public Health England, London, UK.</Affiliation>
                     </AffiliationInfo>
                 </Author>
                 <Author ValidYN="Y">
-                    <LastName>Mitchel</LastName>
-                    <ForeName>Jennifer</ForeName>
-                    <Initials>J</Initials>
+                    <LastName>Smieszek</LastName>
+                    <ForeName>Timo</ForeName>
+                    <Initials>T</Initials>
                     <AffiliationInfo>
-                        <Affiliation>Department of Environmental Health, Harvard T.H. Chan School of Public Health, Boston, Massachusetts.</Affiliation>
+                        <Affiliation>Modelling and Economics Unit, National Infection Service, Public Health England, London, UK.</Affiliation>
                     </AffiliationInfo>
-                </Author>
-                <Author ValidYN="Y">
-                    <LastName>Fredberg</LastName>
-                    <ForeName>Jeffrey J</ForeName>
-                    <Initials>JJ</Initials>
                     <AffiliationInfo>
-                        <Affiliation>Department of Environmental Health, Harvard T.H. Chan School of Public Health, Boston, Massachusetts.</Affiliation>
+                        <Affiliation>MRC Centre for Outbreak Analysis and Modelling, Department of Infectious Disease Epidemiology, Imperial College School of Public Health, London, UK.</Affiliation>
                     </AffiliationInfo>
                 </Author>
             </AuthorList>
@@ -209,46 +212,41 @@
             </PublicationTypeList>
         </Article>
         <MedlineJournalInfo>
-            <Country>United States</Country>
-            <MedlineTA>Ann Am Thorac Soc</MedlineTA>
-            <NlmUniqueID>101600811</NlmUniqueID>
-            <ISSNLinking>2325-6621</ISSNLinking>
+            <Country>England</Country>
+            <MedlineTA>J Antimicrob Chemother</MedlineTA>
+            <NlmUniqueID>7513617</NlmUniqueID>
+            <ISSNLinking>0305-7453</ISSNLinking>
         </MedlineJournalInfo>
-        <KeywordList Owner="NOTNLM">
-            <Keyword MajorTopicYN="N">collective</Keyword>
-            <Keyword MajorTopicYN="N">epithelium</Keyword>
-            <Keyword MajorTopicYN="N">jamming</Keyword>
-            <Keyword MajorTopicYN="N">migration</Keyword>
-        </KeywordList>
     </MedlineCitation>
     <PubmedData>
         <History>
             <PubMedPubDate PubStatus="entrez">
                 <Year>2018</Year>
-                <Month>2</Month>
-                <Day>21</Day>
+                <Month>3</Month>
+                <Day>1</Day>
                 <Hour>6</Hour>
                 <Minute>0</Minute>
             </PubMedPubDate>
             <PubMedPubDate PubStatus="pubmed">
                 <Year>2018</Year>
-                <Month>2</Month>
-                <Day>21</Day>
+                <Month>3</Month>
+                <Day>1</Day>
                 <Hour>6</Hour>
                 <Minute>0</Minute>
             </PubMedPubDate>
             <PubMedPubDate PubStatus="medline">
                 <Year>2018</Year>
-                <Month>2</Month>
-                <Day>21</Day>
+                <Month>3</Month>
+                <Day>1</Day>
                 <Hour>6</Hour>
                 <Minute>0</Minute>
             </PubMedPubDate>
         </History>
         <PublicationStatus>ppublish</PublicationStatus>
         <ArticleIdList>
-            <ArticleId IdType="pubmed">29461895</ArticleId>
-            <ArticleId IdType="doi">10.1513/AnnalsATS.201710-790KV</ArticleId>
+            <ArticleId IdType="pubmed">29490060</ArticleId>
+            <ArticleId IdType="pii">4841820</ArticleId>
+            <ArticleId IdType="doi">10.1093/jac/dkx502</ArticleId>
         </ArticleIdList>
     </PubmedData>
 </PubmedArticle>
