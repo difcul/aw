@@ -114,7 +114,7 @@ http://purl.obolibrary.org/obo/DOID_8504	impetigo
 ```
 Considering that _asthma_ is on what the user is interested in, you can measure the similarity (relevance) between _asthma_ ```DOID:2841``` and 
 the other terms using the tool DiShIn (http://labs.fc.ul.pt/dishin/) and their identifiers. 
-You will see that _disease_ has low similarity values, because it is a generic term. So, _disease_ should have a lower contribution for ranking search results about _asthma_. 
+You will see that _disease_ has low similarity values, because it is a generic term. So, _disease_ should have a lower contribution for ranking search results about _asthma_. Tip: calculate the similarity between the term and itself, and the resnik measure will give you the information content (specificity) of that term.  
 
 To perform these last steps programmatically you can use MER (https://github.com/lasigeBioTM/MER) and DiShIn (https://github.com/lasigeBioTM/DiShIn) locally, 
 and follow the example https://github.com/lasigeBioTM/MER#ontology-and-pubmed
