@@ -116,7 +116,7 @@ Considering that _asthma_ is on what the user is interested in, you can measure 
 the other terms using the tool DiShIn (http://labs.fc.ul.pt/dishin/) and their identifiers. 
 You will see that _disease_ has low similarity, because it is a generic term and then it has low relevance for ranking search results. 
 
-To perform these last step programmatically you can install MER (https://github.com/lasigeBioTM/MER) and DiShIn (https://github.com/lasigeBioTM/DiShIn) locally, 
+To perform these last steps programmatically you can install MER (https://github.com/lasigeBioTM/MER) and DiShIn (https://github.com/lasigeBioTM/DiShIn) locally, 
 and follow the example https://github.com/lasigeBioTM/MER#ontology-and-pubmed
 MER is available in _appserver_ at ```/opt/MER-0.1/```
 
