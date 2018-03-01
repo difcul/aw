@@ -118,8 +118,11 @@ You will see that _disease_ has low similarity, because it is a generic term and
 
 To perform these last steps programmatically you can install MER (https://github.com/lasigeBioTM/MER) and DiShIn (https://github.com/lasigeBioTM/DiShIn) locally, 
 and follow the example https://github.com/lasigeBioTM/MER#ontology-and-pubmed
-MER is available in _appserver_ at ```/opt/MER-0.1/```
 
+```shell
+git clone https://github.com/lasigeBioTM/MER.git
+git clone https://github.com/lasigeBioTM/DiShIn.git
+```
 
 ## Additional References
 
@@ -127,5 +130,7 @@ MER is available in _appserver_ at ```/opt/MER-0.1/```
 
 - https://www.w3schools.com/xml/xpath_intro.asp
 
+- https://www.researchgate.net/publication/323220245_Text_Mining_for_Bioinformatics_Using_Biomedical_Literature
 
+- https://www.researchgate.net/publication/323219905_Semantic_Similarity_Definition
 
