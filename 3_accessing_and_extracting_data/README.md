@@ -112,14 +112,71 @@ http://purl.obolibrary.org/obo/DOID_6132	bronchitis
 http://purl.obolibrary.org/obo/DOID_6543	acne
 http://purl.obolibrary.org/obo/DOID_8504	impetigo
 ```
-Considering that _asthma_ is on what the user is interested in, you can measure the similarity (relevance) between _disease_ ```DOID:2841``` and 
+Considering that _asthma_ is on what the user is interested in, you can measure the similarity (relevance) between _asthma_ ```DOID:2841``` and 
 the other terms using the tool DiShIn (http://labs.fc.ul.pt/dishin/) and their identifiers. 
 You will see that _disease_ has low similarity, because it is a generic term and then it has low relevance for ranking search results. 
 
-To perform these last steps programmatically you can install MER (https://github.com/lasigeBioTM/MER) and DiShIn (https://github.com/lasigeBioTM/DiShIn) locally, 
+To perform these last steps programmatically you can use MER (https://github.com/lasigeBioTM/MER) and DiShIn (https://github.com/lasigeBioTM/DiShIn) locally, 
 and follow the example https://github.com/lasigeBioTM/MER#ontology-and-pubmed
 
+MER and DiShIn are also available in _appserver_ at _/home/aw000/MER_ and /home/aw000/DiShIn_, respectively.
+So in _appserver_ you can execute the following commands:
+
 ```shell
+text=$(cat Abstracts.txt) 
+(cd /home/aw000/MER; ./get_entities.sh "$text" doid-simple | ./link_entities.sh data/doid-simple.owl | sort | uniq)
+```
+and you will get as output:
+
+```txt
+http://purl.obolibrary.org/obo/DOID_10754	otitis media
+http://purl.obolibrary.org/obo/DOID_13148	urinary tract infection
+http://purl.obolibrary.org/obo/DOID_2326	gastroenteritis
+http://purl.obolibrary.org/obo/DOID_2841	asthma
+http://purl.obolibrary.org/obo/DOID_3083	chronic obstructive pulmonary disease
+http://purl.obolibrary.org/obo/DOID_3083	COPD
+http://purl.obolibrary.org/obo/DOID_4	disease
+http://purl.obolibrary.org/obo/DOID_6132	bronchitis
+http://purl.obolibrary.org/obo/DOID_6543	acne
+http://purl.obolibrary.org/obo/DOID_8504	impetigo
+```
+
+then create a python script (in a file named _disease.py_) to call DiShIn:
+
+```python
+import sys
+sys.path.insert(0, '/home/aw000/DiShIn/')
+
+import ssm
+import semanticbase
+
+ssm.semantic_base('/home/aw000/DiShIn/disease.db')
+
+e1 = ssm.get_id('DOID_2841') # Asthma
+e2 = ssm.get_id('DOID_3083') # COPD
+e3 = ssm.get_id('DOID_4') # Disease
+
+ssm.intrinsic = True
+ssm.mica = True
+
+print ('similarity(asthma,COPD) = ' + str(ssm.ssm_lin (e1,e2)))
+print ('similarity(asthma,disease) = ' + str(ssm.ssm_lin (e1,e3)))
+```
+
+execute it:
+```shell
+python3 disease.py 
+```
+
+and the result will be something like this:
+
+```txt
+similarity(asthma,COPD) = 0.5502114916789094
+similarity(asthma,disease) = -0.0
+```
+To run in a local machine you have to install the tools first:
+
+```
 git clone https://github.com/lasigeBioTM/MER.git
 git clone https://github.com/lasigeBioTM/DiShIn.git
 ```
