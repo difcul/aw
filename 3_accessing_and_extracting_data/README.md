@@ -164,7 +164,7 @@ To run in a local machine install the tools first:
 git clone https://github.com/lasigeBioTM/MER.git
 git clone https://github.com/lasigeBioTM/DiShIn.git
 ```
-and download Human Disease Ontology: https://github.com/DiseaseOntology/HumanDiseaseOntology/tree/master/src/ontology
+and download the Human Disease Ontology: https://github.com/DiseaseOntology/HumanDiseaseOntology/tree/master/src/ontology
 
 ## Additional References
 
