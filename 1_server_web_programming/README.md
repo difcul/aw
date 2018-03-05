@@ -18,7 +18,12 @@ PHP is a programming language that is specially targeted at web application deve
 
 To make PHP files available you will have to resort to a Web server that supports PHP, meaning that all files with extension _.php_ will be executed by the PHP interpreter. A Web server is an application that is able to accept HTTP requests and return a response, normally an HTML file or other objects like images, PDFs, etc. One of the most popular Web servers that support PHP is Apache, that can be installed on several operating systems. 
 
-The first step to write and deploy a web application is to identify where these files need to be stored so they can be executed by the Web server every time an HTTP request is received. In the case of _appserver_, and most Apache Web servers, the web root for each user is the **public_html** folder (or _/var/www/html/_ in local machines). 
+The first step to write and deploy a web application is to identify where these files need to be stored so they can be executed by the Web server every time an HTTP request is received. 
+In the case of _appserver_, and most Apache Web servers, the web root for each user is the **public_html** folder (or _/var/www/html/_ in local machines). 
+
+In Windows 10, you can also install PHP and a Apache Web server on Ubuntu (https://kwiksteps.com/php-ubuntu-on-windows/).
+
+### Appserver
 
 To access _appserver_, on Linux or Mac, open a Terminal and input:
 ```
@@ -27,6 +32,7 @@ ssh awXXX@appserver.alunos.di.fc.ul.pt
 
 On Windows, you can use applications like SSH Secure Shell or PuTTY to access the remote machine. They are installed in the lab. 
 List of clients: https://en.wikipedia.org/wiki/Comparison_of_SSH_clients.
+
 
 Upon attempt to connect, the system will ask you for a password (provided to you in class). Upon connection, and once you have your group number, change the password to one all the group members are aware of by using the following command:
 
@@ -46,8 +52,10 @@ ssh://awXXX@appserver.alunos.di.fc.ul.pt/home/awXXX
 
 Upon making the connection, you will be able to navigate and edit your files as you would do with a local folder.
 
+### Static Web Page
 
-Therefore, the first step to create a webpage in the remote machine, is to create and allow access (change access restrictions) to this folder. In the terminal, in the root directory of your account:
+The first step to create a webpage is to create and allow access (change access restrictions) to this folder. 
+In the terminal, in the root directory of your account:
 
 ```
 mkdir public_html
@@ -69,6 +77,8 @@ or you can create the file index.html and edit it with your preferred text edito
 Now you can open in your browser the link ```http://appserver.alunos.di.fc.ul.pt/~awXXX/``` and check the result. 
 If using a local machine the link should start with localhost ```http://localhost/...```
 This is result is static and will not change unless the file _index.html_ in the machine _appserver_ is updated.
+
+### Dynamic Web Page
 
 To create a dynamic page, you can now create a PHP file inside the directory ```public_html```. You can perform the following commands:
 
