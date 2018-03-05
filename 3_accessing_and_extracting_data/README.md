@@ -107,7 +107,7 @@ http://purl.obolibrary.org/obo/DOID_2326	gastroenteritis
 http://purl.obolibrary.org/obo/DOID_2841	asthma
 http://purl.obolibrary.org/obo/DOID_3083	chronic obstructive pulmonary disease
 http://purl.obolibrary.org/obo/DOID_3083	COPD
-http://purl.obolibrary.org/obo/DOID_4	disease
+http://purl.obolibrary.org/obo/DOID_4		disease
 http://purl.obolibrary.org/obo/DOID_6132	bronchitis
 http://purl.obolibrary.org/obo/DOID_6543	acne
 http://purl.obolibrary.org/obo/DOID_8504	impetigo
@@ -120,7 +120,7 @@ To perform these last steps programmatically you can use MER (https://github.com
 and follow the example https://github.com/lasigeBioTM/MER#ontology-and-pubmed
 
 MER and DiShIn are also available in _appserver_ at _/home/aw000/MER_ and /home/aw000/DiShIn_, respectively.
-So in _appserver_ you can execute the following commands:
+So in _appserver_ you can execute the following commands (type ```man sort``` and ```man uniq``` to know more about these commands) :
 
 ```shell
 text=$(cat Abstracts.txt) 
@@ -135,51 +135,36 @@ http://purl.obolibrary.org/obo/DOID_2326	gastroenteritis
 http://purl.obolibrary.org/obo/DOID_2841	asthma
 http://purl.obolibrary.org/obo/DOID_3083	chronic obstructive pulmonary disease
 http://purl.obolibrary.org/obo/DOID_3083	COPD
-http://purl.obolibrary.org/obo/DOID_4	disease
+http://purl.obolibrary.org/obo/DOID_4		disease
 http://purl.obolibrary.org/obo/DOID_6132	bronchitis
 http://purl.obolibrary.org/obo/DOID_6543	acne
 http://purl.obolibrary.org/obo/DOID_8504	impetigo
 ```
 
-then create a python script (in a file named _disease.py_) to call DiShIn:
+To calculate the similarity between _asthma_ and _COPD_ execute:
 
-```python
-import sys
-sys.path.insert(0, '/home/aw000/DiShIn/')
-
-import ssm
-import semanticbase
-
-ssm.semantic_base('/home/aw000/DiShIn/disease.db')
-
-e1 = ssm.get_id('DOID_2841') # Asthma
-e2 = ssm.get_id('DOID_3083') # COPD
-e3 = ssm.get_id('DOID_4') # Disease
-
-ssm.intrinsic = True
-ssm.mica = True
-
-print ('similarity(asthma,COPD) = ' + str(ssm.ssm_lin (e1,e2)))
-print ('similarity(asthma,disease) = ' + str(ssm.ssm_lin (e1,e3)))
-```
-
-execute it:
 ```shell
-python3 disease.py 
+python /home/aw000/DiShIn/dishin.py disease.db DOID_2841 DOID_3083
 ```
 
-and the result will be something like this:
-
-```txt
-similarity(asthma,COPD) = 0.5502114916789094
-similarity(asthma,disease) = -0.0
+And between _asthma_ and _disease_ execute:
+```shell
+python /home/aw000/DiShIn/dishin.py disease.db DOID_2841 DOID_4
 ```
-To run in a local machine you have to install the tools first:
+
+And to know the information content of _disease_ and of _asthma_:
+```shell
+python /home/aw000/DiShIn/dishin.py disease.db DOID_4 DOID_4 | grep  "Resnik.*DiShIn"
+python /home/aw000/DiShIn/dishin.py disease.db DOID_2841 DOID_2841 | grep  "Resnik.*DiShIn"
+```
+
+To run in a local machine install the tools first:
 
 ```
 git clone https://github.com/lasigeBioTM/MER.git
 git clone https://github.com/lasigeBioTM/DiShIn.git
 ```
+and download Human Disease Ontology: https://github.com/DiseaseOntology/HumanDiseaseOntology/tree/master/src/ontology
 
 ## Additional References
 
