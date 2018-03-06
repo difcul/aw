@@ -100,7 +100,7 @@ To search for 10 public photos about Asthma test the following call using the se
 Do not forget to replace the ```api_key```, always required.
 
 ```
-curl https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=YOUR_API_KEY&text=Asthma&per_page=10&privacy_filter=1
+curl "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=YOUR_API_KEY&text=Asthma&per_page=10&privacy_filter=1"
 ```
 
 The response provided should similar to:
