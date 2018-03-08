@@ -145,24 +145,24 @@ http://purl.obolibrary.org/obo/DOID_8504	impetigo
 To calculate the similarity between _asthma_ and _COPD_ execute:
 
 ```shell
-python /home/aw000/DiShIn/dishin.py /home/aw000/DiShIn/disease.db DOID_2841 DOID_3083
+python /home/aw000/DiShIn/dishin.py /home/aw000/DiShIn/doid.db DOID_2841 DOID_3083
 ```
 
 And between _asthma_ and _disease_ execute:
 ```shell
-python /home/aw000/DiShIn/dishin.py /home/aw000/DiShIn/disease.db DOID_2841 DOID_4
+python /home/aw000/DiShIn/dishin.py /home/aw000/DiShIn/doid.db DOID_2841 DOID_4
 ```
 
 And to know the information content of _disease_ and of _asthma_:
 ```shell
-python /home/aw000/DiShIn/dishin.py /home/aw000/DiShIn/disease.db DOID_4 DOID_4 | grep  "Resnik.*DiShIn"
-python /home/aw000/DiShIn/dishin.py /home/aw000/DiShIn/disease.db DOID_2841 DOID_2841 | grep  "Resnik.*DiShIn"
+python /home/aw000/DiShIn/dishin.py /home/aw000/DiShIn/doid.db DOID_4 DOID_4 | grep  "Resnik.*DiShIn"
+python /home/aw000/DiShIn/dishin.py /home/aw000/DiShIn/doid.db DOID_2841 DOID_2841 | grep  "Resnik.*DiShIn"
 ```
 
 To obtain the similarities between _asthma_ and all the terms identified by MER execute (type ```man xargs``` to know more about this tool):
 
 ```shell
-cat Terms.txt | sed 's/^.*DOID_\([0-9]*\).*$/DOID_\1/' | xargs -l python /home/aw000/DiShIn/dishin.py /home/aw000/DiShIn/disease.db DOID_2841
+cat Terms.txt | sed 's/^.*DOID_\([0-9]*\).*$/DOID_\1/' | xargs -l python /home/aw000/DiShIn/dishin.py /home/aw000/DiShIn/doid.db DOID_2841
 ```
 
 To run in a local machine install the tools first:
