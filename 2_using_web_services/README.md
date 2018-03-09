@@ -29,7 +29,7 @@ curl "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=294
 To get only the title and use the _grep_ tool, and _sed_ to remove the XML tags and trim the whitespaces:
 
 ```
-curl "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=29462659&retmode=text&rettype=xml" | egrep "<ArticleTitle>" | sed -e "s/<[^>]*>//g" -e "s/^ *//" -e "s/ *$//'"
+curl "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=29462659&retmode=text&rettype=xml" | egrep "<ArticleTitle>" | sed -e "s/<[^>]*>//g" -e "s/^ *//" -e "s/ *$//"
 ```
 
 Create a file named _getPubMedTitles.sh_ with the previous command, but replace 29462659 by _$1_ so we can use any PubMed Id as input, i.e :
