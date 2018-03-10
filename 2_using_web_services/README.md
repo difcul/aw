@@ -1,5 +1,5 @@
 # Using Web Services
-Tiago Guerreiro and Francisco Couto
+Francisco Couto and Tiago Guerreiro
 
 Web Services can be seen as APIs that allow for this interconnection between heterogeneous software applications in the web by using the HTTP protocol.
 
@@ -22,48 +22,48 @@ We will use now the EFetch method (https://www.ncbi.nlm.nih.gov/books/NBK25499/#
 
 For example, check the XML output of the following call to get the data about the PubMed Id 29462659:
 
-```
+```shell
 curl "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=29462659&retmode=text&rettype=xml" 
 ```
 
 To get only the title and use the _grep_ tool, and _sed_ to remove the XML tags and trim the whitespaces:
 
-```
+```shell
 curl "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=29462659&retmode=text&rettype=xml" | egrep "<ArticleTitle>" | sed -e "s/<[^>]*>//g" -e "s/^ *//" -e "s/ *$//"
 ```
 
 Create a file named _getPubMedTitles.sh_ with the previous command, but replace 29462659 by _$1_ so we can use any PubMed Id as input, i.e :
-```
+```shell
 curl "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=$1&retmode=text&rettype=xml" | egrep "<ArticleTitle>" | sed -e "s/<[^>]*>//g" -e "s/^ *//" -e "s/ *$//"
 ```
 
 Now add permissions to execute the script, and execute it:
 
-```
+```shell
 chmod 755 ./getPubMedTitles.sh
 ./getPubMedTitles.sh 29462659
 ```
 
 The EFetch method allows to get data from multiple Ids by separating them by a comma, for example try:
 
-```
+```shell
 ./getPubMedTitles.sh "29462659,29461895" 
 ```
 
 Create this input list by applying the _tr_ tool the PubMed Ids used in_Asthma.txt_ file created in a previous module (type ```man tr``` to know more about _tr_):  
-```
+```shell
 tr '\n' ',' < Asthma.txt
 ```
 
 Now execute the script using this list as input and saving the result to a file:
-```
+```shell
 ./getPubMedTitles.sh $(tr '\n' ',' < Asthma.txt)  > AsthmaTitles.txt
 ```
 
 ### Web Application with titles
 
-Get the file _mywebapp.php_ created in a previous module and add the following PHP code:
-```
+Get the file _mywebapp.php_ created in a previous module, remove the _foreach_ block and add the following PHP code after the _explode_ command:
+```php
 $filename = $_GET['disease']."Titles.txt";
 $handle = fopen($filename, "r");
 $contents = fread($handle, filesize($filename));
@@ -99,12 +99,12 @@ Also, look at a possible response, in XML.
 To search for 10 public photos about Asthma test the following call using the search string (_text_) as being "Asthma". 
 Do not forget to replace the ```api_key```, always required.
 
-```
+```shell
 curl "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=YOUR_API_KEY&text=Asthma&per_page=10&privacy_filter=1"
 ```
 
 The response provided should similar to:
-```
+```html
 <rsp stat="ok">
 <photos page="1" pages="217" perpage="100" total="21634">
 <photo id="25529403237" owner="156441279@N02" secret="81693a20ef" server="4665" farm="5" title="Pediatric Allergy, Asthma and Immunology by Arnaldo Cantani" ispublic="1" isfriend="0" isfamily="0"/>
@@ -117,7 +117,7 @@ The response provided should similar to:
 
 In the response, we receive a set of photos, identified by the photo _id_, and two other numbers, _farm-id_ and _secret_. These numbers enable us to access the image associated with each photo in the set. Flickr stores several versions, different sizes, of each photo, and all of them have a static URL. This URL is composed as follows:
 
-```
+```txt
 https://farm{farm-id}.staticflickr.com/{server-id}/{id}_{secret}.jpg
     or
 https://farm{farm-id}.staticflickr.com/{server-id}/{id}_{secret}_[mstzb].jpg
@@ -127,7 +127,7 @@ https://farm{farm-id}.staticflickr.com/{server-id}/{id}_{o-secret}_o.(jpg|gif|pn
 
 The values displayed inside brackets are available from the photo search response above. _mstzb_ are the options relative to the size of the desired photo. For example, for a medium sized photo, one would use the letter _m_. As an example, looking at the example response above, if we want to access the first image, we would use the URL:
 
-```
+```txt
 https://farm2.staticflickr.com/1474/25529403237_81693a20ef_m.jpg
 ```
 
@@ -139,18 +139,18 @@ For more information about image URLs, please refer to https://www.flickr.com/se
 
 To get only the links to the photos use the _grep_ tool, and _sed_ to extract the values:
 
-```
+```shell
 curl "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=YOUR_API_KEY&text=Asthma&per_page=10&privacy_filter=1" | grep "photo id" | sed 's/^.*id="\([^"]*\).*secret="\([^"]*\).*server="\([^"]*\).*farm="\([^"]*\).*$/https:\/\/farm\4.staticflickr.com\/\3\/\1_\2.jpg/'
 ```
 
 
 Create a file named _getFlickrPhotos.sh_ with the previous command, but replace the api key by _$1_ and Asthma by _$2_ so you can use any key and disease as input, i.e :
-```
+```shell
 curl "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=$1&text=$2&per_page=10&privacy_filter=1" | grep "photo id" | sed 's/^.*id="\([^"]*\).*secret="\([^"]*\).*server="\([^"]*\).*farm="\([^"]*\).*$/https:\/\/farm\4.staticflickr.com\/\3\/\1_\2.jpg/'
 ```
 Now add permissions to execute the script, and execute it and saving the result to a file:
 
-```
+```shell
 chmod 755 ./getFlickrPhotos.sh
 ./getFlickrPhotos.sh YOUR_API_KEY Asthma > AsthmaPhotos.txt
 ```
@@ -162,7 +162,7 @@ Type ```cat AsthmaPhotos.txt``` to check the links stored.
 
 Add the following PHP code to the file _mywebapp.php_ : 
 
-```
+```php
 $filename = $_GET['disease']."Photos.txt";
 $handle = fopen($filename, "r");
 $contents = fread($handle, filesize($filename));

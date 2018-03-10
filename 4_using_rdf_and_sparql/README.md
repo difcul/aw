@@ -1,6 +1,5 @@
 # Using RDF and Sparql
-Tiago Guerreiro and Francisco Couto
-
+Francisco Couto and Tiago Guerreiro
 
 ## SPARQL 
 
@@ -20,7 +19,7 @@ SELECT ?disease where {
 
 Now try the URL with xml format suing _curl_ and XPath to get all links:   
 
-```
+```shell
 curl "http://dbpedia.org/sparql/?query=PREFIX+dbo%3A+%3Chttp%3A%2F%2Fdbpedia.org%2Fontology%2F%3E%0D%0A%0D%0ASELECT+%3Fdisease+where+%7B%0D%0A+%3Fdisease+a+dbo%3ADisease+.%0D%0A%7D&format=application/xml" | sed 's/xmlns="[^"]*"/xmlns=""/' > Diseases.xml
 
 xmllint --xpath '//uri/text()' Diseases.xml
@@ -38,7 +37,7 @@ For python developers, you can the package RDFLib, for example: https://github.c
 
 Back to the browser try the following query to get for each disease people that died from it:
 
-```
+```sparql
 PREFIX dbo: <http://dbpedia.org/ontology/>
 
 SELECT ?disease ?person where {
@@ -48,7 +47,7 @@ SELECT ?disease ?person where {
 ```
 
 Try the following query to get the English names instead of links:
-```
+```sparql
 PREFIX dbo: <http://dbpedia.org/ontology/>
 
 SELECT ?diseasename ?personname where {
@@ -61,7 +60,7 @@ SELECT ?diseasename ?personname where {
 
 Try the following query to get also the death date:
 
-```
+```sparql
 PREFIX dbo: <http://dbpedia.org/ontology/>
 
 SELECT ?diseasename ?personname ?deathdate where {
@@ -75,7 +74,7 @@ SELECT ?diseasename ?personname ?deathdate where {
 
 Try the following query to get only people that died between 1800-01-01 and 1900-01-01:
 
-```
+```sparql
 PREFIX dbo: <http://dbpedia.org/ontology/>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
@@ -91,7 +90,7 @@ SELECT ?diseasename ?personname ?deathdate where {
 
 Try the following query to also get their occupation if available:
 
-```
+```sparql
 PREFIX dbo: <http://dbpedia.org/ontology/>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
@@ -131,7 +130,7 @@ Now you will add structured data to your web application using the ScholarlyArti
 
 Get the file _mywebapp.php_ created in a previous module and replace the PHP code :
 
-```
+```php
 ...
 $c=array_combine($links,$titles);
 

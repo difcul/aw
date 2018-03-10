@@ -1,5 +1,5 @@
 # Building Web Services
-Tiago Guerreiro and Francisco Couto
+Francisco Couto and Tiago Guerreiro
 
 In RESTful Web Services URIs are used to access the resources, and the HTTP request method is used to define the action on those resources.
 Examples:HTTP request
@@ -11,7 +11,7 @@ Examples:HTTP request
 The first step we will take is enabling our list of neat URIs. To do that, we will resort to the webserver rewrite capabilities,
 to make available the following URLs:
 
-```
+```txt
 http://appserver.alunos.di.fc.ul.pt/awXXX/rest/article/     => gets the list of all articles 
 http://appserver.alunos.di.fc.ul.pt/awXXX/rest/article/29461607/    => gets data about a particular article given its Id
 ```
@@ -21,7 +21,7 @@ We will now map the requested URL to a PHP file where we can parse and follow up
 Create a _rest_ folder (inside _public_html_), and create and edit the _.htaccess_ file (https://httpd.apache.org/docs/2.4/howto/htaccess.html):
 
 ***.htaccess***
-```
+```txt
 # Turn rewrite engine on
 Options +FollowSymlinks
 RewriteEngine on
@@ -49,7 +49,7 @@ to identify the request.
 Create the file _RestController.php_ to identify the request and dispatch the request to methods that will handle it:
 
 ***RestController.php***
-```
+```php
 <?php
 require_once("ArticleRestHandler.php");
 		
@@ -87,7 +87,7 @@ Create the file _SimpleRest.php_  with a base class that can be used in all REST
 It has two methods: one that is used to construct the response, and a second one that is built to hold the different HTTP status code and its messages.
 
 ***SimpleRest.php***
-```
+```php
 <?php 
 /*
 A simple RESTful webservices base class
@@ -163,7 +163,7 @@ For success, status code 200 should be set in response and sent.
 Similarly, other status codes can and should be used according to the situation (ex: resource not available).
 
 ***ArticleRestHandler.php***
-```
+```php
 <?php
 require_once("SimpleRest.php");
 require_once("Article.php");
@@ -261,7 +261,7 @@ Here would be where you would access your data, be it a variable, a file, or a S
 Copy the Asthma.txt and AsthmaTitles.txt from previous modules and create the class with a simple read file:
 
 ***Article.php*** 
-```
+```php
 <?php
 /* 
 A domain Class to demonstrate RESTful web services
@@ -315,7 +315,7 @@ To test the web service more extensively you can either build a client programat
 
 For example, you can use _curl_:
 
-```
+```shell
 curl -X GET -H "Accept: application/json" -L "http://appserver-01.alunos.di.fc.ul.pt/~awXXX/rest/article/"
 curl -X GET -H "Accept: application/json" -L "http://appserver-01.alunos.di.fc.ul.pt/~awXXX/rest/article/29461607/"
 ```
