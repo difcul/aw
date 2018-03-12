@@ -158,6 +158,10 @@ This means that now other applications understand the semantics of the data your
 
 - https://www.w3.org/2009/Talks/0615-qbe/
 
+- http://sparqles.ai.wu.ac.at/availability
+
+- https://www.w3.org/wiki/SparqlEndpoints 
+
 - https://coffeecode.net/rdfa/codelab/
 
  
