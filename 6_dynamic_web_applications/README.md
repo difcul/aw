@@ -120,7 +120,7 @@ Add the _onload='showHint()'_ in the tag body to call the function for the first
 Replace the PHP code to show the photos by defining the place where the photos will be shown:
 
 ```php
-echo "<p><span id="latestPhotos"></span></p>"
+echo "<p><span id='latestPhotos'></span></p>"
 ```
 
 Create the _getphotos.php_ file with the PHP code removed in the previous step:

@@ -27,8 +27,8 @@ Options +FollowSymlinks
 RewriteEngine on
 
 # map neat URL to internal URL
-RewriteRule ^article/$   http://appserver.alunos.di.fc.ul.pt/~awXXX/RestController.php?view=all [nc,qsa,p]
-RewriteRule ^article/([0-9]+)/$  http://appserver.alunos.di.fc.ul.pt/~awXXX/RestController.php?view=single&id=$1 [nc,qsa,p]
+RewriteRule ^article/$   http://appserver.alunos.di.fc.ul.pt/~awXXX/rest/RestController.php?view=all [nc,qsa,p]
+RewriteRule ^article/([0-9]+)/$  http://appserver.alunos.di.fc.ul.pt/~awXXX/rest/RestController.php?view=single&id=$1 [nc,qsa,p]
 ```
 
 Do not forget to replace the XXX, or change the URL to the correct one.  
