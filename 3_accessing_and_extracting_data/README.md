@@ -36,7 +36,7 @@ The XPath syntax enables more complex queries, try these ones:
 - ```PubmedArticleSet//ArticleId``` - elements of type _ArticleId_ that are descendants of _PubmedArticleSet_; 
 - ```//ArticleIdList/*``` - any elements that is a child of _ArticleIdList_;
 - ```//ArticleId/@IdType``` - all _IdType_ attributes of tags _ArticleId_;
-- ```//ArticleId[@IdType="doi"]'``` - element of type _ArticleId_, that has an attribute _IdType_ with the value 'doi';
+- ```//ArticleId[@IdType="doi"]``` - element of type _ArticleId_, that has an attribute _IdType_ with the value 'doi';
 - ```//AbstractText/text()``` - the text value of elements of type _AbstractText_ 
 
 Check W3C for more about XPath syntax https://www.w3schools.com/xml/xpath_syntax.asp
