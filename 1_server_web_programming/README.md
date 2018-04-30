@@ -26,7 +26,7 @@ In Windows 10, you can also install PHP and a Apache Web server on Ubuntu (https
 ### Appserver
 
 To access _appserver_, on Linux or Mac, open a Terminal and input:
-```
+```shell
 ssh awXXX@appserver.alunos.di.fc.ul.pt
 ```
 
@@ -36,7 +36,7 @@ List of clients: https://en.wikipedia.org/wiki/Comparison_of_SSH_clients.
 
 Upon attempt to connect, the system will ask you for a password (provided to you in class). Upon connection, and once you have your group number, change the password to one all the group members are aware of by using the following command:
 
-```
+```shell
 passwd
 ```
 
@@ -46,7 +46,7 @@ These terminals allow you to input commands in the remote machine. To transfer f
 (on Windows: SSH Secure Shell, FileZilla, WinSCP) or map the remove location and manage it as if it was a local folder. 
 To do so on Linux, in the file manager go to GO-> OPEN LOCATION and input:
 
-```
+```shell
 ssh://awXXX@appserver.alunos.di.fc.ul.pt/home/awXXX
 ```
 
@@ -57,7 +57,7 @@ Upon making the connection, you will be able to navigate and edit your files as 
 The first step to create a webpage is to create and allow access (change access restrictions) to this folder. 
 In the terminal, in the root directory of your account:
 
-```
+```shell
 mkdir public_html
 chmod -R 755 public_html
 ```
@@ -67,7 +67,7 @@ Thsi is important to let the web server access your files.
 
 After creating the directory, you can then create the HTML file and place it into the directory **public_html**. To do so:
 
-``` 
+```shell 
 cd public_html
 echo '<html>Hello World!</html>' > index.html
 ```
@@ -82,7 +82,7 @@ This is result is static and will not change unless the file _index.html_ in the
 
 To create a dynamic page, you can now create a PHP file inside the directory ```public_html```. You can perform the following commands:
 
-```
+```shell
 cd ~
 cd public_html
 echo '<html><?php echo data(DATE_RFC822); ?> </html>' > index.php
@@ -90,13 +90,13 @@ echo '<html><?php echo data(DATE_RFC822); ?> </html>' > index.php
 
 By opening the URL ```http://appserver.alunos.di.fc.ul.pt/~awXXX/index.php``` you will see a blank page. Probably, an error occurred. To be able to test PHP files more efficiently, you can also execute the _php_ command, through the remote console:
 
-```
+```shell
 php index.php
 ```
 
 You found the line of the error. The function is called ```date```, not ```data```. Fix it and open the url again:
 
-```
+```shell
 echo '<html><?php echo date(DATE_RFC822); ?> </html>' > index.php
 ```
 
@@ -109,7 +109,7 @@ To create and edit the PHP files, you should use a text editor (e.g., Emacs, Sub
 
 Use the tool _curl_ to open an URL that provides you with 10 PubMed identifiers about Asthma (type ```man curl``` to know more about ```curl```). 
 
-```
+```shell
 curl "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=Asthma&retmax=10&retmode=xml"
 ```
 
@@ -118,7 +118,7 @@ You should get 10 PubMed identifiers on your screen embbed in a xml file. This U
 
 Now parse the results using the tools _grep_ and _sed_ to keep only the Id numbers (again type ```man``` and the name of tool to know more about it) : 
 
-```
+```shell
 curl "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=Asthma&retmax=10&retmode=xml" | grep "<Id>" | sed -e "s/<Id>//" -e "s/<\/Id>//" 
 ```
 
@@ -126,20 +126,20 @@ Now you should get the 10 PubMed identifiers on your screen without xml tags.
 
 Create a file named _getPubMedIds.sh_ with the previous command, but replace Asthma by _$1_ so we can use the name of disease as input, i.e :
 
-```
+```shell
 curl "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=$1&retmax=10&retmode=xml" | grep "<Id>" | sed -e "s/<Id>//" -e "s/<\/Id>//" 
 ```
 
 Now add permissions to execute the script, and execute it saving the result to a file:
 
-```
+```shell
 chmod 755 ./getPubMedIds.sh
 ./getPubMedIds.sh Asthma > Asthma.txt
 ```
 
 Check the contents of file _Asthma.txt_, for example by using the _cat_ tool:
 
-```
+```shell
 cat Asthma.txt  
 ```
 
@@ -147,26 +147,26 @@ cat Asthma.txt
 
 To convert the Ids to links try the _sed_ tool:
 
-```
+```shell
 sed "s/^/https:\/\/www.ncbi.nlm.nih.gov\/pubmed\//" < Asthma.txt
 ```
 
 Create a file named _convertPubMedIds.sh_ with the previous command, but replace Asthma by _$1_ so we can use the name of disease as input, i.e :
 
-```
+```shell
 sed "s/^/https:\/\/www.ncbi.nlm.nih.gov\/pubmed\//" < $1.txt
 ```
 
 Now add permissions to execute the script, and execute it saving the result to a file:
 
-```
+```shell
 chmod 755 ./convertPubMedIds.sh
 ./convertPubMedIds.sh Asthma > AsthmaLinks.txt
 ```
 
 Check the contents of file _AsthmaLinks.txt_:
 
-```
+```shell
 cat Asthma.txt  
 ```
 
@@ -174,7 +174,7 @@ cat Asthma.txt
 
 PHP can receive data through [POST and GET](https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol). As an example, create a file _mywebapp.php_ with the following code:
 
-```
+```php
 <?php
 echo 'Disease: '.htmlspecialchars($_GET['disease']);
 ?>
@@ -184,7 +184,7 @@ Now, by opening the URL _http://appserver.alunos.di.fc.ul.pt/~awXXX/mywebapp.php
 
 Now clear the previous file, and add the following HTML code to create a form:
 
-```
+```php
 <html>
     <form action='mywebapp.php' method='get'>
         <p> Disease: <input type='text' name='disease' /> </p>
@@ -194,7 +194,7 @@ Now clear the previous file, and add the following HTML code to create a form:
 
 and the following PHP code to produce the links according to the input:
 
-```
+```php
 <p>Abstracts about the disease <?php echo htmlspecialchars($_GET['disease']); ?>:</p>
 
 <?php
