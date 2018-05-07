@@ -167,7 +167,7 @@ chmod 755 ./convertPubMedIds.sh
 Check the contents of file _AsthmaLinks.txt_:
 
 ```shell
-cat Asthma.txt  
+cat AsthmaLinks.txt  
 ```
 
 ## Data Access

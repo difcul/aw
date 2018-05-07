@@ -37,7 +37,7 @@ function showHint(str) {
 </head>
 <body>
 
-    <form action='mywebapp.php' method='get'>
+    <form action='mywebapp.php' method='get' autocomplete='off'>
         <p>Disease: <input type='text' id="searchDisease" name='disease' onkeyup="showHint(this.value)"/> 
 	Suggestions: <span id="txtHint"></span></p>
         <p><input type='submit' /> </p>

@@ -36,7 +36,7 @@ function updatePhotos() {
 </head>
 <body onload='updatePhotos()'>
 
-    <form action='mywebapp.php' method='get'>
+    <form action='mywebapp.php' method='get' autocomplete='off'>
         <p>Disease: <input type='text' id="searchDisease" name='disease' onkeyup="showHint(this.value)" value="<?php echo htmlspecialchars($_GET['disease']); ?>"/> 
 	Suggestions: <span id="txtHint"></span></p>
         <p><input type='submit' /> </p>
