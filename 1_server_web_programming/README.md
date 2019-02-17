@@ -59,7 +59,7 @@ In the terminal, in the root directory of your account:
 
 ```shell
 mkdir public_html
-chmod -R 755 public_html
+chmod go+rx public_html
 ```
 
 The first command creates the directory in the user root directory. The second command sets the access permission rights to reading, writing and executing the files by different types of users.
