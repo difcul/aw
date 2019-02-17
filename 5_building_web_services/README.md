@@ -2,7 +2,7 @@
 Francisco Couto and Tiago Guerreiro
 
 In RESTful Web Services URIs are used to access the resources, and the HTTP request method is used to define the action on those resources.
-Examples:HTTP request
+Examples:
 - Google Drive: https://developers.google.com/drive/v2/reference/
 - Google Calendar: https://developers.google.com/google-apps/calendar/v3/reference/
 
