@@ -3,9 +3,9 @@ Francisco Couto and Tiago Guerreiro
 
 ## Goal
 This tutorial aims to help you create a simple web application composed of 3 steps:
-- Data Collection
-- Data Annotation
-- Data Access
+- Retrieval
+- Annotation
+- Access
 
 You can develop the application using:
 - applicational web server (_appserver_), available at _appserver.alunos.di.fc.ul.pt_, features an Apache Web server and has support for PHP. 
@@ -62,8 +62,8 @@ mkdir public_html
 chmod go+rx public_html
 ```
 
-The first command creates the directory in the user root directory. The second command sets the access permission rights to reading, writing and executing the files by different types of users.
-Thsi is important to let the web server access your files. 
+The first command creates the directory in the user root directory. The second command gives access permission rights to read and execute files to groups and other users.
+This is important to let the web server access your files. 
 
 After creating the directory, you can then create the HTML file and place it into the directory **public_html**. To do so:
 
@@ -105,7 +105,7 @@ By opening the URL ```http://appserver.alunos.di.fc.ul.pt/~awXXX/index.php``` yo
 To create and edit the PHP files, you should use a text editor (e.g., Emacs, SublimeText , Notepad++, vi, nano,..), and not the _echo_ command, that should be used only to create very short files.
 
 
-## Data Collection
+## Retrieval
 
 Use the tool _curl_ to open an URL that provides you with 10 PubMed identifiers about Asthma (type ```man curl``` to know more about ```curl```). 
 
@@ -116,7 +116,7 @@ curl "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=
 
 You should get 10 PubMed identifiers on your screen embbed in a xml file. This URL corresponds to a web service that we will explore further in the following modules.
 
-Now parse the results using the tools _grep_ and _sed_ to keep only the Id numbers (again type ```man``` and the name of tool to know more about it) : 
+Now parse the results using the tools _grep_ and _sed_ to keep only the Id numbers (again type ```man``` and the name of tool to know more about it): 
 
 ```shell
 curl "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=Asthma&retmax=10&retmode=xml" | grep "<Id>" | sed -e "s/<Id>//" -e "s/<\/Id>//" 
@@ -133,7 +133,7 @@ curl "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=
 Now add permissions to execute the script, and execute it saving the result to a file:
 
 ```shell
-chmod 755 ./getPubMedIds.sh
+chmod u+x ./getPubMedIds.sh
 ./getPubMedIds.sh Asthma > Asthma.txt
 ```
 
@@ -143,7 +143,7 @@ Check the contents of file _Asthma.txt_, for example by using the _cat_ tool:
 cat Asthma.txt  
 ```
 
-## Data Annotation
+## Annotation
 
 To convert the Ids to links try the _sed_ tool:
 
@@ -160,7 +160,7 @@ sed "s/^/https:\/\/www.ncbi.nlm.nih.gov\/pubmed\//" < $1.txt
 Now add permissions to execute the script, and execute it saving the result to a file:
 
 ```shell
-chmod 755 ./convertPubMedIds.sh
+chmod u+x ./convertPubMedIds.sh
 ./convertPubMedIds.sh Asthma > AsthmaLinks.txt
 ```
 
@@ -170,7 +170,7 @@ Check the contents of file _AsthmaLinks.txt_:
 cat AsthmaLinks.txt  
 ```
 
-## Data Access
+## Access
 
 PHP can receive data through [POST and GET](https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol). As an example, create a file _mywebapp.php_ with the following code:
 
@@ -218,7 +218,9 @@ Now try for different diseases, but do not forget to run the shell scripts befor
 
 ## Additional References
 
-- http://webpages.fc.ul.pt/~fjcouto/files/manual_php_mysql_java_oracle_201112.pdf 
+- http://labs.rd.ciencias.ulisboa.pt/book/
+
+- http://webpages.fc.ul.pt/~fjcouto/files/manual_php_mysql_java_oracle_201112.pdf
 
 - https://www.w3schools.com/html/
 
