@@ -40,7 +40,7 @@ curl "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=$1&
 Now add permissions to execute the script, and execute it:
 
 ```shell
-chmod 755 ./getPubMedTitles.sh
+chmod u+x ./getPubMedTitles.sh
 ./getPubMedTitles.sh 29462659
 ```
 
@@ -151,7 +151,7 @@ curl "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=
 Now add permissions to execute the script, and execute it and saving the result to a file:
 
 ```shell
-chmod 755 ./getFlickrPhotos.sh
+chmod u+x ./getFlickrPhotos.sh
 ./getFlickrPhotos.sh YOUR_API_KEY Asthma > AsthmaPhotos.txt
 ```
 
