@@ -247,13 +247,12 @@ for i in $( cat mydiseases.txt ); do
  done
 ```
 
-http://tldp.org/HOWTO/Bash-Prog-Intro-HOWTO.html
-Nota: podem usar também bibliotecas do curl, etc para o python, java ou php. Caso estjam a usar o appserver verifiquem se tem a biblioteca instalada, se não estiver peçam para instalar em: https://suporte.di.fc.ul.pt/
+Note: curl libraries are also available for Python, Java or PHP.
 
 
 ## Additional References
 
-- http://labs.rd.ciencias.ulisboa.pt/book/
+- http://labs.rd.ciencias.ulisboa.pt/book/ (Chapter 3 - Data Retrieval)
 
 - http://webpages.fc.ul.pt/~fjcouto/files/manual_php_mysql_java_oracle_201112.pdf
 

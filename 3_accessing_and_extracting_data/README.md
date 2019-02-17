@@ -175,7 +175,7 @@ and download the Human Disease Ontology (doid.owl) from: https://github.com/Dise
 
 ## Additional References
 
-- http://labs.rd.ciencias.ulisboa.pt/book/
+- http://labs.rd.ciencias.ulisboa.pt/book/ (3.7 XML Processing; 5.9 Entity Linking; 5.10 Large lexicons)
 
 - http://webdam.inria.fr/Jorge/files/wdm-xpath.pdf
 

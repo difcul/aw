@@ -180,7 +180,7 @@ Now try for different diseases, but do not forget to run the shell scripts befor
 
 ## Additional References
 
-- http://labs.rd.ciencias.ulisboa.pt/book/
+- http://labs.rd.ciencias.ulisboa.pt/book/ (Chapter 3 - Data Retrieval)
 
 - http://webpages.fc.ul.pt/~fjcouto/files/manual_soa_ajax_20120221.pdf 
 
