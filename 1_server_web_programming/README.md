@@ -216,6 +216,41 @@ Open the URL _http://appserver.alunos.di.fc.ul.pt/~awXXX/mywebapp.php_ (hit refr
 
 Now try for different diseases, but do not forget to run the shell scripts before.
 
+
+## Invoking Shell Scripts 
+
+- Python: 
+```python
+import os 
+os.system("curl ...")
+os.system("/home/aw000/getPubMedIds.sh Asthma")
+```
+
+- PHP:
+```php
+passthru("curl ...");
+passthru("/home/aw000/getPubMedIds.sh Asthma");
+```
+
+- Java:
+```
+Runtime.getRuntime().exec("curl ...");
+Runtime.getRuntime().exec("/home/aw000/getPubMedIds.sh Asthma");
+```
+
+- Shell:
+```shell
+for i in $( cat mydiseases.txt ); do
+    echo $i
+    curl ...$i...
+    ./getPubMedIds.sh $i
+ done
+```
+
+http://tldp.org/HOWTO/Bash-Prog-Intro-HOWTO.html
+Nota: podem usar também bibliotecas do curl, etc para o python, java ou php. Caso estjam a usar o appserver verifiquem se tem a biblioteca instalada, se não estiver peçam para instalar em: https://suporte.di.fc.ul.pt/
+
+
 ## Additional References
 
 - http://labs.rd.ciencias.ulisboa.pt/book/

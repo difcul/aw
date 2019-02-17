@@ -168,12 +168,14 @@ cat Terms.txt | sed 's/^.*DOID_\([0-9]*\).*$/DOID_\1/' | xargs -l python /home/a
 To run in a local machine install the tools first:
 
 ```shell
-git clone https://github.com/lasigeBioTM/MER.git
-git clone https://github.com/lasigeBioTM/DiShIn.git
+git clone git://github.com/lasigeBioTM/MER
+git clone git://github.com/lasigeBioTM/DiShIn
 ```
-and download the Human Disease Ontology: https://github.com/DiseaseOntology/HumanDiseaseOntology/tree/master/src/ontology
+and download the Human Disease Ontology (doid.owl) from: https://github.com/DiseaseOntology/HumanDiseaseOntology/tree/master/src/ontology
 
 ## Additional References
+
+- http://labs.rd.ciencias.ulisboa.pt/book/
 
 - http://webdam.inria.fr/Jorge/files/wdm-xpath.pdf
 

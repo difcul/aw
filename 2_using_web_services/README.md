@@ -180,6 +180,8 @@ Now try for different diseases, but do not forget to run the shell scripts befor
 
 ## Additional References
 
+- http://labs.rd.ciencias.ulisboa.pt/book/
+
 - http://webpages.fc.ul.pt/~fjcouto/files/manual_soa_ajax_20120221.pdf 
 
 - https://www.w3schools.com/xml/xml_services.asp
