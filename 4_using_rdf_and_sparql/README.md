@@ -156,6 +156,8 @@ This means that now other applications understand the semantics of the data your
 
 ## Additional References
 
+- labs.rd.ciencias.ulisboa.pt/book/
+
 - https://www.w3.org/2009/Talks/0615-qbe/
 
 - http://sparqles.ai.wu.ac.at/availability
