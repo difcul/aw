@@ -77,7 +77,7 @@ xmllint --xpath '//AbstractText/text()' Articles.xml > Abstracts.txt
 
 To find more diseases in the abstracts you can use the MER API (http://labs.fc.ul.pt/mer/):
 ```shell
-curl --data-urlencode "text=$(cat Abstracts.txt)" 'http://labs.rd.ciencias.ulisboa.pt/mer/api.php?lexicon=disease'
+curl --data-urlencode "text=$(cat Abstracts.txt)" 'http://labs.rd.ciencias.ulisboa.pt/mer/api.php?lexicon=doid'
 ```
 
 and you should get the following output with the diseases found and where they were found: 
@@ -120,11 +120,11 @@ To perform these last steps programmatically you can use MER (https://github.com
 and follow the example https://github.com/lasigeBioTM/MER#ontology-and-pubmed
 
 MER and DiShIn are also available in _appserver_ at _/home/aw000/MER_ and /home/aw000/DiShIn_, respectively.
-So in _appserver_ you can execute the following commands (type ```man sort``` and ```man uniq``` to know more about these tools) :
+So in _appserver_ you can execute the following commands (type ```man sort``` to know more about these tools) :
 
 ```shell
 text=$(cat Abstracts.txt) 
-(cd /home/aw000/MER; ./get_entities.sh "$text" doid-simple | ./link_entities.sh data/doid-simple.owl | sort | uniq) > Terms.txt
+(cd /home/aw000/MER; ./get_entities.sh "$text" doid | sort -u) > Terms.txt
 cat Terms.txt
 ```
 and you will get as output:
