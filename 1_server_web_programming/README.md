@@ -62,7 +62,7 @@ mkdir public_html
 chmod go+rx public_html
 ```
 
-The first command creates the directory in the user root directory. The second command gives access permission rights to read and execute files to groups and other users.
+The first command creates a subdirectory in the home directory. The second command gives access permission rights to read and execute files to groups and other users.
 This is important to let the web server access your files. 
 
 After creating the directory, you can then create the HTML file and place it into the directory **public_html**. To do so:
@@ -77,11 +77,14 @@ the command ```echo``` to the file _index.html_ .
 Or you can create the file index.html and edit it with your preferred text editor, making sure that the remote directory is updated with the new file.
 
 Now you can open in your browser the link ```http://appserver.alunos.di.fc.ul.pt/~awXXX/``` and check the result. 
+
 If using a local machine the link should start with localhost ```http://localhost/...```.
+
 In a DI labs should be ```http://localhost/~fcXXXXX```. 
+
 This is result is static and will not change unless the file _index.html_ in the machine _appserver_ or localhost is updated.
 
-Note that you may have to apply ```chmod``` to the user folder and/or the index.html: 
+Note that you may have to apply ```chmod``` to the home directory and/or the index.html: 
 ```shell
 chmod go+rx ~/
 chmod go+rx index.html
