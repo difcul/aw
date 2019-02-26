@@ -72,11 +72,20 @@ cd public_html
 echo '<html>Hello World!</html>' > index.html
 ```
 
-or you can create the file index.html and edit it with your preferred text editor, making sure that the remote directory is updated with the new file.
+The ```>``` is a redirection operator ( https://en.wikipedia.org/wiki/Redirection_(computing) ) that move the output of
+the command ```echo``` to the file _index.html_ .
+Or you can create the file index.html and edit it with your preferred text editor, making sure that the remote directory is updated with the new file.
 
 Now you can open in your browser the link ```http://appserver.alunos.di.fc.ul.pt/~awXXX/``` and check the result. 
-If using a local machine the link should start with localhost ```http://localhost/...```
-This is result is static and will not change unless the file _index.html_ in the machine _appserver_ is updated.
+If using a local machine the link should start with localhost ```http://localhost/...```.
+In a DI labs should be ```http://localhost/~fcXXXXX```. 
+This is result is static and will not change unless the file _index.html_ in the machine _appserver_ or localhost is updated.
+
+Note that you may have to apply ```chmod``` to the user folder and/or the index.html: 
+```shell
+chmod go+rx ~/
+chmod go+rx index.html
+```
 
 ### Dynamic Web Page
 
@@ -102,7 +111,7 @@ echo '<html><?php echo date(DATE_RFC822); ?> </html>' > index.php
 
 By opening the URL ```http://appserver.alunos.di.fc.ul.pt/~awXXX/index.php``` you will see that the content is not the content of the file; rather it is the content of the interpretation of that file at the time it was executed, that is, the date the access was made.
 
-To create and edit the PHP files, you should use a text editor (e.g., Emacs, SublimeText , Notepad++, vi, nano,..), and not the _echo_ command, that should be used only to create very short files.
+To create and edit the PHP files, you should use a text editor (e.g., gedit, emacs, SublimeText, Notepad++, vi, nano,..), and not the _echo_ command, that should be used only to create very short files.
 
 
 ## Retrieval
@@ -112,7 +121,6 @@ Use the tool _curl_ to open an URL that provides you with 10 PubMed identifiers 
 ```shell
 curl "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=Asthma&retmax=10&retmode=xml"
 ```
-
 
 You should get 10 PubMed identifiers on your screen embbed in a xml file. This URL corresponds to a web service that we will explore further in the following modules.
 
@@ -124,13 +132,14 @@ curl "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=
 
 Now you should get the 10 PubMed identifiers on your screen without xml tags.
 
-Create a file named _getPubMedIds.sh_ with the previous command, but replace Asthma by _$1_ so we can use the name of disease as input, i.e :
+Using a text editor create a file named _getPubMedIds.sh_  and copy and paste the following command into it:
 
 ```shell
 curl "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=$1&retmax=10&retmode=xml" | grep "<Id>" | sed -e "s/<Id>//" -e "s/<\/Id>//" 
 ```
 
-Now add permissions to execute the script, and execute it saving the result to a file:
+Note that we replaced Asthma by _$1_ so we can use the name of disease as input,
+Now add permissions to execute the script, and execute it saving the result to a file using the redirection operator:
 
 ```shell
 chmod u+x ./getPubMedIds.sh
@@ -151,12 +160,13 @@ To convert the Ids to links try the _sed_ tool:
 sed "s/^/https:\/\/www.ncbi.nlm.nih.gov\/pubmed\//" < Asthma.txt
 ```
 
-Create a file named _convertPubMedIds.sh_ with the previous command, but replace Asthma by _$1_ so we can use the name of disease as input, i.e :
+Using a text editor create a file named _convertPubMedIds.sh_ and copy and paste the following command into it:
 
 ```shell
 sed "s/^/https:\/\/www.ncbi.nlm.nih.gov\/pubmed\//" < $1.txt
 ```
 
+Note that we replaced Asthma by _$1_ so we can use the name of disease as input.
 Now add permissions to execute the script, and execute it saving the result to a file:
 
 ```shell
