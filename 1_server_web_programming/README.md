@@ -184,7 +184,7 @@ Now, by opening the URL _http://appserver.alunos.di.fc.ul.pt/~awXXX/mywebapp.php
 
 Now clear the previous file, and add the following HTML code to create a form:
 
-```php
+```html
 <html>
     <form action='mywebapp.php' method='get'>
         <p> Disease: <input type='text' name='disease' /> </p>
@@ -214,10 +214,29 @@ fclose($handle);
 
 Open the URL _http://appserver.alunos.di.fc.ul.pt/~awXXX/mywebapp.php_ (hit refresh) and check the results.
 
-Now try for different diseases, but do not forget to run the shell scripts before.
+Now try for different diseases, but do not forget to manually execute the shell scripts before.
 
 
 ## Invoking Shell Scripts 
+
+You can execute the scripts using the ```xargs``` command:
+
+```shell
+cat mydiseases.txt | xargs - I {} ./getPubMedIds.sh {}
+```
+
+Or using the ```for``` command:
+
+```shell
+for i in $( cat mydiseases.txt ); do
+    echo $i
+    curl ...$i...
+    ./getPubMedIds.sh $i
+ done
+```
+
+
+Or invoke them from another application:
 
 - Python: 
 ```python
@@ -236,15 +255,6 @@ passthru("/home/aw000/getPubMedIds.sh Asthma");
 ```
 Runtime.getRuntime().exec("curl ...");
 Runtime.getRuntime().exec("/home/aw000/getPubMedIds.sh Asthma");
-```
-
-- Shell:
-```shell
-for i in $( cat mydiseases.txt ); do
-    echo $i
-    curl ...$i...
-    ./getPubMedIds.sh $i
- done
 ```
 
 Note: curl libraries are also available for Python, Java or PHP.
