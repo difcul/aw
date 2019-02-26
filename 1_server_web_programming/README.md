@@ -222,7 +222,7 @@ Now try for different diseases, but do not forget to manually execute the shell 
 You can execute the scripts using the ```xargs``` command:
 
 ```shell
-cat mydiseases.txt | xargs - I {} ./getPubMedIds.sh {}
+cat mydiseases.txt | xargs -I {} ./getPubMedIds.sh {}
 ```
 
 Or using the ```for``` command:
