@@ -80,7 +80,7 @@ Now you can open in your browser the link ```http://appserver.alunos.di.fc.ul.pt
 
 If using a local machine the link should start with localhost ```http://localhost/...```.
 
-In a DI labs should be ```http://localhost/~fcXXXXX```. 
+In a DI labs should be ```http://localhost/~fcXXXXX/```. 
 
 This is result is static and will not change unless the file _index.html_ in the machine _appserver_ or localhost is updated.
 
