@@ -55,14 +55,15 @@ Upon making the connection, you will be able to navigate and edit your files as 
 ### Static Web Page
 
 The first step to create a webpage is to create and allow access (change access restrictions) to this folder. 
-In the terminal, in the root directory of your account:
+In the terminal, type in the home directory:
 
 ```shell
 mkdir public_html
+chmod go+rx ~/
 chmod go+rx public_html
 ```
 
-The first command creates a subdirectory in the home directory. The second command gives access permission rights to read and execute files to groups and other users.
+The first command creates a subdirectory in the home directory. The second and third commands give access permission rights to read and execute files to groups and other users.
 This is important to let the web server access your files. 
 
 After creating the directory, you can then create the HTML file and place it into the directory **public_html**. To do so:
@@ -84,9 +85,8 @@ In a DI labs should be ```http://localhost/~fcXXXXX/```.
 
 This is result is static and will not change unless the file _index.html_ in the machine _appserver_ or localhost is updated.
 
-Note that you may have to apply ```chmod``` to the home directory and/or the index.html: 
+Note that in some machines you may have to change the permissions of the file:
 ```shell
-chmod go+rx ~/
 chmod go+rx index.html
 ```
 
