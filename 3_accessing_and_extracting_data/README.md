@@ -82,39 +82,29 @@ curl --data-urlencode "text=$(cat Abstracts.txt)" 'http://labs.rd.ciencias.ulisb
 
 and you should get the following output with the diseases found and where they were found: 
 ```txt
-348	354	asthma
-359	363	COPD
-496	500	COPD
-504	510	asthma
-1066	1076	bronchitis
-1095	1101	asthma
-1135	1142	disease
-1306	1314	impetigo
-1316	1320	acne
-1322	1337	gastroenteritis
-2015	2025	bronchitis
-1173	1185	otitis media
-2156	2168	otitis media
-1105	1142	chronic obstructive pulmonary disease
-1281	1304	urinary tract infection
+348     354     asthma          http://purl.obolibrary.org/obo/DOID_2841
+359     363     COPD            http://purl.obolibrary.org/obo/DOID_3083
+496     500     COPD            http://purl.obolibrary.org/obo/DOID_3083
+504     510     asthma          http://purl.obolibrary.org/obo/DOID_2841
+1066    1076    bronchitis      http://purl.obolibrary.org/obo/DOID_6132
+1095    1101    asthma          http://purl.obolibrary.org/obo/DOID_2841
+1135    1142    disease         http://purl.obolibrary.org/obo/DOID_4
+1306    1314    impetigo        http://purl.obolibrary.org/obo/DOID_8504
+1316    1320    acne            http://purl.obolibrary.org/obo/DOID_6543
+1322    1337    gastroenteritis http://purl.obolibrary.org/obo/DOID_2326
+2015    2025    bronchitis      http://purl.obolibrary.org/obo/DOID_6132
+1173    1185    otitis media    http://purl.obolibrary.org/obo/DOID_10754
+2156    2168    otitis media    http://purl.obolibrary.org/obo/DOID_10754
+1105    1142    chronic obstructive pulmonary disease   http://purl.obolibrary.org/obo/DOID_3083
+1281    1304    urinary tract infection                 http://purl.obolibrary.org/obo/DOID_13148
 ```
+The links (URIs) represent the respective entries in the Disease Ontology (http://disease-ontology.org/).
 
-Search some of these terms in the Disease Ontology portal (http://disease-ontology.org/), and you will get the the following identifiers:
-```txt
-http://purl.obolibrary.org/obo/DOID_10754	otitis media
-http://purl.obolibrary.org/obo/DOID_13148	urinary tract infection
-http://purl.obolibrary.org/obo/DOID_2326	gastroenteritis
-http://purl.obolibrary.org/obo/DOID_2841	asthma
-http://purl.obolibrary.org/obo/DOID_3083	chronic obstructive pulmonary disease
-http://purl.obolibrary.org/obo/DOID_3083	COPD
-http://purl.obolibrary.org/obo/DOID_4		disease
-http://purl.obolibrary.org/obo/DOID_6132	bronchitis
-http://purl.obolibrary.org/obo/DOID_6543	acne
-http://purl.obolibrary.org/obo/DOID_8504	impetigo
-```
 Considering that _asthma_ is on what the user is interested in, you can measure the similarity (relevance) between _asthma_ ```DOID:2841``` and 
 the other terms using the tool DiShIn (http://labs.fc.ul.pt/dishin/) and their identifiers. 
-You will see that _disease_ has low similarity values, because it is a generic term. So, _disease_ should have a lower contribution for ranking search results about _asthma_. Tip: calculate the similarity between the term and itself, and the resnik measure will give you the information content (specificity) of that term.  
+You will see that _disease_ has low similarity values, because it is a generic term. So, _disease_ should have a lower contribution for ranking search results about _asthma_.
+
+Tip: calculate the similarity between the term and itself, and the resnik measure will give you the information content (specificity) of that term.  
 
 To perform these last steps programmatically you can use MER (https://github.com/lasigeBioTM/MER) and DiShIn (https://github.com/lasigeBioTM/DiShIn) locally, 
 and follow the example https://github.com/lasigeBioTM/MER#ontology-and-pubmed
