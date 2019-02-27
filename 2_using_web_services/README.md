@@ -32,10 +32,12 @@ To get only the title and use the _grep_ tool, and _sed_ to remove the XML tags 
 curl "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=29462659&retmode=text&rettype=xml" | egrep "<ArticleTitle>" | sed -e "s/<[^>]*>//g" -e "s/^ *//" -e "s/ *$//"
 ```
 
-Create a file named _getPubMedTitles.sh_ with the previous command, but replace 29462659 by _$1_ so we can use any PubMed Id as input, i.e :
+Using a text editor create a file named _getPubMedTitles.sh_ and copy and paste the following command into it:
+
 ```shell
 curl "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=$1&retmode=text&rettype=xml" | egrep "<ArticleTitle>" | sed -e "s/<[^>]*>//g" -e "s/^ *//" -e "s/ *$//"
 ```
+Note that we replaced 29462659 by _$1_ so we can use any PubMed Id as input.
 
 Now add permissions to execute the script, and execute it:
 
@@ -79,6 +81,8 @@ foreach ($c as $key => $value) {
 
 Open the URL _http://appserver.alunos.di.fc.ul.pt/~awXXX/mywebapp.php_ (hit refresh) and check the results.
 
+Or the URL _http://localhost/.../mywebapp.php_ in case you are using a local machine.
+
 Now try for different diseases, but do not forget to run the shell scripts before.
 
 
@@ -97,22 +101,29 @@ Check the method _flickr.photos.search_ (https://www.flickr.com/services/api/fli
 Also, look at a possible response, in XML. 
 
 To search for 10 public photos about Asthma test the following call using the search string (_text_) as being "Asthma". 
-Do not forget to replace the ```api_key```, always required.
+Do not forget to replace the ```YOUR_API_KEY```.
 
 ```shell
 curl "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=YOUR_API_KEY&text=Asthma&per_page=10&privacy_filter=1"
 ```
 
 The response provided should similar to:
-```html
+```xml
+<?xml version="1.0" encoding="utf-8" ?>
 <rsp stat="ok">
-<photos page="1" pages="217" perpage="100" total="21634">
-<photo id="25529403237" owner="156441279@N02" secret="81693a20ef" server="4665" farm="5" title="Pediatric Allergy, Asthma and Immunology by Arnaldo Cantani" ispublic="1" isfriend="0" isfamily="0"/>
-<photo id="26527339958" owner="14924442@N04" secret="a596f1d20b" server="4610" farm="5" title="Halo" ispublic="1" isfriend="0" isfamily="0"/>
-<photo id="39488217555" owner="35486550@N00" secret="f806f5bfb6" server="4673" farm="5" title=""Allergies, Asthma & Urticaria" - Hosted by 'Hibiscus Health Caribbean Inc.'" ispublic="1" isfriend="0" isfamily="0"/>
-<photo id="25505143007" owner="156074345@N03" secret="1d4c5b7122" server="4713" farm="5" title="The Impact of a Certified Air Cleaner on the Indoor Air Quality" ispublic="1" isfriend="0" isfamily="0"/>
-<photo id="39664891004" owner="155471696@N03" secret="6d62b9521c" server="4603" farm="5" title="BreatheEZi_Asthma-attack" ispublic="1" isfriend="0" isfamily="0"/>
-....
+<photos page="1" pages="1322" perpage="10" total="13218">
+	<photo id="32283410077" owner="148095701@N04" secret="0f334b1c0a" server="7862" farm="8" title="North Park Urgent Care | Lakeview Walk in Clinic" ispublic="1" isfriend="0" isfamily="0" />
+	<photo id="46310890595" owner="143417296@N04" secret="69c7ca0405" server="7845" farm="8" title="Cupping Therapy - Using Cupping Therapy" ispublic="1" isfriend="0" isfamily="0" />
+	<photo id="40260232383" owner="145524237@N05" secret="fae1f35c19" server="7829" farm="8" title="NATUROPATHY Center" ispublic="1" isfriend="0" isfamily="0" />
+	<photo id="33349433718" owner="166825568@N03" secret="0bf6344ce0" server="7816" farm="8" title="5 Effective Yoga Poses Treatments For Oily Skin" ispublic="1" isfriend="0" isfamily="0" />
+	<photo id="40259487683" owner="148303290@N02" secret="cf98f2d207" server="7881" farm="8" title="Best Doctors in Mansarovar Jaipur  https://www.docconsult.in/jaipur/mansarovar/dental-surgeon-speciality https://www.docconsult.in/jaipur/mansarovar/asthma-allergy-specialist-speciality https://www.docconsult.in/jaipur/mansarovar/cardiologist-speciality h" ispublic="1" isfriend="0" isfamily="0" />
+	<photo id="47165352182" owner="159521341@N07" secret="8ffc96aa51" server="7825" farm="8" title="Seretide Inhaler Price USA" ispublic="1" isfriend="0" isfamily="0" />
+	<photo id="40251948203" owner="168604488@N03" secret="a415c2a9f5" server="7886" farm="8" title="First class Bond back cleaning" ispublic="1" isfriend="0" isfamily="0" />
+	<photo id="47215151641" owner="161918792@N05" secret="5af87f9885" server="7909" farm="8" title="Influenza" ispublic="1" isfriend="0" isfamily="0" />
+	<photo id="47161658612" owner="126031154@N08" secret="141f5c57e4" server="7872" farm="8" title="Rowan tree on Malvern hills" ispublic="1" isfriend="0" isfamily="0" />
+	<photo id="32274580577" owner="166825568@N03" secret="0eb84273ec" server="7859" farm="8" title="yoga-for-diabetes" ispublic="1" isfriend="0" isfamily="0" />
+</photos>
+</rsp>
 ```
 
 In the response, we receive a set of photos, identified by the photo _id_, and two other numbers, _farm-id_ and _secret_. These numbers enable us to access the image associated with each photo in the set. Flickr stores several versions, different sizes, of each photo, and all of them have a static URL. This URL is composed as follows:
@@ -125,14 +136,9 @@ https://farm{farm-id}.staticflickr.com/{server-id}/{id}_{secret}_[mstzb].jpg
 https://farm{farm-id}.staticflickr.com/{server-id}/{id}_{o-secret}_o.(jpg|gif|png)
 ```
 
-The values displayed inside brackets are available from the photo search response above. _mstzb_ are the options relative to the size of the desired photo. For example, for a medium sized photo, one would use the letter _m_. As an example, looking at the example response above, if we want to access the first image, we would use the URL:
-
-```txt
-https://farm2.staticflickr.com/1474/25529403237_81693a20ef_m.jpg
-```
+The values displayed inside brackets are available from the photo search response above. _mstzb_ are the options relative to the size of the desired photo. For example, for a medium sized photo, one would use the letter _m_. As an example, looking at the example response above, if we want to access the first image, we would use the URL https://farm8.staticflickr.com/7862/32283410077_0f334b1c0a_m.jpg
 
 For more information about image URLs, please refer to https://www.flickr.com/services/api/misc.urls.html.
-
 
 
 ### Get the Photos
@@ -143,11 +149,14 @@ To get only the links to the photos use the _grep_ tool, and _sed_ to extract th
 curl "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=YOUR_API_KEY&text=Asthma&per_page=10&privacy_filter=1" | grep "photo id" | sed 's/^.*id="\([^"]*\).*secret="\([^"]*\).*server="\([^"]*\).*farm="\([^"]*\).*$/https:\/\/farm\4.staticflickr.com\/\3\/\1_\2.jpg/'
 ```
 
+Using a text editor create a file named _getFlickrPhotos.sh_ and copy and paste the following command into it:
 
-Create a file named _getFlickrPhotos.sh_ with the previous command, but replace the api key by _$1_ and Asthma by _$2_ so you can use any key and disease as input, i.e :
 ```shell
 curl "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=$1&text=$2&per_page=10&privacy_filter=1" | grep "photo id" | sed 's/^.*id="\([^"]*\).*secret="\([^"]*\).*server="\([^"]*\).*farm="\([^"]*\).*$/https:\/\/farm\4.staticflickr.com\/\3\/\1_\2.jpg/'
 ```
+
+Note that we replaced the api key by _$1_ and Asthma by _$2_ so you can use any key and disease as input.
+
 Now add permissions to execute the script, and execute it and saving the result to a file:
 
 ```shell
