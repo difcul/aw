@@ -208,7 +208,7 @@ cd ..
 
 - https://www.w3schools.com/xml/xpath_intro.asp
 
-- https://www.researchgate.net/publication/323220245_Text_Mining_for_Bioinformatics_Using_Biomedical_Literature
+- https://www.researchgate.net/publication/329435244_MER_A_shell_script_and_annotation_server_for_minimal_named_entity_recognition_and_linking
 
 - https://www.researchgate.net/publication/323219905_Semantic_Similarity_Definition
 
