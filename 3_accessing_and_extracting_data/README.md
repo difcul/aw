@@ -109,27 +109,34 @@ Tip: calculate the similarity between the term and itself, and the resnik measur
 To perform these last steps programmatically you can use MER (https://github.com/lasigeBioTM/MER) and DiShIn (https://github.com/lasigeBioTM/DiShIn) locally, 
 and follow the example https://github.com/lasigeBioTM/MER#ontology-and-pubmed
 
+## MER and DiShIn at appserver
+
 MER and DiShIn are also available in _appserver_ at _/home/aw000/MER_ and /home/aw000/DiShIn_, respectively.
 So in _appserver_ you can execute the following commands (type ```man sort``` to know more about these tools) :
 
 ```shell
 text=$(cat Abstracts.txt) 
-(cd /home/aw000/MER; ./get_entities.sh "$text" doid | sort -u) > Terms.txt
+(cd /home/aw000/MER; ./get_entities.sh "$text" doid | sort -u -g) > Terms.txt
 cat Terms.txt
 ```
 and you will get as output:
 
 ```txt
-http://purl.obolibrary.org/obo/DOID_10754	otitis media
-http://purl.obolibrary.org/obo/DOID_13148	urinary tract infection
-http://purl.obolibrary.org/obo/DOID_2326	gastroenteritis
-http://purl.obolibrary.org/obo/DOID_2841	asthma
-http://purl.obolibrary.org/obo/DOID_3083	chronic obstructive pulmonary disease
-http://purl.obolibrary.org/obo/DOID_3083	COPD
-http://purl.obolibrary.org/obo/DOID_4		disease
-http://purl.obolibrary.org/obo/DOID_6132	bronchitis
-http://purl.obolibrary.org/obo/DOID_6543	acne
-http://purl.obolibrary.org/obo/DOID_8504	impetigo
+348     354     asthma                                  http://purl.obolibrary.org/obo/DOID_2841
+359     363     COPD                                    http://purl.obolibrary.org/obo/DOID_3083
+496     500     COPD                                    http://purl.obolibrary.org/obo/DOID_3083
+504     510     asthma                                  http://purl.obolibrary.org/obo/DOID_2841
+1066    1076    bronchitis                              http://purl.obolibrary.org/obo/DOID_6132
+1095    1101    asthma                                  http://purl.obolibrary.org/obo/DOID_2841
+1105    1142    chronic obstructive pulmonary disease   http://purl.obolibrary.org/obo/DOID_3083
+1135    1142    disease                                 http://purl.obolibrary.org/obo/DOID_4
+1173    1185    otitis media                            http://purl.obolibrary.org/obo/DOID_10754
+1281    1304    urinary tract infection                 http://purl.obolibrary.org/obo/DOID_13148
+1306    1314    impetigo                                http://purl.obolibrary.org/obo/DOID_8504
+1316    1320    acne                                    http://purl.obolibrary.org/obo/DOID_6543
+1322    1337    gastroenteritis                         http://purl.obolibrary.org/obo/DOID_2326
+2015    2025    bronchitis                              http://purl.obolibrary.org/obo/DOID_6132
+2156    2168    otitis media                            http://purl.obolibrary.org/obo/DOID_10754
 ```
 
 To calculate the similarity between _asthma_ and _COPD_ execute:
@@ -155,13 +162,43 @@ To obtain the similarities between _asthma_ and all the terms identified by MER 
 cat Terms.txt | sed 's/^.*DOID_\([0-9]*\).*$/DOID_\1/' | xargs -l python /home/aw000/DiShIn/dishin.py /home/aw000/DiShIn/doid.db DOID_2841
 ```
 
+## MER and DiShIn locally
+
 To run in a local machine install the tools first:
 
 ```shell
 git clone git://github.com/lasigeBioTM/MER
 git clone git://github.com/lasigeBioTM/DiShIn
 ```
-and download the Human Disease Ontology (doid.owl) from: https://github.com/DiseaseOntology/HumanDiseaseOntology/tree/master/src/ontology
+and then download the Human Disease Ontology (doid.owl) from https://github.com/DiseaseOntology/HumanDiseaseOntology/tree/master/src/ontology and pre-process it by executing the commands:  
+
+```shell
+wget https://raw.githubusercontent.com/DiseaseOntology/HumanDiseaseOntology/master/src/ontology/doid.owl
+cd MER/data
+cp ../../doid.owl .
+../produce_data_files.sh doid.owl
+cd ..
+./get_entities.sh "Asthma" doid
+cd ..
+cd DiShIn
+cp ../doid.owl .
+python dishin.py doid.owl doid.db http://purl.obolibrary.org/obo/ http://www.w3.org/2000/01/rdf-schema#subClassOf ''
+python dishin.py doid.db DOID_4 DOID_4 
+cd ..
+```
+
+The pre-process may take some time, some you may download the files:
+```shell
+wget http://appserver.alunos.di.fc.ul.pt/~aw000/aw/doid-lexicon-database-20190217.zip
+unzip doid-lexicon-database-20190217.zip
+cd MER
+./get_entities.sh "Asthma" doid
+cd ..
+cd DiShIn
+python dishin.py doid.db DOID_4 DOID_4 
+cd ..
+```
+
 
 ## Additional References
 
