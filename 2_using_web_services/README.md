@@ -83,7 +83,7 @@ Open the URL _http://appserver.alunos.di.fc.ul.pt/~awXXX/mywebapp.php_ (hit refr
 
 Or the URL _http://localhost/.../mywebapp.php_ in case you are using a local machine.
 
-Now try for different diseases, but do not forget to run the shell scripts before.
+Now try for different diseases, but do not forget to run the shell scripts before, for example using ```xargs```.
 
 
 ## Flickr API
@@ -185,7 +185,7 @@ foreach ($photos as $p) {
 
 Open the URL _http://appserver.alunos.di.fc.ul.pt/~awXXX/mywebapp.php_ (hit refresh) and check the results.
 
-Now try for different diseases, but do not forget to run the shell scripts before.
+Now try for different diseases, but do not forget to run the shell scripts before, for example using ```xargs```.
 
 ## Additional References
 
