@@ -227,47 +227,64 @@ fclose($handle);
 
 Open the URL _http://appserver.alunos.di.fc.ul.pt/~awXXX/mywebapp.php_ (hit refresh) and check the results.
 
-Now try for different diseases, but do not forget to manually execute the shell scripts before.
 
+## Multiple diseases
+
+You can execute the scripts multiple times using the ```xargs``` command.
+First, create a file named _diseases.txt_ with one disease per line, for example:
+```txt
+Asthma
+Alzheimer
+Tuberculosis
+Cirrhosis
+Diabetes
+```
+
+Then use ```xargs``` to get the identifiers of all the previous diseases: 
+
+```shell
+cat diseases.txt | xargs -I {} ./getPubMedIds.sh {}
+```
+
+To get and convert and save to a file, create a script named _getConvertPubMedIds.sh_ with the following contents:
+```shell
+./getPubMedIds.sh $1 > $1.txt
+./convertPubMedIds.sh $1 > $1Links.txt
+
+Then use ```xargs``` with the new script:
+```shell
+cat diseases.txt | xargs -I {} ./getConvertPubMedIds.sh {}
+```
+
+Now you should be able to find the links for all previous diseases in _http://appserver.alunos.di.fc.ul.pt/~awXXX/mywebapp.php_ 
 
 ## Invoking Shell Scripts 
 
-You can execute the scripts using the ```xargs``` command:
+Another option to invoke shell scripts is using the ```for``` command:
 
 ```shell
-cat mydiseases.txt | xargs -I {} ./getPubMedIds.sh {}
+for disease in $( cat diseases.txt ); do
+    echo $disease
+    ./getConvertPubMedIds.sh disease
+done
 ```
-
-Or using the ```for``` command:
-
-```shell
-for i in $( cat mydiseases.txt ); do
-    echo $i
-    curl ...$i...
-    ./getPubMedIds.sh $i
- done
-```
-
 
 Or invoke them from another application:
 
 - Python: 
 ```python
 import os 
-os.system("curl ...")
-os.system("/home/aw000/getPubMedIds.sh Asthma")
+os.system("./getConvertPubMedIds.sh" + disease)
 ```
 
 - PHP:
 ```php
-passthru("curl ...");
-passthru("/home/aw000/getPubMedIds.sh Asthma");
+passthru("./getConvertPubMedIds.sh" + disease)
 ```
 
 - Java:
 ```
-Runtime.getRuntime().exec("curl ...");
-Runtime.getRuntime().exec("/home/aw000/getPubMedIds.sh Asthma");
+Runtime.getRuntime().exec("./getConvertPubMedIds.sh" + disease)
 ```
 
 Note: curl libraries are also available for Python, Java or PHP.

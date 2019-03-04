@@ -1,0 +1,5 @@
+Asthma
+Alzheimer
+Tuberculosis
+Cirrhosis
+Diabetes
