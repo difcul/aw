@@ -1,17 +1,22 @@
 <?xml version="1.0" ?>
-<!DOCTYPE PubmedArticleSet PUBLIC "-//NLM//DTD PubMedArticle, 1st January 2018//EN" "https://dtd.nlm.nih.gov/ncbi/pubmed/out/pubmed_180101.dtd">
+<!DOCTYPE PubmedArticleSet PUBLIC "-//NLM//DTD PubMedArticle, 1st January 2019//EN" "https://dtd.nlm.nih.gov/ncbi/pubmed/out/pubmed_190101.dtd">
 <PubmedArticleSet>
 <PubmedArticle>
-    <MedlineCitation Status="In-Process" Owner="NLM">
+    <MedlineCitation Status="MEDLINE" Owner="NLM">
         <PMID Version="1">29490421</PMID>
+        <DateCompleted>
+            <Year>2018</Year>
+            <Month>09</Month>
+            <Day>19</Day>
+        </DateCompleted>
         <DateRevised>
             <Year>2018</Year>
-            <Month>02</Month>
-            <Day>28</Day>
+            <Month>09</Month>
+            <Day>19</Day>
         </DateRevised>
         <Article PubModel="Print">
             <Journal>
-                <ISSN IssnType="Print">2451-4934</ISSN>
+                <ISSN IssnType="Electronic">2543-6031</ISSN>
                 <JournalIssue CitedMedium="Internet">
                     <Volume>86</Volume>
                     <Issue>1</Issue>
@@ -53,13 +58,52 @@
             <Language>eng</Language>
             <PublicationTypeList>
                 <PublicationType UI="D016428">Journal Article</PublicationType>
+                <PublicationType UI="D016454">Review</PublicationType>
             </PublicationTypeList>
         </Article>
         <MedlineJournalInfo>
             <Country>Poland</Country>
             <MedlineTA>Adv Respir Med</MedlineTA>
             <NlmUniqueID>101697329</NlmUniqueID>
+            <ISSNLinking>2451-4934</ISSNLinking>
         </MedlineJournalInfo>
+        <ChemicalList>
+            <Chemical>
+                <RegistryNumber>0</RegistryNumber>
+                <NameOfSubstance UI="D001993">Bronchodilator Agents</NameOfSubstance>
+            </Chemical>
+        </ChemicalList>
+        <CitationSubset>IM</CitationSubset>
+        <MeshHeadingList>
+            <MeshHeading>
+                <DescriptorName UI="D000280" MajorTopicYN="N">Administration, Inhalation</DescriptorName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName UI="D001249" MajorTopicYN="N">Asthma</DescriptorName>
+                <QualifierName UI="Q000188" MajorTopicYN="Y">drug therapy</QualifierName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName UI="D001993" MajorTopicYN="N">Bronchodilator Agents</DescriptorName>
+                <QualifierName UI="Q000627" MajorTopicYN="Y">therapeutic use</QualifierName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName UI="D058995" MajorTopicYN="N">Dry Powder Inhalers</DescriptorName>
+                <QualifierName UI="Q000706" MajorTopicYN="Y">statistics &amp; numerical data</QualifierName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName UI="D006801" MajorTopicYN="N">Humans</DescriptorName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName UI="D057240" MajorTopicYN="Y">Patient Preference</DescriptorName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName UI="D010817" MajorTopicYN="N">Physician-Patient Relations</DescriptorName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName UI="D029424" MajorTopicYN="N">Pulmonary Disease, Chronic Obstructive</DescriptorName>
+                <QualifierName UI="Q000188" MajorTopicYN="Y">drug therapy</QualifierName>
+            </MeshHeading>
+        </MeshHeadingList>
         <KeywordList Owner="NOTNLM">
             <Keyword MajorTopicYN="N">COPD</Keyword>
             <Keyword MajorTopicYN="N">Ellipta inhaler</Keyword>
@@ -102,8 +146,8 @@
             </PubMedPubDate>
             <PubMedPubDate PubStatus="medline">
                 <Year>2018</Year>
-                <Month>3</Month>
-                <Day>1</Day>
+                <Month>9</Month>
+                <Day>20</Day>
                 <Hour>6</Hour>
                 <Minute>0</Minute>
             </PubMedPubDate>
@@ -122,9 +166,9 @@
     <MedlineCitation Status="In-Data-Review" Owner="NLM">
         <PMID Version="1">29490060</PMID>
         <DateRevised>
-            <Year>2018</Year>
+            <Year>2019</Year>
             <Month>02</Month>
-            <Day>28</Day>
+            <Day>01</Day>
         </DateRevised>
         <Article PubModel="Print">
             <Journal>
@@ -247,7 +291,202 @@
             <ArticleId IdType="pubmed">29490060</ArticleId>
             <ArticleId IdType="pii">4841820</ArticleId>
             <ArticleId IdType="doi">10.1093/jac/dkx502</ArticleId>
+            <ArticleId IdType="pmc">PMC5890776</ArticleId>
         </ArticleIdList>
+        <ReferenceList>
+            <Reference>
+                <Citation>Scand J Prim Health Care. 2017 Mar;35(1):10-18</Citation>
+                <ArticleIdList>
+                    <ArticleId IdType="pubmed">28277045</ArticleId>
+                </ArticleIdList>
+            </Reference>
+            <Reference>
+                <Citation>Antibiotics (Basel). 2016 Jul 04;5(3):null</Citation>
+                <ArticleIdList>
+                    <ArticleId IdType="pubmed">27384588</ArticleId>
+                </ArticleIdList>
+            </Reference>
+            <Reference>
+                <Citation>Cochrane Database Syst Rev. 2015 Jun 23;(6):CD000219</Citation>
+                <ArticleIdList>
+                    <ArticleId IdType="pubmed">26099233</ArticleId>
+                </ArticleIdList>
+            </Reference>
+            <Reference>
+                <Citation>Pharmacoepidemiol Drug Saf. 2009 Jan;18(1):76-83</Citation>
+                <ArticleIdList>
+                    <ArticleId IdType="pubmed">19065600</ArticleId>
+                </ArticleIdList>
+            </Reference>
+            <Reference>
+                <Citation>Scand J Infect Dis. 2010;42(2):90-6</Citation>
+                <ArticleIdList>
+                    <ArticleId IdType="pubmed">19902992</ArticleId>
+                </ArticleIdList>
+            </Reference>
+            <Reference>
+                <Citation>BMJ Open. 2014 Oct 27;4(10 ):e006245</Citation>
+                <ArticleIdList>
+                    <ArticleId IdType="pubmed">25348424</ArticleId>
+                </ArticleIdList>
+            </Reference>
+            <Reference>
+                <Citation>JAMA. 2016 May 3;315(17):1864-73</Citation>
+                <ArticleIdList>
+                    <ArticleId IdType="pubmed">27139059</ArticleId>
+                </ArticleIdList>
+            </Reference>
+            <Reference>
+                <Citation>BMC Pulm Med. 2013 May 31;13:32</Citation>
+                <ArticleIdList>
+                    <ArticleId IdType="pubmed">23724907</ArticleId>
+                </ArticleIdList>
+            </Reference>
+            <Reference>
+                <Citation>Pediatrics. 2014 Oct;134(4):e956-65</Citation>
+                <ArticleIdList>
+                    <ArticleId IdType="pubmed">25225144</ArticleId>
+                </ArticleIdList>
+            </Reference>
+            <Reference>
+                <Citation>Inform Prim Care. 2011;19(4):251-5</Citation>
+                <ArticleIdList>
+                    <ArticleId IdType="pubmed">22828580</ArticleId>
+                </ArticleIdList>
+            </Reference>
+            <Reference>
+                <Citation>Inform Prim Care. 2004;12 (3):171-7</Citation>
+                <ArticleIdList>
+                    <ArticleId IdType="pubmed">15606990</ArticleId>
+                </ArticleIdList>
+            </Reference>
+            <Reference>
+                <Citation>Lancet Infect Dis. 2014 Mar;14(3):213-9</Citation>
+                <ArticleIdList>
+                    <ArticleId IdType="pubmed">24440616</ArticleId>
+                </ArticleIdList>
+            </Reference>
+            <Reference>
+                <Citation>J Antimicrob Chemother. 2018 Feb 1;73(suppl_2):ii11-ii18</Citation>
+                <ArticleIdList>
+                    <ArticleId IdType="pubmed">29490061</ArticleId>
+                </ArticleIdList>
+            </Reference>
+            <Reference>
+                <Citation>J Antimicrob Chemother. 2007 Aug;60 Suppl 1:i43-47</Citation>
+                <ArticleIdList>
+                    <ArticleId IdType="pubmed">17656380</ArticleId>
+                </ArticleIdList>
+            </Reference>
+            <Reference>
+                <Citation>Br J Gen Pract. 2016 May;66(646):e329-36</Citation>
+                <ArticleIdList>
+                    <ArticleId IdType="pubmed">27025554</ArticleId>
+                </ArticleIdList>
+            </Reference>
+            <Reference>
+                <Citation>Br J Dermatol. 2017 Jan;176(1):107-115</Citation>
+                <ArticleIdList>
+                    <ArticleId IdType="pubmed">27716910</ArticleId>
+                </ArticleIdList>
+            </Reference>
+            <Reference>
+                <Citation>J Antimicrob Chemother. 2018 Feb 1;73(suppl_2):ii2-ii10</Citation>
+                <ArticleIdList>
+                    <ArticleId IdType="pubmed">29490062</ArticleId>
+                </ArticleIdList>
+            </Reference>
+            <Reference>
+                <Citation>BMJ Qual Saf. 2011 Mar 21;20(9):764-772</Citation>
+                <ArticleIdList>
+                    <ArticleId IdType="pubmed">21441602</ArticleId>
+                </ArticleIdList>
+            </Reference>
+            <Reference>
+                <Citation>BMJ. 2014 Sep 23;349:g5493</Citation>
+                <ArticleIdList>
+                    <ArticleId IdType="pubmed">25249162</ArticleId>
+                </ArticleIdList>
+            </Reference>
+            <Reference>
+                <Citation>J Antimicrob Chemother. 2018 Feb 1;73(suppl_2):ii36-ii43</Citation>
+                <ArticleIdList>
+                    <ArticleId IdType="pubmed">29490058</ArticleId>
+                </ArticleIdList>
+            </Reference>
+            <Reference>
+                <Citation>Fam Pract. 2015 Aug;32(4):401-7</Citation>
+                <ArticleIdList>
+                    <ArticleId IdType="pubmed">25911505</ArticleId>
+                </ArticleIdList>
+            </Reference>
+            <Reference>
+                <Citation>Lancet Infect Dis. 2013 Feb;13(2):123-9</Citation>
+                <ArticleIdList>
+                    <ArticleId IdType="pubmed">23265995</ArticleId>
+                </ArticleIdList>
+            </Reference>
+            <Reference>
+                <Citation>Antibiotics (Basel). 2017 Mar 07;6(1):</Citation>
+                <ArticleIdList>
+                    <ArticleId IdType="pubmed">28272350</ArticleId>
+                </ArticleIdList>
+            </Reference>
+            <Reference>
+                <Citation>Cochrane Database Syst Rev. 2013 Jun 04;(6):CD000247</Citation>
+                <ArticleIdList>
+                    <ArticleId IdType="pubmed">23733381</ArticleId>
+                </ArticleIdList>
+            </Reference>
+            <Reference>
+                <Citation>Clin Microbiol Infect. 2013 Sep;19(9):860-8</Citation>
+                <ArticleIdList>
+                    <ArticleId IdType="pubmed">23039210</ArticleId>
+                </ArticleIdList>
+            </Reference>
+            <Reference>
+                <Citation>J Antimicrob Chemother. 2014 Dec;69(12 ):3423-30</Citation>
+                <ArticleIdList>
+                    <ArticleId IdType="pubmed">25091508</ArticleId>
+                </ArticleIdList>
+            </Reference>
+            <Reference>
+                <Citation>J Antimicrob Chemother. 2018 Feb 1;73(suppl_2):ii27-ii35</Citation>
+                <ArticleIdList>
+                    <ArticleId IdType="pubmed">29490059</ArticleId>
+                </ArticleIdList>
+            </Reference>
+            <Reference>
+                <Citation>Curr Med Res Opin. 2016 Jun;32(6):1023-32</Citation>
+                <ArticleIdList>
+                    <ArticleId IdType="pubmed">26907677</ArticleId>
+                </ArticleIdList>
+            </Reference>
+            <Reference>
+                <Citation>JAMA Intern Med. 2016 Nov 1;176(11):1630-1637</Citation>
+                <ArticleIdList>
+                    <ArticleId IdType="pubmed">27653939</ArticleId>
+                </ArticleIdList>
+            </Reference>
+            <Reference>
+                <Citation>Cochrane Database Syst Rev. 2013 Nov 05;(11):CD000023</Citation>
+                <ArticleIdList>
+                    <ArticleId IdType="pubmed">24190439</ArticleId>
+                </ArticleIdList>
+            </Reference>
+            <Reference>
+                <Citation>Scand J Prim Health Care. 2009;27(1):18-24</Citation>
+                <ArticleIdList>
+                    <ArticleId IdType="pubmed">19085427</ArticleId>
+                </ArticleIdList>
+            </Reference>
+            <Reference>
+                <Citation>Br J Gen Pract. 2005 Aug;55(517):603-8</Citation>
+                <ArticleIdList>
+                    <ArticleId IdType="pubmed">16105368</ArticleId>
+                </ArticleIdList>
+            </Reference>
+        </ReferenceList>
     </PubmedData>
 </PubmedArticle>
 
