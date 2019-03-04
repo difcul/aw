@@ -250,6 +250,8 @@ To get and convert and save to a file, create a script named _getConvertPubMedId
 ```shell
 ./getPubMedIds.sh $1 > $1.txt
 ./convertPubMedIds.sh $1 > $1Links.txt
+```
+
 
 Then use ```xargs``` with the new script:
 ```shell
