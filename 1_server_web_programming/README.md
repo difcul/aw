@@ -285,7 +285,7 @@ passthru("./getConvertPubMedIds.sh" + disease)
 ```
 
 - Java:
-```
+```java
 Runtime.getRuntime().exec("./getConvertPubMedIds.sh" + disease)
 ```
 
