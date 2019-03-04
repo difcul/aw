@@ -24,7 +24,7 @@ http://appserver.alunos.di.fc.ul.pt/~aw000/aw/4_using_rdf_and_sparql/mywebapp.ph
 
 http://appserver.alunos.di.fc.ul.pt/~aw000/aw/5_building_web_services/rest/article/
 
-http://appserver.alunos.di.fc.ul.pt/~aw000/aw/5_building_web_services/rest/article/29461875/
+http://appserver.alunos.di.fc.ul.pt/~aw000/aw/5_building_web_services/rest/article/30826551/
 
 http://appserver.alunos.di.fc.ul.pt/~aw000/aw/6_dynamic_web_applications/mywebapp.php
 

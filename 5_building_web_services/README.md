@@ -13,7 +13,7 @@ to make available the following URLs:
 
 ```txt
 http://appserver.alunos.di.fc.ul.pt/awXXX/rest/article/     => gets the list of all articles 
-http://appserver.alunos.di.fc.ul.pt/awXXX/rest/article/29461607/    => gets data about a particular article given its Id
+http://appserver.alunos.di.fc.ul.pt/awXXX/rest/article/30826551/    => gets data about a particular article given its Id
 ```
 
 We will now map the requested URL to a PHP file where we can parse and follow up with the request.
@@ -308,7 +308,7 @@ Class Article {
 
 You can now use the browser to access your URIs and check the results:
 - http://appserver.alunos.di.fc.ul.pt/~awXXX/rest/article/
-- http://appserver.alunos.di.fc.ul.pt/~awXXX/rest/article/29461607/
+- http://appserver.alunos.di.fc.ul.pt/~awXXX/rest/article/30826551/
 
 You can see that, given that we did not set an alternative response format, it is provided in HTML. 
 To test the web service more extensively you can either build a client programatically and consume the service, or use a standalone general-purpose REST client. 
@@ -317,7 +317,7 @@ For example, you can use _curl_:
 
 ```shell
 curl -X GET -H "Accept: application/json" -L "http://appserver-01.alunos.di.fc.ul.pt/~awXXX/rest/article/"
-curl -X GET -H "Accept: application/json" -L "http://appserver-01.alunos.di.fc.ul.pt/~awXXX/rest/article/29461607/"
+curl -X GET -H "Accept: application/json" -L "http://appserver-01.alunos.di.fc.ul.pt/~awXXX/rest/article/30826551/"
 ```
 
 You can also use the Google Chrome extension "Advanced REST client" (https://advancedrestclient.com/) to test your requests and Accept headers.
