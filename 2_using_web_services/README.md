@@ -32,7 +32,7 @@ To get only the title and use the _grep_ tool, and _sed_ to remove the XML tags 
 curl "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=29462659&retmode=text&rettype=xml" | grep "<ArticleTitle>" | sed -e "s/<[^>]*>//g" -e "s/^ *//" -e "s/ *$//"
 ```
 
-Note, that these commands are even available in a live Linux: _https://youtu.be/QvW2GOi2Nrg_
+Note that these commands are even available in a live Linux: _https://youtu.be/QvW2GOi2Nrg_
 
 Using a text editor create a file named _getPubMedTitles.sh_ and copy and paste the following command into it:
 
