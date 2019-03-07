@@ -18,7 +18,7 @@ the _curl_ tool, or any other programming language that lets you open URLs.
 
 ### EFetch
 
-We will use now the EFetch method (https://www.ncbi.nlm.nih.gov/books/NBK25499/#chapter4.EFetch) to get the titles of the titles. 
+We will use now the EFetch method (https://www.ncbi.nlm.nih.gov/books/NBK25499/#chapter4.EFetch) to get the titles of the articles. 
 
 For example, check the XML output of the following call to get the data about the PubMed Id 29462659:
 
@@ -29,13 +29,15 @@ curl "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=294
 To get only the title and use the _grep_ tool, and _sed_ to remove the XML tags and trim the whitespaces:
 
 ```shell
-curl "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=29462659&retmode=text&rettype=xml" | egrep "<ArticleTitle>" | sed -e "s/<[^>]*>//g" -e "s/^ *//" -e "s/ *$//"
+curl "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=29462659&retmode=text&rettype=xml" | grep "<ArticleTitle>" | sed -e "s/<[^>]*>//g" -e "s/^ *//" -e "s/ *$//"
 ```
+
+Note, that these commands are even available in a live Linux: _https://youtu.be/QvW2GOi2Nrg_
 
 Using a text editor create a file named _getPubMedTitles.sh_ and copy and paste the following command into it:
 
 ```shell
-curl "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=$1&retmode=text&rettype=xml" | egrep "<ArticleTitle>" | sed -e "s/<[^>]*>//g" -e "s/^ *//" -e "s/ *$//"
+curl "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=$1&retmode=text&rettype=xml" | grep "<ArticleTitle>" | sed -e "s/<[^>]*>//g" -e "s/^ *//" -e "s/ *$//"
 ```
 Note that we replaced 29462659 by _$1_ so we can use any PubMed Id as input.
 
@@ -83,7 +85,7 @@ Open the URL _http://appserver.alunos.di.fc.ul.pt/~awXXX/mywebapp.php_ (hit refr
 
 Or the URL _http://localhost/.../mywebapp.php_ in case you are using a local machine.
 
-Now try for different diseases, but do not forget to run the shell scripts before, for example using ```xargs```.
+Now try for different diseases, but do not forget to run the shell scripts before, for example by using ```xargs```.
 
 
 ## Flickr API
@@ -93,7 +95,13 @@ With the API, you can read almost all the data associated with pictures and sets
 
 ### Getting an API key
 
-Some APIs require developers to request a key to use the API. Getting an API Key from Flickr is straightforward and can be done at the ["Flickr App Garden"](https://www.flickr.com/services/apps/create/apply/). If you don't have one, you will need to create a Yahoo account. If you didn't create an account before, you will be provided with a temporary Flickr API key in class. However, it should not be used outside of the class; you should create your own at the cost of making too many requests with the provided account and reaching the limit of requests for the _difcul_ account.
+Some APIs require developers to request a key to use the API.
+Applying for a non-commercial API Key from Flickr is straightforward. 
+Check how to do it at _https://www.flickr.com/services/api/misc.api_keys.html_
+or watch this video: _https://youtu.be/WMoLk0P5_bk_
+
+If you don't have one, you will need to create a Yahoo account.
+If you didn't create an account before, you may request a temporary Flickr API key in class. However, it should not be used outside of the class; you should create your own at the cost of making too many requests with the provided account and reaching the limit of requests for the _difcul_ account.
 
 ### Photos Search
 
@@ -185,7 +193,7 @@ foreach ($photos as $p) {
 
 Open the URL _http://appserver.alunos.di.fc.ul.pt/~awXXX/mywebapp.php_ (hit refresh) and check the results.
 
-Now try for different diseases, but do not forget to run the shell scripts before, for example using ```xargs```.
+Now try for different diseases, but do not forget to run the shell scripts before, for example by using ```xargs```.
 
 ## Additional References
 
