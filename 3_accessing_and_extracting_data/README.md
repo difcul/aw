@@ -9,7 +9,8 @@ However, it can be used to query any markup document.
 
 ## XPath
 
-XPAth enables us to query that document by using the structure of the document.
+XPAth enables us to query that document by using the structure of the document. 
+
 For example, to get the XML data for two articles from PubMed ([29490421](https://www.ncbi.nlm.nih.gov/pubmed/29490421) and [29490060](https://www.ncbi.nlm.nih.gov/pubmed/29490060)) 
 and save it to a file:
 ```shell
@@ -22,7 +23,7 @@ Type ```cat Articles.xml``` to check the output, and try to figure out what the 
 /PubmedArticle/PubmedData/ArticleIdList/ArticleId 
 ```
 
-You can execute the query using the _xmllint_ tool (type ```man xmllint``` to know more about _xmllint_) to get their Ids:
+You can execute the query using the _xmllint_ tool (type ```man xmllint``` to know more about _xmllint_ or check https://youtu.be/myanCTM-3Tw ) to get their Ids:
 
 ```shell
 xmllint --xpath '/PubmedArticleSet/PubmedArticle/PubmedData/ArticleIdList' Articles.xml
@@ -201,6 +202,8 @@ cd ..
 
 
 ## Additional References
+
+- https://youtu.be/myanCTM-3Tw
 
 - http://labs.rd.ciencias.ulisboa.pt/book/ (3.7 XML Processing; 5.9 Entity Linking; 5.10 Large lexicons)
 
