@@ -76,7 +76,8 @@ To get the abstracts of the articles you can use the following query and save it
 xmllint --xpath '//AbstractText/text()' Articles.xml > Abstracts.txt
 ```
 
-To find more diseases in the abstracts you can use the MER API (http://labs.fc.ul.pt/mer/):
+To find more diseases in the abstracts you can use grep (https://youtu.be/0OCjQLxKH_g) or a text mining tool such as MER (http://labs.fc.ul.pt/mer/).
+To use MER API type:
 ```shell
 curl --data-urlencode "text=$(cat Abstracts.txt)" 'http://labs.rd.ciencias.ulisboa.pt/mer/api.php?lexicon=doid'
 ```
@@ -202,8 +203,6 @@ cd ..
 
 
 ## Additional References
-
-- https://youtu.be/myanCTM-3Tw
 
 - http://labs.rd.ciencias.ulisboa.pt/book/ (3.7 XML Processing; 5.9 Entity Linking; 5.10 Large lexicons)
 
