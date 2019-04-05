@@ -320,7 +320,6 @@ curl -X GET -H "Accept: text/html" -L "http://appserver.alunos.di.fc.ul.pt/~aw00
 curl -X GET -H "Accept: application/json" -L "http://appserver.alunos.di.fc.ul.pt/~aw000/aw/5_building_web_services/rest/article/"
 curl -X GET -H "Accept: application/xml" -L "http://appserver.alunos.di.fc.ul.pt/~aw000/aw/5_building_web_services/rest/article/"
 
-
 curl -X GET -H "Accept: text/html" -L "http://appserver.alunos.di.fc.ul.pt/~aw000/aw/5_building_web_services/rest/article/30826551/"
 curl -X GET -H "Accept: application/json" -L "http://appserver.alunos.di.fc.ul.pt/~aw000/aw/5_building_web_services/rest/article/30826551/"
 curl -X GET -H "Accept: application/xml" -L "http://appserver.alunos.di.fc.ul.pt/~aw000/aw/5_building_web_services/rest/article/30826551/"
