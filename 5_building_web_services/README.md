@@ -56,20 +56,17 @@ require_once("ArticleRestHandler.php");
 $view = "";
 if(isset($_GET["view"]))
 	$view = $_GET["view"];
-/*
-controls the RESTful services
-URL mapping
-*/
+
 switch($view){
 
 	case "all":
-		// to handle REST Url /article/list/
+		// to handle REST Url /article/
 		$articleRestHandler = new ArticleRestHandler();
 		$articleRestHandler->getAllArticles();
 		break;
 		
 	case "single":
-		// to handle REST Url /article/show/<id>/
+		// to handle REST Url /article/<id>/
 		$articleRestHandler = new ArticleRestHandler();
 		$articleRestHandler->getArticle($_GET["id"]);
 		break;
@@ -328,6 +325,45 @@ curl -X GET -H "Accept: application/xml" -L "http://appserver.alunos.di.fc.ul.pt
 To test with your own web service just remove ```aw/5_building_web_services``` and replace ```aw000``` by your group number.
 
 You can also use the Google Chrome extension "Advanced REST client" (https://advancedrestclient.com/) to test your requests and Accept headers.
+
+## Modify data  
+
+You need to add to the file RestController.php the code to manage others HTTP request methods.
+For example, to deal with POST requests you can add:
+
+***RestController.php***
+```php
+<?php
+require_once("ArticleRestHandler.php");
+
+//identify the request method.
+$requestType = $_SERVER['REQUEST_METHOD'];
+ 
+switch ($requestType) {
+
+      case 'POST':
+    	 $operation = "default";
+	 if (isset($_POST["operation"]))
+		$operation = $_POST["operation"];
+	 ...
+     	 break;
+
+      case 'GET':
+    	 $view = "";
+	 if(isset($_GET["view"]))
+		$view = $_GET["view"];
+	...
+      	break;
+
+      case "" :
+      	//404 - not found;
+	break;
+}
+?>
+```
+
+And then implement and invoke an insertArticle funtion in the Article class to modify your files or database.
+
 
 ## Additional References
 
