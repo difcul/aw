@@ -362,7 +362,7 @@ switch ($requestType) {
 ?>
 ```
 
-And then implement and invoke an insertArticle funtion in the Article class to modify your files or database.
+And then implement an insertArticle function in the Article class that modifies your files or database.
 
 
 ## Additional References
