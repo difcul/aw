@@ -342,27 +342,25 @@ $requestType = $_SERVER['REQUEST_METHOD'];
 switch ($requestType) {
 
       case 'POST':
-    	 $operation = "default";
-	 if (isset($_POST["operation"]))
-		$operation = $_POST["operation"];
-	 ...
+      	 $articleRestHandler = new ArticleRestHandler();
+	 $articleRestHandler->insertArticle($_POST["id"],$_POST["title"]);
      	 break;
 
       case 'GET':
     	 $view = "";
 	 if(isset($_GET["view"]))
 		$view = $_GET["view"];
-	...
-      	break;
+	 ...
+      	 break;
 
       case "" :
-      	//404 - not found;
-	break;
+      	 //404 - not found;
+	 break;
 }
 ?>
 ```
 
-And then implement an insertArticle function in the Article class that modifies your files or database.
+And then implement the insertArticle function in the Article class that modifies your files or database.
 
 
 ## Additional References
