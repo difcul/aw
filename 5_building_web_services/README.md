@@ -316,9 +316,17 @@ To test the web service more extensively you can either build a client programat
 For example, you can use _curl_:
 
 ```shell
-curl -X GET -H "Accept: application/json" -L "http://appserver-01.alunos.di.fc.ul.pt/~awXXX/rest/article/"
-curl -X GET -H "Accept: application/json" -L "http://appserver-01.alunos.di.fc.ul.pt/~awXXX/rest/article/30826551/"
+curl -X GET -H "Accept: text/html" -L "http://appserver.alunos.di.fc.ul.pt/~aw000/aw/5_building_web_services/rest/article/"
+curl -X GET -H "Accept: application/json" -L "http://appserver.alunos.di.fc.ul.pt/~aw000/aw/5_building_web_services/rest/article/"
+curl -X GET -H "Accept: application/xml" -L "http://appserver.alunos.di.fc.ul.pt/~aw000/aw/5_building_web_services/rest/article/"
+
+
+curl -X GET -H "Accept: text/html" -L "http://appserver.alunos.di.fc.ul.pt/~aw000/aw/5_building_web_services/rest/article/30826551/"
+curl -X GET -H "Accept: application/json" -L "http://appserver.alunos.di.fc.ul.pt/~aw000/aw/5_building_web_services/rest/article/30826551/"
+curl -X GET -H "Accept: application/xml" -L "http://appserver.alunos.di.fc.ul.pt/~aw000/aw/5_building_web_services/rest/article/30826551/"
 ```
+
+To test with your own web service just remove ```aw/5_building_web_services``` and replace ```aw000``` by your group number.
 
 You can also use the Google Chrome extension "Advanced REST client" (https://advancedrestclient.com/) to test your requests and Accept headers.
 
