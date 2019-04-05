@@ -362,6 +362,7 @@ switch ($requestType) {
 
 And then implement the insertArticle function in the Article class that modifies your files or database.
 
+More about the HTTP methods definitions: https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html
 
 ## Additional References
 
