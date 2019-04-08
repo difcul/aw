@@ -30,14 +30,21 @@ RewriteEngine on
 RewriteRule ^article/$   http://appserver.alunos.di.fc.ul.pt/~awXXX/rest/RestController.php?view=all [nc,qsa,p]
 RewriteRule ^article/([0-9]+)/$  http://appserver.alunos.di.fc.ul.pt/~awXXX/rest/RestController.php?view=single&id=$1 [nc,qsa,p]
 ```
-
 Do not forget to replace the XXX, or change the URL to the correct one.  
-In a localhost configuration ensure that you have the option ```AllowOverride All``` in the _httpd.conf_ file.
-
 About the RewriteRule Flags used (https://httpd.apache.org/docs/trunk/rewrite/flags.html):
 - nc: case-insensitive
 - qsa: combines query strings
 - p: handled via a proxy request (the URL does not change in the browser)
+
+
+In a localhost configuration ensure that you have the option ```AllowOverride All``` in the _httpd.conf_ file,
+for example by typing:
+
+```shellscript
+find /etc/ -name httpd.conf | grep -A 20 -B 20 'AllowOverride All'
+```
+
+Note that the _httpd.conf_ can only be changed with superuser privileges (https://httpd.apache.org/docs/2.4/configuring.html).
 
 If you try the URLs now, you will get an error as the file you are redirecting to does not exist.
 
@@ -366,6 +373,8 @@ More about the HTTP methods definitions: https://www.w3.org/Protocols/rfc2616/rf
 
 
 ## Additional References
+
+- https://books.google.pt/books?id=jklKNnLO104C&printsec=frontcover
 
 - http://phppot.com/php/php-restful-web-service/
 
