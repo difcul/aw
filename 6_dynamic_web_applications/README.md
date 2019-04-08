@@ -190,9 +190,9 @@ Consider that the web service returns the following response:
 To parse the response you can use the JSON.parse function:
 ```javascript
 ...
-var myArr = JSON.parse(this.responseText)
+var myArr = JSON.parse(this.responseText);
 for (var i = 0; i < myArr.length; i++) {
-    myImg = '<a href="'. myArr[i].link .'"><img src="'. myArr[i].link .'" alt="'. myArr[i].title .'" /></a></br>'
+    myImg = '<a href="'. myArr[i].link .'"><img src="'. myArr[i].link .'" alt="'. myArr[i].title .'" /></a></br>';
     document.getElementById("latestPhotos").innerHTML = myImg;
 }
 ...
