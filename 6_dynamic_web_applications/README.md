@@ -158,8 +158,62 @@ To keep the disease name in the text input after clicking the submit, add the fo
 value="<?php echo htmlspecialchars($_GET['disease']); ?>"
 ```
 
+## Using Web Services
+
+The _mywebapp.php_ should not retrieve data directly from the data files or a database,
+instead it should invoke the RESTful Web Services URIs to access the data resources.
+
+Thus, the _gethint.php_ and _getphotos.php_ should be converted into 
+RESTful Web Services that return a JSON response, as it was done in the previous module. 
+
+The _mywebapp.php_ code that reads the articles about a disease from the files
+should also be replaced to invoke a RESTful Web Service using the _xmlhttp.open_  
+and parse the JSON result.
+
+To request a JSON response do not forget to set the request header: 
+```javascript
+...
+xmlhttp.open("GET", "disease/" + str + "/photos/", true);
+xmlhttp.setRequestHeader('Accept', 'application/json');
+xmlhttp.send();
+...
+```
+
+Consider that the web service returns the following response:
+```json
+{"images":[
+  {"link":"https://farm8.staticflickr.com/7834/47246897321_32ddb1b7e8.jpg", "title":"Ventolin Inhaler 100 mcg"},
+  {"link":"https://farm8.staticflickr.com/7926/32306113307_ecab9c7bd9.jpg", "title":"Asthma attack girl"},
+...
+]}
+```
+
+To parse the response you can use the JSON.parse function:
+```javascript
+...
+var myArr = JSON.parse(this.responseText)
+for (var i = 0; i < myArr.length; i++) {
+    myImg = '<a href="'. myArr[i].link .'"><img src="'. myArr[i].link .'" alt="'. myArr[i].title .'" /></a></br>'
+    document.getElementById("latestPhotos").innerHTML = myImg;
+}
+...
+```
+
+For displaying multiple images, for example you can generate a slideshow or a grid with them:
+- https://www.w3schools.com/howto/howto_js_slideshow.asp
+- https://www.w3schools.com/howto/howto_js_image_grid.asp
+
+
+More information: https://www.w3schools.com/js/js_json_php.asp
+
 ## Additional references
 
 - https://www.w3schools.com/xml/ajax_intro.asp
 
-- https://www.tutorialspoint.com/ajax/index.htm
+- https://www.w3schools.com/js/js_json_intro.asp
+
+- https://www.tutorialspoint.com/ajax/
+
+- https://www.tutorialspoint.com/json/
+
+- https://www.taniarascia.com/how-to-use-json-data-with-php-or-javascript/
