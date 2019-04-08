@@ -167,8 +167,7 @@ Thus, the _gethint.php_ and _getphotos.php_ should be converted into
 RESTful Web Services that return a JSON response, as it was done in the previous module. 
 
 The _mywebapp.php_ code that reads the articles about a disease from the files
-should also be replaced to invoke a RESTful Web Service using the _xmlhttp.open_  
-and parse the JSON result.
+should also be replaced to invoke a RESTful Web Service using the ```xmlhttp.open``` and parse the JSON result.
 
 To request a JSON response do not forget to set the request header: 
 ```javascript
@@ -181,7 +180,7 @@ xmlhttp.send();
 
 Consider that the web service returns the following response:
 ```json
-{"images":[
+{"photos":[
   {"link":"https://farm8.staticflickr.com/7834/47246897321_32ddb1b7e8.jpg", "title":"Ventolin Inhaler 100 mcg"},
   {"link":"https://farm8.staticflickr.com/7926/32306113307_ecab9c7bd9.jpg", "title":"Asthma attack girl"},
 ...
