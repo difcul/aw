@@ -189,7 +189,7 @@ To parse the response you can use the JSON.parse function:
 var myArr = JSON.parse(this.responseText);
 for (var i = 0; i < myArr.length; i++) {
     myImg = '<a href="'. myArr[i].link .'"><img src="'. myArr[i].link .'" alt="'. myArr[i].title .'" /></a></br>';
-    document.getElementById("latestPhotos").innerHTML = myImg;
+    document.getElementById("latestPhotos").innerHTML += myImg;
 }
 ...
 ```
