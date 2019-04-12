@@ -42,10 +42,6 @@ function updatePhotos() {
         <p><input type='submit' /> </p>
     </form>
 
-
-
-</html>
-
 <p>Abstracts about the disease <?php echo htmlspecialchars($_GET['disease']); ?>:</p>
 
 <?php
@@ -76,7 +72,5 @@ echo '</div>';
 echo '<p><span id="latestPhotos"></span></p>';
 
 ?>
-
-
 
 </html>
