@@ -187,10 +187,11 @@ To parse the response you can use the JSON.parse function:
 ```javascript
 ...
 var myArr = JSON.parse(this.responseText);
-document.getElementById("latestPhotos").innerHTML = '';
+var elm = document.getElementById("latestPhotos");
+elm.innerHTML = '';
 for (var i = 0; i < myArr.length; i++) {
     myImg = '<a href="'. myArr[i].link .'"><img src="'. myArr[i].link .'" alt="'. myArr[i].title .'" /></a></br>';
-    document.getElementById("latestPhotos").insertAdjacentHTML( 'beforeend', myImg );
+    elm.insertAdjacentHTML( 'beforeend', myImg );
 }
 ...
 ```
