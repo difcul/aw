@@ -42,10 +42,6 @@ function showHint(str) {
 	Suggestions: <span id="txtHint"></span></p>
         <p><input type='submit' /> </p>
     </form>
-
-
-
-</html>
 ...
 ```
 
@@ -117,7 +113,7 @@ Add the _onload='showHint()'_ in the tag body to call the function for the first
 <body onload='updatePhotos()'>
 ```
 
-Replace the PHP code to show the photos by defining the place where the photos will be shown:
+Replace the PHP code that reads and displays the photos by defining the place where the photos will be shown:
 
 ```php
 echo "<p><span id='latestPhotos'></span></p>"
