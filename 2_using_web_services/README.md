@@ -206,3 +206,30 @@ Now try for different diseases, but do not forget to run the shell scripts befor
 - https://developers.google.com/custom-search/json-api/v1/using_rest
 
 - https://developer.twitter.com/en/docs
+
+## Additional Exercise for Evaluation [NEW]
+
+- Extend the current list of diseases (in diseases.txt) using the DBpedia SPARQL endpoint (http://dbpedia.org/sparql/), for example all the diseases from the Pulmonology field (or another field of your choice):
+
+SELECT ?uri ?name where {
+ ?uri a dbo:Disease .
+ ?uri dbp:field dbr:Pulmonology .
+ ?uri foaf:name ?name
+}
+
+- In your Web Application results, after searching for each disease, present ONE image from DBpedia, followed by the list of articles from PubMed and photos by Flickr.
+NOTE: Present the image from DBPedia BEFORE the list of articles and Flickr photos.
+
+SELECT ?uri ?image where {
+ ?uri a dbo:Disease .
+ ?uri dbp:field dbr:Pulmonology  .
+ ?uri foaf:depiction ?image
+}
+
+- Hint: Check the links that are generated after running a query on the browser.
+
+- In order to be fair to all students, BOTH TP21 and TP22 can submit their files by Wednesday, March 25th. Submit your relevant files on Moodle - a ZIP file AW-2-XXXXX.ZIP, where 2 means the second script, and XXXXX is to be replaced by your student number (for example, AW-2-12345.ZIP).
+
+In your zip file, include a Text File with:
+The link for your web application (example: http://appserver.alunos.di.fc.ul.pt/~awXXXXX/tp2/mywebapp.php). 
+Relevant commands that you may have executed in your terminal in order to complete the ADDITIONAL EXERCISE (for instance, xargs commands that you may have used). 
