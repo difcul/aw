@@ -212,18 +212,26 @@ Now try for different diseases, but do not forget to run the shell scripts befor
 - Extend the current list of diseases (in diseases.txt) using the DBpedia SPARQL endpoint (http://dbpedia.org/sparql/), for example all the diseases from the Pulmonology field (or another field of your choice):
 
 SELECT ?uri ?name where {
+
  ?uri a dbo:Disease .
+ 
  ?uri dbp:field dbr:Pulmonology .
+ 
  ?uri foaf:name ?name
+
 }
 
 - In your Web Application results, after searching for each disease, present ONE image from DBpedia, followed by the list of articles from PubMed and photos by Flickr.
 NOTE: Present the image from DBPedia BEFORE the list of articles and Flickr photos.
 
 SELECT ?uri ?image where {
+
  ?uri a dbo:Disease .
+ 
  ?uri dbp:field dbr:Pulmonology  .
+ 
  ?uri foaf:depiction ?image
+ 
 }
 
 - Hint: Check the links that are generated after running a query on the browser.
