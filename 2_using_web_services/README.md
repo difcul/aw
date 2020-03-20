@@ -221,8 +221,8 @@ SELECT ?uri ?name where {
 
 }
 
-- In your Web Application results, after searching for each disease, present ONE image from DBpedia, followed by the list of articles from PubMed and photos by Flickr.
-NOTE: Present the image from DBPedia BEFORE the list of articles and Flickr photos.
+- In your Web Application results, after searching for each disease, present ONE image from DBpedia. For new diseases (not included in the script) you may present only the DBpedia image. For diseases in the script (Ashtma, Diabetes, etc), present the DBpedia image AND the list of articles from PubMed and the photos from Flickr that you retrieved to complete the script.
+NOTE: In the case of diseases included in the script, present the image from DBPedia BEFORE the list of articles and Flickr photos.
 
 SELECT ?uri ?image where {
 
