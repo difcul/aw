@@ -6,6 +6,7 @@ instead of using regular expressions in _grep_ and _sed_ tools.
 XPath is a query language for selecting nodes from a XML document. 
 However, it can be used to query any markup document. 
 
+# Part 1 - Submit by April 1
 
 ## XPath
 
@@ -68,6 +69,12 @@ xmllint --xpath '//a[@class="image"]/@href' Asthma.html > AsthmaImages.txt
 ```
 
 You can now replace the _sed_ and _grep_ commands of previous modules by using XPath queries.
+
+## Additional Exercise for Evaluation
+
+To be announced.
+
+# Part 2 - Submission data to be announced
 
 ## Abstracts and Annotation
 
@@ -200,6 +207,10 @@ cd DiShIn
 python dishin.py doid.db DOID_4 DOID_4 
 cd ..
 ```
+
+## Additional Exercise for Evaluation
+
+To be announced.
 
 
 ## Additional References
