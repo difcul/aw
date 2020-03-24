@@ -74,7 +74,7 @@ You can now replace the _sed_ and _grep_ commands of previous modules by using X
 
 To be announced.
 
-# Part 2 - Submission data to be announced
+# Part 2 - Submission date to be announced
 
 ## Abstracts and Annotation
 
