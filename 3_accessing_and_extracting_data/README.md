@@ -6,7 +6,7 @@ instead of using regular expressions in _grep_ and _sed_ tools.
 XPath is a query language for selecting nodes from a XML document. 
 However, it can be used to query any markup document. 
 
-# Part 1 - Submit by April 1
+# Part 1 - Submit by April 1st
 
 ## XPath
 
@@ -72,7 +72,21 @@ You can now replace the _sed_ and _grep_ commands of previous modules by using X
 
 ## Additional Exercise for Evaluation
 
-To be announced.
+- Replace the _sed_ and _grep_ commands of previous modules by using XPath queries (if you haven't done it already).
+
+- Retrieve the information (title and link) of at least 10 articles from Google Scholar (https://scholar.google.com/) for each disease on your diseases.txt file (which should include the diseases from DBpedia). You should use the disease name as the search query.
+
+When searching for each disease on your Web Application (mywebapp.php), it should present the title of the articles, with an hyperlink to the article page (similarly to pubmed on TP2).
+
+The information sources (pubmed, flickr, dbpedia) from prior weeks should continue to show up on the search results. Create a Heading for each information source in order to separate the results.
+
+- Hint: Find mechanisms to make requests to Google Scholar with some time interval, otherwise you will be blocked for some time. There are ways to do that with xargs and with other alternatives you may use. 
+
+- All students should submit their files by Wednesday, April 1st. Submit your relevant files on Moodle - a ZIP file AW-3_1-XXXXX.ZIP, where 3_1 means the third script PART 1, and XXXXX is to be replaced by your student number (for example, AW-3_1-12345.ZIP).
+
+In your zip file, include a Text File with:
+The link for your web application (example: http://appserver.alunos.di.fc.ul.pt/~awXXXXX/tp3_1/mywebapp.php). 
+Relevant commands that you may have executed in your terminal in order to complete the ADDITIONAL EXERCISE (for instance, xargs commands that you may have used). 
 
 # Part 2 - Submission date to be announced
 
