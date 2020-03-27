@@ -70,17 +70,22 @@ xmllint --xpath '//a[@class="image"]/@href' Asthma.html > AsthmaImages.txt
 
 You can now replace the _sed_ and _grep_ commands of previous modules by using XPath queries.
 
-## Additional Exercise for Evaluation
+## Additional Exercise for Evaluation [UPDATED]
 
 - Replace the _sed_ and _grep_ commands of previous modules by using XPath queries (if you haven't done it already).
 
-- Retrieve the information (title and link) of at least 10 articles from Google Scholar (https://scholar.google.com/) for each disease on your diseases.txt file (which should include the diseases from DBpedia). You should use the disease name as the search query.
+- Retrieve the information (title of article and link to page) of at least 10 articles for each disease on your diseases.txt file (which should include the diseases from DBpedia). You should use the disease name as the search query. The arcticles can be **either** from (only one of these):
+  - **Google Scholar** (https://scholar.google.com/), which provides scientifical articles related to the disease
+  **OR**
+  - **Wikipedia search results** (https://en.wikipedia.org/), which provides wikipedia articles related to the disease. Note there is a search page (https://en.wikipedia.org/w/index.php?search=&title=Special%3ASearch&go=Go).
 
 When searching for each disease on your Web Application (mywebapp.php), it should present the title of the articles, with an hyperlink to the article page (similarly to pubmed on TP2).
 
 The information sources (pubmed, flickr, dbpedia) from prior weeks should continue to show up on the search results. Create a Heading for each information source in order to separate the results.
 
-- Hint: Find mechanisms to make requests to Google Scholar with some time interval, otherwise you will be blocked for some time. There are ways to do that with xargs and with other alternatives you may use. 
+- **Hint**: Find mechanisms to make requests to Google Scholar (or Wikipedia) with some time interval, otherwise you will be blocked for some time. There are ways to do that with xargs and with other alternatives you may use. 
+
+- **Note**: You may find difficulties accessing the results from Google Scholar. In that case, focus on Wikipedia search results.
 
 - All students should submit their files by Wednesday, April 1st. Submit your relevant files on Moodle - a ZIP file AW-3_1-XXXXX.ZIP, where 3_1 means the third script PART 1, and XXXXX is to be replaced by your student number (for example, AW-3_1-12345.ZIP).
 
