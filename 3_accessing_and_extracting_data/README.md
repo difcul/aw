@@ -72,7 +72,7 @@ You can now replace the _sed_ and _grep_ commands of previous modules by using X
 
 ## Additional Exercise for Evaluation [UPDATED]
 
-- Replace the _sed_ and _grep_ commands of previous modules by using XPath queries (if you haven't done it already).
+- [**Not mandatory**] Replace the _sed_ and _grep_ commands of previous modules by using XPath queries (if you haven't done it already).
 
 - Retrieve the information (title of article and link to page) of at least 10 articles for each disease on your diseases.txt file (which should include the diseases from DBpedia). You should use the disease name as the search query. The arcticles can be **either** from (only one of these):
   - **Google Scholar** (https://scholar.google.com/), which provides scientifical articles related to the disease
