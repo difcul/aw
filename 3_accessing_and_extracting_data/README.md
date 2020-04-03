@@ -93,7 +93,7 @@ In your zip file, include a Text File with:
 The link for your web application (example: http://appserver.alunos.di.fc.ul.pt/~awXXXXX/tp3_1/mywebapp.php). 
 Relevant commands that you may have executed in your terminal in order to complete the ADDITIONAL EXERCISE (for instance, xargs commands that you may have used). 
 
-# Part 2 - Submission date to be announced
+# Part 2 - Submit by April 16th
 
 ## Abstracts and Annotation
 
@@ -229,7 +229,17 @@ cd ..
 
 ## Additional Exercise for Evaluation
 
-To be announced.
+-  Extract the abstracts of the PubMed Articles related to each disease (see beginning of PART 1). Remember that their IDs have already been retrieved with ./getPubMedIds.sh, and should be in a .txt file already (you do **NOT** need to extract IDs from new diseases).
+
+- For each disease, find the terms from the Disease Ontology that are mentioned in the abstracts (using MER). Calculate the similarity (Resnik) between the disease and each term identified by MER (using DiShIn).
+
+- After searching for each disease, present the similarity between the disease and each of the other terms in mywebapp.php.
+
+- All students should submit their files by Thursday, **April 16th**. However, **I encourage you to submit by April 7th**. Submit your relevant files on Moodle - a ZIP file AW-3_2-XXXXX.ZIP, where 3_2 means the third script PART 2, and XXXXX is to be replaced by your student number (for example, AW-3_2-12345.ZIP).
+
+In your zip file, include a Text File with:
+The link for your web application (example: http://appserver.alunos.di.fc.ul.pt/~awXXXXX/tp3_2/mywebapp.php). 
+Relevant commands that you may have executed in your terminal in order to complete the ADDITIONAL EXERCISE (for instance, xargs commands that you may have used). 
 
 
 ## Additional References
