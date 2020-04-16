@@ -1,6 +1,8 @@
 # Using RDF and Sparql
 Francisco Couto and Tiago Guerreiro
 
+# Part 1 - Submit by April 23rd
+
 ## SPARQL 
 
 DBPedia stores Wikipedia data as a dataset using the RDF model, and it can be accessed using SPARQL.
@@ -107,6 +109,22 @@ SELECT ?diseasename ?personname ?deathdate ?occupationname where {
 ```
 You can now try the same queries using _curl_ and _xmllint_, or _EasyRdf_.
 
+## Additional Exercise for Evaluation
+
+- Using SPARQL, retrieve (programatically) the DBPedia **abstract** - both in **English and in Portuguese** - of the diseases your Web Application is currently supporting. After searching for a disease on your Web Application, it should first present an Heading called Abstract, followed by the text in English. Then, it should present an Heading called Resumo, followed by the text in Portuguese.
+
+- After the two abstracts, the Web Application should also present the list of people who have died from that disease between **1900-01-01 and 2000-01-01**, followed by their **nationality**, and **occupation** (in English), if available.
+
+- The diseases supported are, at least, the ones included in the first script. However, feel free to include the set of diseases gathered from DBPedia on the Weekly Exercise of the second script.
+
+- All students should submit their files by Thursday, **April 23th**. Submit your relevant files on Moodle - a ZIP file AW-4_1-XXXXX.ZIP, where 4_1 means the fourth script PART 1, and XXXXX is to be replaced by your student number (for example, AW-4_1-12345.ZIP).
+
+In your zip file, include a Text File with:
+The link for your web application (example: http://appserver.alunos.di.fc.ul.pt/~awXXXXX/tp4_1/mywebapp.php). 
+Relevant commands that you may have executed in your terminal in order to complete the ADDITIONAL EXERCISE (for instance, xargs commands that you may have used). 
+
+# Part 2 - Submit by April 30th
+
 ## RFDa
 
 RDFa (Resource Description Framework in attributes) enables us to embed descriptions of things (types) and their properties within HTML documents using common vocabularies (check http://schema.org/).
@@ -153,6 +171,10 @@ Now check using the Google structured data testing tool what kind of data you ge
 You can now add other structured date, such as the _datePublished_
 
 This means that now other applications understand the semantics of the data your web application is providing.
+
+## Additional Exercise for Evaluation
+
+To be announced.
 
 ## Additional References
 
