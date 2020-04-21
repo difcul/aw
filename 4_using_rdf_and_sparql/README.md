@@ -1,7 +1,8 @@
 # Using RDF and Sparql
 Francisco Couto and Tiago Guerreiro
 
-# Part 1 - Submit by April 23rd
+# UPDATED - Submit by April 29th
+Note that there is no required submission in the week of April 20th. If you have already submitted, you can still edit your submission and submit again
 
 ## SPARQL 
 
@@ -109,24 +110,6 @@ SELECT ?diseasename ?personname ?deathdate ?occupationname where {
 ```
 You can now try the same queries using _curl_ and _xmllint_, or _EasyRdf_.
 
-## Additional Exercise for Evaluation
-
-- Using SPARQL, retrieve (programatically) the DBPedia **abstract** - both in **English and in Portuguese** - of the diseases your Web Application is currently supporting. After searching for a disease on your Web Application, it should first present an Heading called Abstract, followed by the text in English. Then, it should present an Heading called Resumo, followed by the text in Portuguese.
-
-- After the two abstracts, the Web Application should also present the list of people who have died from that disease between **1900-01-01 and 2000-01-01**, followed by their **nationality**, and **occupation** (in English), if available.
-
-- [**Updated**] The diseases supported are the ones included in the first script **OR** the set of diseases gathered from DBPedia on the Weekly Exercise of the second script.
-
-**HINT**: Note that the second option may be easier, since you have already learned how to filter a set of diseases (e.g., from the field pulmonology) in the second script with: **?uri dbp:field dbr:Pulmonology .**
-
-- All students should submit their files by Thursday, **April 23th**. Submit your relevant files on Moodle - a ZIP file AW-4_1-XXXXX.ZIP, where 4_1 means the fourth script PART 1, and XXXXX is to be replaced by your student number (for example, AW-4_1-12345.ZIP).
-
-In your zip file, include a Text File with:
-The link for your web application (example: http://appserver.alunos.di.fc.ul.pt/~awXXXXX/tp4_1/mywebapp.php). 
-Relevant commands that you may have executed in your terminal in order to complete the ADDITIONAL EXERCISE (for instance, xargs commands that you may have used). 
-
-# Part 2 - Submit by April 30th
-
 ## RFDa
 
 RDFa (Resource Description Framework in attributes) enables us to embed descriptions of things (types) and their properties within HTML documents using common vocabularies (check http://schema.org/).
@@ -176,7 +159,19 @@ This means that now other applications understand the semantics of the data your
 
 ## Additional Exercise for Evaluation
 
-To be announced.
+- Using SPARQL, retrieve (programatically) the DBPedia **abstract** - both in **English and in Portuguese** - of the diseases your Web Application is currently supporting. After searching for a disease on your Web Application, it should first present an Heading called Abstract, followed by the text in English. Then, it should present an Heading called Resumo, followed by the text in Portuguese. If one of the abstracts is not available, you should still submit the other.
+
+- After the two abstracts, the Web Application should also present the list of people who have died from that disease between **1900-01-01 and 2000-01-01**, followed by their **nationality**, and **occupation** (in English), if available (If they are not available, you should still present the other information).
+
+- [**Updated**] The diseases supported are the ones included in the first script **OR** the set of diseases gathered from DBPedia on the Weekly Exercise of the second script.
+
+**HINT**: Note that the second option may be easier, since you have already learned how to filter a set of diseases (e.g., from the field pulmonology) in the second script with: **?uri dbp:field dbr:Pulmonology .**
+
+- All students should submit their files by Wednesday, **April 29th**. Submit your relevant files on Moodle - a ZIP file AW-4-XXXXX.ZIP, where 4 means the fourth script, and XXXXX is to be replaced by your student number (for example, AW-4-12345.ZIP).
+
+In your zip file, include a Text File with:
+The link for your web application (example: http://appserver.alunos.di.fc.ul.pt/~awXXXXX/tp4_1/mywebapp.php). 
+Relevant commands that you may have executed in your terminal in order to complete the ADDITIONAL EXERCISE (for instance, xargs commands that you may have used). All files created when following the script should also be included in the submission (e.g., .txt or .sh files).
 
 ## Additional References
 
