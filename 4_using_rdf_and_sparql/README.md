@@ -115,7 +115,9 @@ You can now try the same queries using _curl_ and _xmllint_, or _EasyRdf_.
 
 - After the two abstracts, the Web Application should also present the list of people who have died from that disease between **1900-01-01 and 2000-01-01**, followed by their **nationality**, and **occupation** (in English), if available.
 
-- The diseases supported are, at least, the ones included in the first script. However, feel free to include the set of diseases gathered from DBPedia on the Weekly Exercise of the second script.
+- [**Updated**] The diseases supported are the ones included in the first script **OR** the set of diseases gathered from DBPedia on the Weekly Exercise of the second script.
+
+**HINT**: Note that the second option may be easier, since you have already learned how to filter a set of diseases (e.g., from the field pulmonology) in the second script with: **?uri dbp:field dbr:Pulmonology .**
 
 - All students should submit their files by Thursday, **April 23th**. Submit your relevant files on Moodle - a ZIP file AW-4_1-XXXXX.ZIP, where 4_1 means the fourth script PART 1, and XXXXX is to be replaced by your student number (for example, AW-4_1-12345.ZIP).
 
