@@ -367,9 +367,39 @@ switch ($requestType) {
 ?>
 ```
 
-And then implement the insertArticle function in the Article class that modifies your files or database.
+And then implement the insertArticle function in the Article class that modifies your files or database. (Part of the additional exercise)
 
 More about the HTTP methods definitions: https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html
+
+## Additional Exercise for Evaluation - Submit by May 18th
+
+- Add the following capabilities to your RESTful web service (accounts for 3 points out of 4):
+
+**Feedback**: GET the rating of a particular article; and update (POST) the rating (+1 or -1) of a particular article.
+Notice that all article ratings should start with 0.
+
+**Search**: When searching for articles, return the list of articles ordered by ranking.
+
+- Improve your RESTful web service to support the following:
+
+**Support multiple diseases** (0.8 points): Instead of supporting only Asthma, edit your RESTful web service so that it can support the other diseases of the first script (Alzheimer, Asthma, Cirrhosis, Diabetes, and Tuberculosis).
+
+Notice that the URIs in the script do not specify the disease, but to support multiple diseases it is required to include the disease. 
+Also, you should copy (from prior scripts) the files related to links and titles of those diseases (e.g., DiabetesLinks.txt, DiabetesTitles.txt).
+
+**Inserting an Article** (0.2 points): Complete the script by supporting the ability to add an article, including implementing the insertArticle function in the Article class. 
+
+- **HINTS**:
+
+You can have one file with the ratings (e.g., AsthmaRatings.txt) and edit the ratings using sed (for instance by specifying the line number). Alternatively, you may have one file for each article, by combining the disease and articleID.
+
+Consider checking tutorials from w3schools if you are struggling with PHP (https://www.w3schools.in/category/php/) and REST (https://www.w3schools.in/restful-web-services/intro/).
+
+- All students should submit their files by Monday, **May 18th**. Submit your relevant files on Moodle - a ZIP file AW-5-XXXXX.ZIP, where 5 means the fifth script, and XXXXX is to be replaced by your student number (for example, AW-5-12345.ZIP).
+
+In your zip file, include a Text File with:
+The curl commands that can be used to test your GET and POST requests. 
+All files created when following the script should also be included in the submission (e.g., .php, .txt or .sh files).
 
 
 ## Additional References
