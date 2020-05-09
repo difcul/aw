@@ -51,7 +51,7 @@ If you try the URLs now, you will get an error as the file you are redirecting t
 ## Controller
 
 Let's create the file RestController.php that will unpack and dispatch the requests internally. 
-In the folder _.htaccess_, we are forwarding all the requests to the file _RestController.php_ with a key named "view" 
+In the file _.htaccess_, we are forwarding all the requests to the file _RestController.php_ with a key named "view" 
 to identify the request. 
 Create the file _RestController.php_ to identify the request and dispatch the request to methods that will handle it:
 
