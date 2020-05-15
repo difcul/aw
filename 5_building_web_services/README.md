@@ -385,7 +385,7 @@ Notice that all article ratings should start with 0.
 **Support multiple diseases** (0.8 points): Instead of supporting only Asthma, edit your RESTful web service so that it can support the other diseases of the first script (Alzheimer, Asthma, Cirrhosis, Diabetes, and Tuberculosis).
 
 Notice that the URIs in the script do not specify the disease, but to support multiple diseases it should (instead, it is hardcoded in Article.php).
-Also, you should copy (from prior scripts) the files related to links and titles of those diseases (e.g., DiabetesLinks.txt, DiabetesTitles.txt).
+Also, you should copy (from prior scripts) the files related to IDs and titles of those diseases (e.g., Diabetes.txt, DiabetesTitles.txt).
 
 **Inserting an Article** (0.2 points): Complete the script by supporting the ability to add an article, including implementing the insertArticle function in the Article class. 
 
