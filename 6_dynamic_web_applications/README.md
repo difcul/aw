@@ -207,11 +207,11 @@ More information: https://www.w3schools.com/js/js_json_php.asp
 ## Additional Exercise for Evaluation - Submit by June 1st
 
 - (2 points) Complete this script by converting the _gethint.php_ and _getphotos.php_ functions into 
-RESTful Web Services that return a JSON response. You can reuse (and extend) last week's RESTful web service. Notice that you should add the URIs related to these two new GET requests and be able to handle such requests.
+RESTful Web Services that return a JSON response. You can reuse (and extend) last week's RESTful web service. Note that you should add the URIs related to these two new GET requests and be able to handle such requests.
 
 - (1.8 points) When presenting the PubMed results (completed in prior scripts), present the rating of each article alongside the respective title. In addition, include two buttons/icons that decrease or increase the rating. Using the RESTful web service implemented in the last script (both to GET the rating and to UPDATE the rating) will be valued. 
 
-- Notice that you should support the 5 diseases of prior scripts (Alzheimer, Asthma, Cirrhosis, Diabetes, and Tuberculosis). In case you only support Asthma, a small penalty will be applied.
+- Note that you should support the 5 diseases of prior scripts (Alzheimer, Asthma, Cirrhosis, Diabetes, and Tuberculosis). In case you only support Asthma, a small penalty will be applied.
 
 - (0.2 points) Support the functionality to add a new article, using the POST request added in last week's exercise.
 
