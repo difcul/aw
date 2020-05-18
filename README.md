@@ -1,7 +1,7 @@
 # Web Applications
 Departamento de Informática, Faculdade de Ciências da Universidade de Lisboa, Portugal
 
-Francisco Couto e Tiago Guerreiro
+Francisco Couto, Tiago Guerreiro, and João Guerreiro
 
 ## Table of Contents
 
