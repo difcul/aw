@@ -1,5 +1,5 @@
 # Dynamic Web Applications
-Francisco Couto and Tiago Guerreiro
+Francisco Couto, Tiago Guerreiro, and João Guerreiro
 
 AJAX stands for Asynchronous Javascript and XML and, paraphrasing from w3schools "is a developers" dream, because you can:
 
@@ -211,7 +211,7 @@ RESTful Web Services that return a JSON response. You can reuse (and extend) las
 
 - (1.8 points) When presenting the PubMed results (completed in prior scripts), present the rating of each article alongside the respective title. In addition, include two buttons/icons that decrease or increase the rating. Using the RESTful web service implemented in the last script (both to GET the rating and to UPDATE the rating) will be valued. 
 
-- Note that you should support the 5 diseases of prior scripts (Alzheimer, Asthma, Cirrhosis, Diabetes, and Tuberculosis). In case you only support Asthma, a small penalty will be applied.
+- Note that your web application should support at least the following 5 diseases (Alzheimer, Asthma, Cirrhosis, Diabetes, and Tuberculosis). Otherwise (e.g., if you only support Asthma), a small penalty will be applied.
 
 - (0.2 points) Support the functionality to add a new article, using the POST request added in last week's exercise.
 
