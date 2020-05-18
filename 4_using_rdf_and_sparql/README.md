@@ -1,5 +1,5 @@
 # Using RDF and Sparql
-Francisco Couto and Tiago Guerreiro
+Francisco Couto, Tiago Guerreiro, and João Guerreiro
 
 # UPDATED - Submit by April 29th
 Note that there is no required submission in the week of April 20th. If you have already submitted, you can still edit your submission and submit again
