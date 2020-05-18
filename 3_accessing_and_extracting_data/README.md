@@ -1,5 +1,5 @@
 # Accessing and extracting data
-Francisco Couto and Tiago Guerreiro
+Francisco Couto, Tiago Guerreiro, and João Guerreiro
 
 XPath (XML Path Language) is as an efficient tool to get information from XML and HTML documents, 
 instead of using regular expressions in _grep_ and _sed_ tools.
