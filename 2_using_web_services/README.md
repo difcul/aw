@@ -1,5 +1,5 @@
 # Using Web Services
-Francisco Couto and Tiago Guerreiro
+Francisco Couto, Tiago Guerreiro, and João Guerreiro
 
 Web Services can be seen as APIs that allow for this interconnection between heterogeneous software applications in the web by using the HTTP protocol.
 
