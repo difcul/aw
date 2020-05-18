@@ -217,8 +217,7 @@ RESTful Web Services that return a JSON response. You can reuse (and extend) las
 
 - All students should submit their files by Monday, **June 1st**. Submit your relevant files on Moodle - a ZIP file AW-6-XXXXX.ZIP, where 6 means the sixth script, and XXXXX is to be replaced by your student number (for example, AW-6-12345.ZIP).
 
-In your zip file, include a Text File with:
-All files created when following the script should also be included in the submission (e.g., .php, .txt or .sh files).
+In your zip file, include a Text File with the link to your web application, as well as the files relevant to this submission.
 
 
 ## Additional references
