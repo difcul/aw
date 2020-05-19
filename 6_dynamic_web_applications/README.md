@@ -196,7 +196,7 @@ for (var i = 0; i < myArr.length; i++) {
 ...
 ```
 
-For displaying multiple images, for example you can generate a slideshow or a grid with them:
+For displaying multiple images, for example you can generate a slideshow or a grid (**not mandatory**) with them:
 - https://www.w3schools.com/howto/howto_js_slideshow.asp
 - https://www.w3schools.com/howto/howto_js_image_grid.asp
 
