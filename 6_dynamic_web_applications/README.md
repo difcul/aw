@@ -204,7 +204,7 @@ For displaying multiple images, for example you can generate a slideshow or a gr
 More information: https://www.w3schools.com/js/js_json_php.asp
 
 
-## Additional Exercise for Evaluation - Submit by June 1st
+## Additional Exercise for Evaluation - Submit by June 3rd
 
 - (2 points) Complete this script by converting the _gethint.php_ and _getphotos.php_ functions into 
 RESTful Web Services that return a JSON response. You can reuse (and extend) last week's RESTful web service. Note that you should add the URIs related to these two new GET requests and be able to handle such requests.
@@ -215,7 +215,7 @@ RESTful Web Services that return a JSON response. You can reuse (and extend) las
 
 - (0.2 points) Support the functionality to add a new article, using the POST request added in last week's exercise.
 
-- All students should submit their files by Monday, **June 1st**. Submit your relevant files on Moodle - a ZIP file AW-6-XXXXX.ZIP, where 6 means the sixth script, and XXXXX is to be replaced by your student number (for example, AW-6-12345.ZIP).
+- All students should submit their files by Wednesday, **June 3rd**. Submit your relevant files on Moodle - a ZIP file AW-6-XXXXX.ZIP, where 6 means the sixth script, and XXXXX is to be replaced by your student number (for example, AW-6-12345.ZIP).
 
 In your zip file, include a Text File with the link to your web application, as well as the files relevant to this submission.
 
